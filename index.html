@@ -33,7 +33,7 @@
     }
 
     .hero {
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
       border-radius: 28px;
       padding: 42px;
@@ -63,7 +63,21 @@
       font-size: 19px;
       color: var(--muted);
       max-width: 680px;
-      margin: 0 0 26px;
+      margin: 0 0 22px;
+    }
+
+    .proof-line {
+      color: #334155;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .cta {
@@ -75,47 +89,18 @@
       border-radius: 14px;
       font-weight: 800;
       box-shadow: 0 10px 22px rgba(43, 136, 216, 0.22);
-    }
-
-    .cta {
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    
+
     .cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 14px 28px rgba(43, 136, 216, 0.28);
     }
 
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-    
     .email-copy {
       color: #536174;
       font-size: 15px;
       font-weight: 600;
-    }
-    
-    .proof-line {
-      margin-top: 18px;
-      color: #334155;
-      font-size: 15px;
-      font-weight: 600;
-    }
-    
-    .credibility span {
-      display: inline-block;
-      margin-right: 10px;
-      color: #1f6fb2;
-      background: #eff6ff;
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 12px;
-      font-weight: 800;
     }
 
     section {
@@ -126,6 +111,27 @@
       font-size: 22px;
       margin: 0 0 18px;
       letter-spacing: -0.3px;
+    }
+
+    .credibility {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      color: #334155;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .credibility span {
+      display: inline-block;
+      margin-right: 10px;
+      color: #1f6fb2;
+      background: #eff6ff;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .grid {
@@ -140,12 +146,9 @@
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
-    }
-
-    .card {
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
-    
+
     .card:hover {
       transform: translateY(-3px);
       border-color: #c7d7eb;
@@ -206,13 +209,16 @@
     <div class="hero">
       <div class="badge">Automation & Workflow Tools</div>
       <h1>Dmytrii Sokyrko</h1>
+
       <p class="subtitle">
-        I build custom browser automation and workflow tools for e-commerce businesses that want to reduce manual work, avoid repetitive data entry, and make internal processes faster.
+        I build custom browser automation and workflow tools for e-commerce businesses
+        that want to reduce manual work, avoid repetitive data entry, and make internal processes faster.
       </p>
-      
+
       <div class="proof-line">
         Browser extensions · Form autofill · Data extraction · Internal workflow tools
       </div>
+
       <div class="hero-actions">
         <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
         <span class="email-copy">hello@dmytrii.dev</span>
@@ -220,12 +226,13 @@
     </div>
 
     <section>
-    <div class="credibility">
-      <span>Client work</span>
-      <strong>3D Prima</strong> — custom shipping workflow automation.
-    </div>
-  
-    <h2>Selected projects</h2>
+      <div class="credibility">
+        <span>Client work</span>
+        <strong>3D Prima</strong> — custom shipping workflow automation.
+      </div>
+
+      <h2>Selected projects</h2>
+
       <div class="grid">
         <div class="card">
           <h3>DHL Autofill Extension</h3>
