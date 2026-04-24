@@ -12,9 +12,11 @@
       --muted: #536174;
       --line: #e5e7eb;
       --soft-blue: #eff6ff;
+      --soft-cyan: #ecfeff;
+      --soft-indigo: #eef2ff;
       --blue-text: #1f6fb2;
-      --accent: #4f46e5;
-      --accent-2: #06b6d4;
+      --indigo: #4f46e5;
+      --cyan: #06b6d4;
 
       --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
       --cta-shadow: rgba(79, 70, 229, 0.18);
@@ -27,7 +29,7 @@
       margin: 0;
       font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(79, 70, 229, 0.10), transparent 30%),
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.11), transparent 30%),
         radial-gradient(circle at top right, rgba(6, 182, 212, 0.10), transparent 28%),
         linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
       color: var(--text);
@@ -35,7 +37,7 @@
     }
 
     .page {
-      max-width: 960px;
+      max-width: 940px;
       margin: 0 auto;
       padding: 64px 22px;
     }
@@ -44,7 +46,7 @@
       background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
       border-radius: 30px;
-      padding: 44px;
+      padding: 42px;
       box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
       backdrop-filter: blur(10px);
       position: relative;
@@ -54,11 +56,11 @@
     .hero::after {
       content: "";
       position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.16), transparent 65%);
+      right: -90px;
+      top: -90px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 66%);
       pointer-events: none;
     }
 
@@ -92,9 +94,9 @@
     }
 
     .identity-text span {
-      font-size: 13px;
       color: var(--muted);
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 650;
     }
 
     .badge {
@@ -106,6 +108,8 @@
       font-size: 13px;
       font-weight: 800;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -186,6 +190,12 @@
       letter-spacing: -0.3px;
     }
 
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin: -8px 0 20px;
+    }
+
     .credibility {
       background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
@@ -207,25 +217,36 @@
       font-weight: 800;
     }
 
-    .section-intro {
-      color: var(--muted);
-      max-width: 720px;
-      margin: -8px 0 20px;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
-    .card {
+    .card,
+    .process-step,
+    .note {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 20px;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card {
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card::before,
+    .process-step::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(79,70,229,0.70), rgba(6,182,212,0.70));
+      opacity: 0.75;
     }
 
     .card:hover {
@@ -259,18 +280,20 @@
       margin-bottom: 12px;
       padding: 4px 8px;
       border-radius: 999px;
-      background: #f1f5f9;
-      color: #334155;
+      background: var(--soft-indigo);
+      color: #4338ca;
       font-size: 12px;
       font-weight: 800;
     }
 
-    .note {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px;
-      color: var(--muted);
+    .card:nth-child(2) .tag {
+      background: var(--soft-cyan);
+      color: #0e7490;
+    }
+
+    .card:nth-child(3) .tag {
+      background: #f0fdf4;
+      color: #15803d;
     }
 
     .process-grid {
@@ -280,11 +303,9 @@
     }
 
     .process-step {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+      position: relative;
+      overflow: hidden;
     }
 
     .process-step strong {
@@ -298,15 +319,21 @@
       font-size: 14px;
     }
 
+    .note {
+      padding: 22px;
+      color: var(--muted);
+    }
+
     .contact {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      background: #111827;
+      background: linear-gradient(135deg, #111827 0%, #172033 100%);
       color: white;
       border-radius: 22px;
       padding: 24px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
     }
 
     .contact p {
@@ -395,8 +422,8 @@
 
       <h2>Selected work</h2>
       <p class="section-intro">
-        These are examples of real workflow problems I worked on. These projects focus on practical workflow problems: moving order data, 
-        filling shipping forms, and reducing repeated manual steps in daily e-commerce operations.
+        These projects focus on practical workflow problems: moving order data, filling shipping forms,
+        and reducing repeated manual steps in daily e-commerce operations.
       </p>
 
       <div class="grid">
