@@ -317,25 +317,25 @@
 
   <script>
     const email = "hello@dmytrii.dev";
-
+  
     async function copyEmail() {
       try {
         await navigator.clipboard.writeText(email);
-        showToast("Email copied: " + email);
+        showToast("Email copied to clipboard");
       } catch (error) {
         showToast("Email: " + email);
       }
     }
-
+  
     function handleContactClick(event) {
       event.preventDefault();
-
+  
       let leftPage = false;
-
+  
       const markLeftPage = () => {
         leftPage = true;
       };
-
+  
       window.addEventListener("blur", markLeftPage, { once: true });
       window.addEventListener("pagehide", markLeftPage, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -343,24 +343,28 @@
           leftPage = true;
         }
       }, { once: true });
-
+  
+      // Try to open email app
       window.location.href = "mailto:" + email;
-
+  
+      // If nothing happened → fallback
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
-          showToast("Email app did not open? Use: " + email);
+          copyEmail();
+          showToast("Email copied — paste it into your email app");
         }
       }, 1800);
     }
-
+  
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-
+  
+      // 🔥 Increased duration (better UX)
       setTimeout(() => {
         toast.classList.remove("show");
-      }, 2600);
+      }, 4500); // was ~2600
     }
   </script>
 </body>
