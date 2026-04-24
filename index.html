@@ -12,7 +12,6 @@
       --muted: #536174;
       --line: #e5e7eb;
 
-      /* Button color. Change only these 3 lines to test other colors. */
       --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
       --cta-shadow: rgba(79, 70, 229, 0.18);
       --cta-shadow-hover: rgba(6, 182, 212, 0.24);
@@ -265,7 +264,7 @@
       </div>
 
       <div class="hero-actions">
-        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Contact me</a>
+        <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
         <button class="email-copy" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
       </div>
     </div>
@@ -313,58 +312,29 @@
     </section>
   </main>
 
-  <div id="toast" class="toast">Email copied: hello@dmytrii.dev</div>
+  <div id="toast" class="toast">Email copied to clipboard</div>
 
   <script>
     const email = "hello@dmytrii.dev";
-  
+    const toastDurationMs = 4500;
+
     async function copyEmail() {
       try {
         await navigator.clipboard.writeText(email);
         showToast("Email copied to clipboard");
       } catch (error) {
-        showToast("Email: " + email);
+        showToast("Copy failed — email: " + email);
       }
     }
-  
-    function handleContactClick(event) {
-      event.preventDefault();
-  
-      let leftPage = false;
-  
-      const markLeftPage = () => {
-        leftPage = true;
-      };
-  
-      window.addEventListener("blur", markLeftPage, { once: true });
-      window.addEventListener("pagehide", markLeftPage, { once: true });
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "hidden") {
-          leftPage = true;
-        }
-      }, { once: true });
-  
-      // Try to open email app
-      window.location.href = "mailto:" + email;
-  
-      // If nothing happened → fallback
-      setTimeout(() => {
-        if (!leftPage && document.visibilityState === "visible") {
-          copyEmail();
-          showToast("Email copied — paste it into your email app");
-        }
-      }, 1800);
-    }
-  
+
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-  
-      // 🔥 Increased duration (better UX)
+
       setTimeout(() => {
         toast.classList.remove("show");
-      }, 4500); // was ~2600
+      }, toastDurationMs);
     }
   </script>
 </body>
