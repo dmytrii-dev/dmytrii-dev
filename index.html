@@ -77,6 +77,36 @@
       box-shadow: 0 10px 22px rgba(43, 136, 216, 0.22);
     }
 
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    
+    .email-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .proof-line {
+      margin-top: 18px;
+      color: #334155;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .credibility {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+      margin-bottom: 22px;
+      color: #334155;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+
     section {
       margin-top: 42px;
     }
@@ -155,29 +185,39 @@
     <div class="hero">
       <div class="badge">Automation & Workflow Tools</div>
       <h1>Dmytrii Sokyrko</h1>
-      <p>I build automation tools that save time and eliminate manual work for e-commerce businesses.</p>
-      <p>→ Automate repetitive tasks<br>
-      → Reduce human errors<br>
-      → Speed up operations</p>
-      <a class="cta" href="mailto:hello@dmytrii.dev">hello@dmytrii.dev</a>
+      <p class="subtitle">
+        I build custom browser automation and workflow tools for e-commerce businesses that want to reduce manual work, avoid repetitive data entry, and make internal processes faster.
+      </p>
+      
+      <div class="proof-line">
+        Browser extensions · Form autofill · Data extraction · Internal workflow tools
+      </div>
+      <div class="hero-actions">
+        <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
+        <span class="email-copy">hello@dmytrii.dev</span>
+      </div>
     </div>
 
     <section>
-      <h2>Selected projects</h2>
+    <div class="credibility">
+      Worked with <strong>3D Prima</strong> on custom shipping workflow automation.
+    </div>
+  
+    <h2>Selected projects</h2>
       <div class="grid">
         <div class="card">
           <h3>DHL Autofill Extension</h3>
-          <p>Automates shipping form filling, reducing manual input time and errors.</p>
+          <p>Autofill tool for DHL shipping forms, built to reduce repeated manual address entry.</p>
         </div>
 
         <div class="card">
           <h3>UPS Autofill Extension</h3>
-          <p>Custom workflow automation for UPS shipping process.</p>
+          <p>UPS form-filling extension designed around a real shipping workflow and review process.</p>
         </div>
 
         <div class="card">
           <h3>Plenty → UPS Workflow</h3>
-          <p>Test version for extracting Plenty order data and filling UPS shipping fields.</p>
+          <p>Test workflow for extracting Plenty order data and preparing UPS shipping fields automatically.</p>
         </div>
       </div>
     </section>
