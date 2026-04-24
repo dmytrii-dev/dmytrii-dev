@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dmytrii Sokyrko — Automation Developer</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --blue: #2b88d8;
+      --orange: #f28c18;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #eaf4ff, transparent 32%),
+                  linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 64px 22px;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 42px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1f6fb2;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: 1.05;
+      margin: 0 0 14px;
+      letter-spacing: -1.4px;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 26px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(43, 136, 216, 0.22);
+    }
+
+    section {
+      margin-top: 42px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 18px;
+      letter-spacing: -0.3px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .note {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      color: var(--muted);
+    }
+
+    .contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: #111827;
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .contact p {
+      margin: 0;
+      color: #d1d5db;
+    }
+
+    .contact a {
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 30px; }
+      h1 { font-size: 34px; }
+      .grid { grid-template-columns: 1fr; }
+      .contact { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="hero">
+      <div class="badge">Automation & Workflow Tools</div>
+      <h1>Dmytrii Sokyrko</h1>
+      <p class="subtitle">
+        I build custom browser automation and workflow tools for e-commerce businesses,
+        helping teams reduce repetitive manual work and avoid data-entry mistakes.
+      </p>
+      <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
+    </div>
+
+    <section>
+      <h2>Selected projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>DHL Autofill Extension</h3>
+          <p>Chrome extension that fills DHL shipping forms from structured address data.</p>
+        </div>
+
+        <div class="card">
+          <h3>UPS Autofill Extension</h3>
+          <p>Custom UPS form-filling extension designed around a real shipping workflow.</p>
+        </div>
+
+        <div class="card">
+          <h3>Plenty → UPS Workflow</h3>
+          <p>Test version for extracting Plenty order data and filling UPS shipping fields.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I work on</h2>
+      <div class="note">
+        Browser extensions, form autofill workflows, data extraction, e-commerce operations,
+        internal tools, and automation systems that connect messy manual steps into a smoother process.
+      </div>
+    </section>
+
+    <section class="contact">
+      <div>
+        <strong>Need a custom workflow tool?</strong>
+        <p>Send me a short description of the process you want to automate.</p>
+      </div>
+      <a href="mailto:hello@dmytrii.dev">hello@dmytrii.dev</a>
+    </section>
+  </main>
+</body>
+</html>
