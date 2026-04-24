@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dmytrii Sokyrko — Automation Developer</title>
+  <title>Dmytrii Sokyrko — Automation Systems for E-commerce</title>
   <style>
     :root {
       --bg: #f6f8fb;
@@ -11,6 +11,10 @@
       --text: #111827;
       --muted: #536174;
       --line: #e5e7eb;
+      --soft-blue: #eff6ff;
+      --blue-text: #1f6fb2;
+      --accent: #4f46e5;
+      --accent-2: #06b6d4;
 
       --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
       --cta-shadow: rgba(79, 70, 229, 0.18);
@@ -22,35 +26,85 @@
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background: radial-gradient(circle at top left, #eaf4ff, transparent 32%),
-                  linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+      background:
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.10), transparent 28%),
+        linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
     .page {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 64px 22px;
     }
 
     .hero {
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 42px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      border-radius: 30px;
+      padding: 44px;
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
       backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.16), transparent 65%);
+      pointer-events: none;
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .identity-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .identity-text strong {
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .identity-text span {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .badge {
       display: inline-block;
       padding: 7px 12px;
       border-radius: 999px;
-      background: #eff6ff;
-      color: #1f6fb2;
+      background: var(--soft-blue);
+      color: var(--blue-text);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 18px;
     }
 
@@ -59,20 +113,27 @@
       line-height: 1.05;
       margin: 0 0 14px;
       letter-spacing: -1.4px;
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
     }
 
     .subtitle {
       font-size: 19px;
       color: var(--muted);
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 0 22px;
+      position: relative;
+      z-index: 1;
     }
 
     .proof-line {
       color: #334155;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-actions {
@@ -80,6 +141,8 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
 
     .cta {
@@ -90,9 +153,10 @@
       padding: 12px 18px;
       border-radius: 14px;
       font-weight: 800;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: 0;
       box-shadow: 0 10px 22px var(--cta-shadow);
       transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      background-clip: padding-box;
     }
 
     .cta:hover {
@@ -107,18 +171,14 @@
       color: #536174;
       font: inherit;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       padding: 0;
     }
 
-    .email-copy:hover {
-      text-decoration: underline;
-    }
+    .email-copy:hover { text-decoration: underline; }
 
-    section {
-      margin-top: 42px;
-    }
+    section { margin-top: 42px; }
 
     h2 {
       font-size: 22px;
@@ -127,7 +187,7 @@
     }
 
     .credibility {
-      background: #ffffff;
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 16px 18px;
@@ -139,12 +199,18 @@
     .credibility span {
       display: inline-block;
       margin-right: 10px;
-      color: #1f6fb2;
-      background: #eff6ff;
+      color: var(--blue-text);
+      background: var(--soft-blue);
       border-radius: 999px;
       padding: 4px 9px;
       font-size: 12px;
       font-weight: 800;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin: -8px 0 20px;
     }
 
     .grid {
@@ -174,9 +240,29 @@
     }
 
     .card p {
-      margin: 0;
+      margin: 0 0 12px;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #334155;
+      font-size: 13px;
+    }
+
+    .card li { margin: 4px 0; }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .note {
@@ -185,6 +271,31 @@
       border-radius: 20px;
       padding: 22px;
       color: var(--muted);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .process-step {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .process-step strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .contact {
@@ -213,9 +324,7 @@
       padding: 0;
     }
 
-    .footer-email:hover {
-      text-decoration: underline;
-    }
+    .footer-email:hover { text-decoration: underline; }
 
     .toast {
       position: fixed;
@@ -240,9 +349,10 @@
     }
 
     @media (max-width: 760px) {
+      .page { padding: 34px 16px; }
       .hero { padding: 30px; }
       h1 { font-size: 34px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid, .process-grid { grid-template-columns: 1fr; }
       .contact { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -251,20 +361,28 @@
 <body>
   <main class="page">
     <div class="hero">
-      <div class="badge">Automation & Workflow Tools</div>
-      <h1>Dmytrii Sokyrko</h1>
+      <div class="identity">
+        <img class="avatar" src="https://lh3.googleusercontent.com/a/default-user=s96-c" alt="Dmytrii Sokyrko" />
+        <div class="identity-text">
+          <strong>Dmytrii Sokyrko</strong>
+          <span>Automation Systems Developer</span>
+        </div>
+      </div>
+
+      <div class="badge">Automation Systems for E-commerce</div>
+      <h1>Reduce manual work in your e-commerce operations.</h1>
 
       <p class="subtitle">
-        I build custom browser automation and workflow tools for e-commerce businesses
-        that want to reduce manual work, avoid repetitive data entry, and make internal processes faster.
+        I build custom browser automation and workflow tools that help e-commerce teams
+        move data faster, avoid repetitive entry, and turn manual processes into reliable systems.
       </p>
 
       <div class="proof-line">
-        Browser automation · Workflow automation · E-commerce operations · Internal tools
+        Browser automation · Shipping workflows · Internal tools · E-commerce operations
       </div>
 
       <div class="hero-actions">
-        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Contact me</a>
+        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send your workflow</a>
         <button class="email-copy" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
       </div>
     </div>
@@ -272,25 +390,67 @@
     <section>
       <div class="credibility">
         <span>Client work</span>
-        <strong>3D Prima</strong> — custom shipping workflow automation.
+        Built custom shipping workflow automation for <strong>3D Prima</strong>, a European 3D printing company.
       </div>
 
-      <h2>Selected projects</h2>
+      <h2>Selected work</h2>
+      <p class="section-intro">
+        These are examples of real workflow problems I worked on. The goal is not “one more extension” —
+        the goal is to remove repeated manual steps from daily operations.
+      </p>
 
       <div class="grid">
         <div class="card">
-          <h3>DHL Autofill Extension</h3>
-          <p>Autofill tool for DHL shipping forms, built to reduce repeated manual address entry.</p>
+          <span class="tag">Shipping automation</span>
+          <h3>DHL Shipping Autofill</h3>
+          <p>Built a browser tool that fills DHL shipping forms from structured order and address data.</p>
+          <ul>
+            <li>Reduced repeated address entry</li>
+            <li>Lowered risk of manual typing errors</li>
+            <li>Designed around a real client workflow</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3>UPS Autofill Extension</h3>
-          <p>UPS form-filling extension designed around a real shipping workflow and review process.</p>
+          <span class="tag">Workflow automation</span>
+          <h3>UPS Shipping Autofill</h3>
+          <p>Created an automation layer for UPS shipping forms to make shipment preparation faster and more consistent.</p>
+          <ul>
+            <li>Automated repetitive form filling</li>
+            <li>Handled real UPS page structure</li>
+            <li>Built as a custom browser extension</li>
+          </ul>
         </div>
 
         <div class="card">
+          <span class="tag">Order-to-shipping</span>
           <h3>Plenty → UPS Workflow</h3>
-          <p>Test workflow for extracting Plenty order data and preparing UPS shipping fields automatically.</p>
+          <p>Prototype workflow for extracting Plenty order data and preparing UPS shipment fields automatically.</p>
+          <ul>
+            <li>Extracts order information</li>
+            <li>Prepares shipping form fields</li>
+            <li>Built for testing with the client team</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How I approach automation</h2>
+      <div class="process-grid">
+        <div class="process-step">
+          <strong>1. Understand the workflow</strong>
+          <p>I look at the real process first: where data comes from, where it goes, and which steps are repeated.</p>
+        </div>
+
+        <div class="process-step">
+          <strong>2. Build the tool around the process</strong>
+          <p>The automation is shaped around the actual pages, fields, edge cases, and daily usage.</p>
+        </div>
+
+        <div class="process-step">
+          <strong>3. Improve after testing</strong>
+          <p>After the first working version, I refine behavior, UI, and reliability based on real feedback.</p>
         </div>
       </div>
     </section>
@@ -298,15 +458,15 @@
     <section>
       <h2>What I work on</h2>
       <div class="note">
-        Browser automation, internal workflow tools, e-commerce operations, data processing,
-        form automation, and systems that connect messy manual steps into a smoother process.
+        Browser automation, shipping workflows, internal tools, data processing, e-commerce operations,
+        and systems that connect messy manual steps into a smoother process.
       </div>
     </section>
 
     <section class="contact">
       <div>
-        <strong>Need a custom workflow tool?</strong>
-        <p>Send me a short description of the process you want to automate.</p>
+        <strong>Have a repetitive workflow?</strong>
+        <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
       </div>
       <button class="footer-email" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
     </section>
@@ -317,7 +477,7 @@
   <script>
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
-  
+
     async function copyEmail() {
       try {
         await navigator.clipboard.writeText(email);
@@ -326,14 +486,14 @@
         showToast("Copy failed — email: " + email);
       }
     }
-  
+
     function handleContactClick(event) {
       let leftPage = false;
-  
+
       const markLeft = () => {
         leftPage = true;
       };
-  
+
       window.addEventListener("blur", markLeft, { once: true });
       window.addEventListener("pagehide", markLeft, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -341,21 +501,19 @@
           leftPage = true;
         }
       }, { once: true });
-  
-      // Let mailto run normally (no preventDefault)
-  
+
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
           showToast("Didn’t open? Use the email next to the button.");
         }
       }, 1600);
     }
-  
+
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-  
+
       setTimeout(() => {
         toast.classList.remove("show");
       }, toastDurationMs);
