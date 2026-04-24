@@ -126,6 +126,15 @@
       font-size: 19px;
       color: var(--muted);
       max-width: 720px;
+      margin: 0 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-line {
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 650;
       margin: 0 0 22px;
       position: relative;
       z-index: 1;
@@ -183,6 +192,14 @@
     .email-copy:hover { text-decoration: underline; }
 
     section { margin-top: 42px; }
+
+    .section-panel {
+      background: rgba(255, 255, 255, 0.48);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.035);
+    }
 
     h2 {
       font-size: 22px;
@@ -381,6 +398,7 @@
       h1 { font-size: 34px; }
       .grid, .process-grid { grid-template-columns: 1fr; }
       .contact { flex-direction: column; align-items: flex-start; }
+      .section-panel { padding: 18px; }
     }
   </style>
 </head>
@@ -404,6 +422,8 @@
         move data faster, avoid repetitive entry, and turn manual processes into reliable systems.
       </p>
 
+      <p class="trust-line">Used in real shipping workflows · Built around real operational processes</p>
+
       <div class="proof-line">
         Browser automation · Shipping workflows · Internal tools · E-commerce operations
       </div>
@@ -419,7 +439,9 @@
         <span>Client work</span>
         Built custom shipping workflow automation for <strong>3D Prima</strong>, a European 3D printing company.
       </div>
+    </section>
 
+    <section class="section-panel">
       <h2>Selected work</h2>
       <p class="section-intro">
         These projects focus on practical workflow problems: moving order data, filling shipping forms,
@@ -462,7 +484,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="section-panel">
       <h2>How I approach automation</h2>
       <div class="process-grid">
         <div class="process-step">
