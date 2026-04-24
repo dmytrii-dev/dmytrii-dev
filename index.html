@@ -82,7 +82,7 @@
 
     .cta {
       display: inline-block;
-      background: linear-gradient(135deg, var(--blue), var(--orange));
+      background: linear-gradient(135deg, #2563eb, #14b8a6);
       color: white;
       text-decoration: none;
       padding: 12px 18px;
@@ -90,6 +90,52 @@
       font-weight: 800;
       box-shadow: 0 10px 22px rgba(43, 136, 216, 0.22);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button {
+      font-family: inherit;
+    }
+    
+    .email-copy {
+      color: #536174;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
+    .footer-email {
+      background: transparent;
+      border: none;
+      color: white;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .footer-email:hover {
+      text-decoration: underline;
+    }
+    
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      background: #111827;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
     }
 
     .cta:hover {
@@ -216,11 +262,11 @@
       </p>
 
       <div class="proof-line">
-        Browser extensions · Form autofill · Data extraction · Internal workflow tools
+        Browser automation · Workflow automation · E-commerce operations · Internal tools
       </div>
 
       <div class="hero-actions">
-        <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
+        <button class="cta" type="button" onclick="copyEmail()">Contact me</button>
         <span class="email-copy">hello@dmytrii.dev</span>
       </div>
     </div>
@@ -264,8 +310,34 @@
         <strong>Need a custom workflow tool?</strong>
         <p>Send me a short description of the process you want to automate.</p>
       </div>
-      <a href="mailto:hello@dmytrii.dev">hello@dmytrii.dev</a>
+      <button class="footer-email" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
     </section>
   </main>
+
+  <div id="toast" class="toast">Email copied: hello@dmytrii.dev</div>
+
+  <script>
+    async function copyEmail() {
+      const email = "hello@dmytrii.dev";
+  
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast("Email copied: " + email);
+      } catch (error) {
+        showToast(email);
+      }
+    }
+  
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+  
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+  </script>
+  
 </body>
 </html>
