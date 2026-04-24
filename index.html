@@ -12,7 +12,7 @@
       --muted: #536174;
       --line: #e5e7eb;
 
-      /* BUTTON COLOR OPTION — change these 3 lines to test colors */
+      /* Button color. Change only these 3 lines to test other colors. */
       --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
       --cta-shadow: rgba(79, 70, 229, 0.18);
       --cta-shadow-hover: rgba(6, 182, 212, 0.24);
@@ -103,9 +103,18 @@
     }
 
     .email-copy {
+      background: transparent;
+      border: none;
       color: #536174;
+      font: inherit;
       font-size: 15px;
       font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .email-copy:hover {
+      text-decoration: underline;
     }
 
     section {
@@ -239,6 +248,7 @@
     }
   </style>
 </head>
+
 <body>
   <main class="page">
     <div class="hero">
@@ -256,7 +266,7 @@
 
       <div class="hero-actions">
         <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Contact me</a>
-        <span class="email-copy">hello@dmytrii.dev</span>
+        <button class="email-copy" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
       </div>
     </div>
 
@@ -318,26 +328,29 @@
     }
 
     function handleContactClick(event) {
-      let pageLostFocus = false;
+      event.preventDefault();
 
-      const onBlur = () => {
-        pageLostFocus = true;
+      let leftPage = false;
+
+      const markLeftPage = () => {
+        leftPage = true;
       };
 
-      window.addEventListener("blur", onBlur, { once: true });
-
-      setTimeout(async () => {
-        window.removeEventListener("blur", onBlur);
-
-        if (!pageLostFocus) {
-          try {
-            await navigator.clipboard.writeText(email);
-            showToast("Email app did not open? Email copied: " + email);
-          } catch (error) {
-            showToast("Email app did not open? Email: " + email);
-          }
+      window.addEventListener("blur", markLeftPage, { once: true });
+      window.addEventListener("pagehide", markLeftPage, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+          leftPage = true;
         }
-      }, 900);
+      }, { once: true });
+
+      window.location.href = "mailto:" + email;
+
+      setTimeout(() => {
+        if (!leftPage && document.visibilityState === "visible") {
+          showToast("Email app did not open? Use: " + email);
+        }
+      }, 1800);
     }
 
     function showToast(message) {
