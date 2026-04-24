@@ -264,7 +264,7 @@
       </div>
 
       <div class="hero-actions">
-        <a class="cta" href="mailto:hello@dmytrii.dev">Contact me</a>
+        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Contact me</a>
         <button class="email-copy" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
       </div>
     </div>
@@ -317,7 +317,7 @@
   <script>
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
-
+  
     async function copyEmail() {
       try {
         await navigator.clipboard.writeText(email);
@@ -326,12 +326,36 @@
         showToast("Copy failed — email: " + email);
       }
     }
-
+  
+    function handleContactClick(event) {
+      let leftPage = false;
+  
+      const markLeft = () => {
+        leftPage = true;
+      };
+  
+      window.addEventListener("blur", markLeft, { once: true });
+      window.addEventListener("pagehide", markLeft, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+          leftPage = true;
+        }
+      }, { once: true });
+  
+      // Let mailto run normally (no preventDefault)
+  
+      setTimeout(() => {
+        if (!leftPage && document.visibilityState === "visible") {
+          showToast("Didn’t open? Use the email next to the button.");
+        }
+      }, 1600);
+    }
+  
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-
+  
       setTimeout(() => {
         toast.classList.remove("show");
       }, toastDurationMs);
