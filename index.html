@@ -9,7 +9,7 @@
       --bg: #f6f8fb;
       --card: #ffffff;
       --text: #111827;
-      --muted: #667085;
+      --muted: #536174;
       --line: #e5e7eb;
       --blue: #2b88d8;
       --orange: #f28c18;
@@ -77,6 +77,15 @@
       box-shadow: 0 10px 22px rgba(43, 136, 216, 0.22);
     }
 
+    .cta {
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(43, 136, 216, 0.28);
+    }
+
     .hero-actions {
       display: flex;
       align-items: center;
@@ -86,8 +95,9 @@
     }
     
     .email-copy {
-      color: var(--muted);
-      font-size: 14px;
+      color: #536174;
+      font-size: 15px;
+      font-weight: 600;
     }
     
     .proof-line {
@@ -97,14 +107,15 @@
       font-weight: 600;
     }
     
-    .credibility {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-bottom: 22px;
-      color: #334155;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    .credibility span {
+      display: inline-block;
+      margin-right: 10px;
+      color: #1f6fb2;
+      background: #eff6ff;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     section {
@@ -129,6 +140,16 @@
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card {
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #c7d7eb;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
     }
 
     .card h3 {
@@ -200,7 +221,8 @@
 
     <section>
     <div class="credibility">
-      Worked with <strong>3D Prima</strong> on custom shipping workflow automation.
+      <span>Client work</span>
+      <strong>3D Prima</strong> — custom shipping workflow automation.
     </div>
   
     <h2>Selected projects</h2>
