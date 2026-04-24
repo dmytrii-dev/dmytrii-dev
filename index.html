@@ -11,8 +11,11 @@
       --text: #111827;
       --muted: #536174;
       --line: #e5e7eb;
-      --blue: #2b88d8;
-      --orange: #f28c18;
+
+      /* BUTTON COLOR OPTION — change these 3 lines to test colors */
+      --cta-bg: linear-gradient(135deg, #6d5dfc 0%, #9b5de5 52%, #f15bb5 100%);
+      --cta-shadow: rgba(155, 93, 229, 0.18);
+      --cta-shadow-hover: rgba(155, 93, 229, 0.24);
     }
 
     * { box-sizing: border-box; }
@@ -82,66 +85,20 @@
 
     .cta {
       display: inline-block;
-      background: linear-gradient(135deg, #6d5dfc 0%, #9b5de5 52%, #f15bb5 100%);
+      background: var(--cta-bg);
       color: white;
       text-decoration: none;
       padding: 12px 18px;
       border-radius: 14px;
       font-weight: 800;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 10px 22px rgba(109, 93, 252, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 22px var(--cta-shadow);
       transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    button {
-      font-family: inherit;
-    }
-    
-    .email-copy {
-      color: #536174;
-      font-size: 15px;
-      font-weight: 600;
-    }
-    
-    .footer-email {
-      background: transparent;
-      border: none;
-      color: white;
-      font-weight: 800;
-      font-size: 15px;
-      cursor: pointer;
-      padding: 0;
-    }
-    
-    .footer-email:hover {
-      text-decoration: underline;
-    }
-    
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      background: #111827;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-4px);
     }
 
     .cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(155, 93, 229, 0.24);
+      box-shadow: 0 14px 28px var(--cta-shadow-hover);
       filter: saturate(1.05);
     }
 
@@ -238,10 +195,40 @@
       color: #d1d5db;
     }
 
-    .contact a {
+    .footer-email {
+      background: transparent;
+      border: none;
       color: white;
+      font: inherit;
       font-weight: 800;
-      text-decoration: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .footer-email:hover {
+      text-decoration: underline;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      background: #111827;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
     }
 
     @media (max-width: 760px) {
@@ -268,7 +255,7 @@
       </div>
 
       <div class="hero-actions">
-        <button class="cta" type="button" onclick="copyEmail()">Contact me</button>
+        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Contact me</a>
         <span class="email-copy">hello@dmytrii.dev</span>
       </div>
     </div>
@@ -302,8 +289,8 @@
     <section>
       <h2>What I work on</h2>
       <div class="note">
-        Browser extensions, form autofill workflows, data extraction, e-commerce operations,
-        internal tools, and automation systems that connect messy manual steps into a smoother process.
+        Browser automation, internal workflow tools, e-commerce operations, data processing,
+        form automation, and systems that connect messy manual steps into a smoother process.
       </div>
     </section>
 
@@ -319,27 +306,49 @@
   <div id="toast" class="toast">Email copied: hello@dmytrii.dev</div>
 
   <script>
+    const email = "hello@dmytrii.dev";
+
     async function copyEmail() {
-      const email = "hello@dmytrii.dev";
-  
       try {
         await navigator.clipboard.writeText(email);
         showToast("Email copied: " + email);
       } catch (error) {
-        showToast(email);
+        showToast("Email: " + email);
       }
     }
-  
+
+    function handleContactClick(event) {
+      let pageLostFocus = false;
+
+      const onBlur = () => {
+        pageLostFocus = true;
+      };
+
+      window.addEventListener("blur", onBlur, { once: true });
+
+      setTimeout(async () => {
+        window.removeEventListener("blur", onBlur);
+
+        if (!pageLostFocus) {
+          try {
+            await navigator.clipboard.writeText(email);
+            showToast("Email app did not open? Email copied: " + email);
+          } catch (error) {
+            showToast("Email app did not open? Email: " + email);
+          }
+        }
+      }, 900);
+    }
+
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-  
+
       setTimeout(() => {
         toast.classList.remove("show");
-      }, 2200);
+      }, 2600);
     }
   </script>
-  
 </body>
 </html>
