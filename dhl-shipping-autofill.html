@@ -13,6 +13,7 @@
       --muted: #536174;
       --line: #e5e7eb;
       --soft-blue: #eff6ff;
+      --soft-cyan: #ecfeff;
       --blue-text: #1f6fb2;
       --indigo: #4f46e5;
       --cyan: #06b6d4;
@@ -33,7 +34,7 @@
     }
 
     .page {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 42px 22px 64px;
     }
@@ -43,7 +44,7 @@
       margin-bottom: 22px;
       color: #334155;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .back:hover { text-decoration: underline; }
@@ -52,10 +53,22 @@
       background: rgba(255,255,255,0.88);
       border: 1px solid var(--line);
       border-radius: 30px;
-      padding: 34px;
-      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
+      padding: 36px;
+      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
       backdrop-filter: blur(10px);
       margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 65%);
     }
 
     .badge {
@@ -65,8 +78,10 @@
       background: var(--soft-blue);
       color: var(--blue-text);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 850;
       margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -74,6 +89,8 @@
       line-height: 1.05;
       margin: 0 0 14px;
       letter-spacing: -1.2px;
+      position: relative;
+      z-index: 1;
     }
 
     .subtitle {
@@ -81,6 +98,8 @@
       font-size: 18px;
       color: var(--muted);
       margin: 0;
+      position: relative;
+      z-index: 1;
     }
 
     .case-layout {
@@ -91,11 +110,22 @@
     }
 
     .panel {
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.84);
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.055);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.055);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before,
+    .feature::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(79,70,229,0.75), rgba(6,182,212,0.75));
     }
 
     h2 {
@@ -123,106 +153,59 @@
     li { margin: 7px 0; }
 
     .media-card {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.86);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 16px;
-      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+      border-radius: 30px;
+      padding: 18px;
+      box-shadow: 0 26px 58px rgba(15, 23, 42, 0.12);
       position: sticky;
       top: 22px;
     }
 
-    .media-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .media-title {
-      font-weight: 900;
-      color: #111827;
-    }
-
-    .counter {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      background: #f1f5f9;
-      border-radius: 999px;
-      padding: 5px 10px;
-    }
-
     .stage {
       position: relative;
-      border-radius: 18px;
-      overflow: hidden;
+      border-radius: 24px;
+      overflow: visible;
+      background: transparent;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      border-radius: 22px;
       border: 1px solid var(--line);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
       background: #020617;
-      min-height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    .slide {
-      display: none;
-      width: 100%;
-      animation: fadeSlide 0.22s ease;
-    }
-
-    .slide.active {
-      display: block;
-    }
-
-    video, img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .arrow {
+    .side-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.45);
-      background: rgba(15,23,42,0.62);
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: white;
+      color: #111827;
+      font-size: 34px;
+      line-height: 1;
+      cursor: default;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
       z-index: 2;
+      opacity: 0.34;
     }
 
-    .arrow:hover { background: rgba(15,23,42,0.82); }
-
-    .arrow.left { left: 12px; }
-    .arrow.right { right: 12px; }
-
-    .media-note {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .side-arrow.left { left: -24px; }
+    .side-arrow.right { right: -24px; }
 
     .wide-section {
       margin-top: 26px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.74);
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 26px;
       padding: 24px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
     }
 
     .features {
@@ -235,8 +218,11 @@
     .feature {
       background: white;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.055);
+      position: relative;
+      overflow: hidden;
     }
 
     .feature strong {
@@ -259,7 +245,7 @@
       color: white;
       border-radius: 22px;
       padding: 24px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
     }
 
     .contact p {
@@ -279,7 +265,9 @@
       white-space: nowrap;
     }
 
-    .cta:hover { transform: translateY(-1px); }
+    .cta:hover {
+      transform: translateY(-1px);
+    }
 
     @media (max-width: 860px) {
       .case-layout { grid-template-columns: 1fr; }
@@ -293,7 +281,7 @@
 
 <body>
   <main class="page">
-    <a class="back" href="index.html">← Back to selected work</a>
+    <a class="back" href="/">← Back to selected work</a>
 
     <section class="hero">
       <span class="badge">Shipping automation</span>
@@ -317,7 +305,7 @@
         <ul>
           <li>Repeated manual entry of receiver address data</li>
           <li>Higher risk of typing mistakes in shipping forms</li>
-          <li>Slow preparation of shipments when the same workflow is repeated often</li>
+          <li>Slow shipment preparation when the same workflow is repeated often</li>
         </ul>
 
         <h3>Solution</h3>
@@ -334,43 +322,21 @@
       </div>
 
       <div class="media-card">
-        <div class="media-header">
-          <div class="media-title" id="mediaTitle">Demo video</div>
-          <div class="counter"><span id="currentSlide">1</span>/<span id="totalSlides">1</span></div>
-        </div>
-
         <div class="stage">
-          <button class="arrow left" type="button" onclick="changeSlide(-1)">‹</button>
-
-          <div class="slide active" data-title="Demo video">
-            <video src="dhl-demo.mp4" controls muted playsinline></video>
-          </div>
-
-          <!-- Later you can add screenshots like this:
-          <div class="slide" data-title="Empty DHL form">
-            <img src="dhl-empty-form.png" alt="Empty DHL shipping form" />
-          </div>
-
-          <div class="slide" data-title="Filled DHL form">
-            <img src="dhl-filled-form.png" alt="Filled DHL shipping form" />
-          </div>
-          -->
-
-          <button class="arrow right" type="button" onclick="changeSlide(1)">›</button>
+          <button class="side-arrow left" type="button" disabled>‹</button>
+          <video src="dhl-demo.mp4" controls muted playsinline></video>
+          <button class="side-arrow right" type="button" disabled>›</button>
         </div>
-
-        <p class="media-note">
-          The video shows the complete flow: empty DHL fields, pasted receiver address, one-click autofill, and filled form fields.
-        </p>
       </div>
     </section>
 
     <section class="wide-section">
       <h2>What this automation handles</h2>
+
       <div class="features">
         <div class="feature">
           <strong>Address parsing</strong>
-          <p>Turns a raw address block into structured fields the form can use.</p>
+          <p>Turns a raw address block into structured fields the shipping form can use.</p>
         </div>
 
         <div class="feature">
@@ -380,7 +346,7 @@
 
         <div class="feature">
           <strong>Workflow-focused UI</strong>
-          <p>Keeps the tool simple: paste, preview, fill.</p>
+          <p>Keeps the workflow simple: paste, preview, fill.</p>
         </div>
       </div>
     </section>
@@ -390,34 +356,9 @@
         <strong>Have a similar repetitive workflow?</strong>
         <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
       </div>
+
       <a class="cta" href="mailto:hello@dmytrii.dev">Send your workflow</a>
     </section>
   </main>
-
-  <script>
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    const totalSlides = document.getElementById("totalSlides");
-    const currentSlide = document.getElementById("currentSlide");
-    const mediaTitle = document.getElementById("mediaTitle");
-
-    let activeIndex = 0;
-    totalSlides.textContent = slides.length;
-
-    function updateSlide() {
-      slides.forEach((slide, index) => {
-        slide.classList.toggle("active", index === activeIndex);
-      });
-
-      currentSlide.textContent = activeIndex + 1;
-      mediaTitle.textContent = slides[activeIndex].dataset.title || "Project media";
-    }
-
-    function changeSlide(direction) {
-      activeIndex = (activeIndex + direction + slides.length) % slides.length;
-      updateSlide();
-    }
-
-    updateSlide();
-  </script>
 </body>
 </html>
