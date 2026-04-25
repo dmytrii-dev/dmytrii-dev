@@ -137,22 +137,40 @@
     }
 
     .media-slide {
-      display: none;
+      display: block;
+      position: absolute;
+      inset: 0;
       opacity: 0;
-      transform: translateX(10px);
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      transform: translateX(36px) scale(0.985);
+      filter: blur(2px);
+      pointer-events: none;
+      transition:
+        opacity 0.42s ease,
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.42s ease;
     }
 
     .media-slide.active {
-      display: block;
+      position: relative;
       opacity: 1;
-      transform: translateX(0);
-      animation: slideFade 0.28s ease;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+      pointer-events: auto;
+      z-index: 2;
     }
 
-    @keyframes slideFade {
-      from { opacity: 0; transform: translateX(12px); }
-      to { opacity: 1; transform: translateX(0); }
+    .media-slide.leaving-left {
+      opacity: 0;
+      transform: translateX(-42px) scale(0.985);
+      filter: blur(2px);
+      z-index: 1;
+    }
+
+    .media-slide.leaving-right {
+      opacity: 0;
+      transform: translateX(42px) scale(0.985);
+      filter: blur(2px);
+      z-index: 1;
     }
 
     video,
@@ -457,33 +475,48 @@
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
     let activeSlide = 0;
+    let isAnimating = false;
 
-    function updateMedia() {
-      slides.forEach((slide, index) => {
-        slide.classList.toggle("active", index === activeSlide);
-      });
-
+    function updateButtons() {
       prevButton.disabled = activeSlide === 0;
       nextButton.disabled = activeSlide === slides.length - 1;
+    }
+
+    function goToSlide(nextIndex) {
+      if (isAnimating || nextIndex === activeSlide || nextIndex < 0 || nextIndex >= slides.length) return;
+
+      isAnimating = true;
+
+      const direction = nextIndex > activeSlide ? "next" : "prev";
+      const current = slides[activeSlide];
+      const next = slides[nextIndex];
+
+      current.classList.remove("active", "leaving-left", "leaving-right");
+      next.classList.remove("active", "leaving-left", "leaving-right");
+
+      current.classList.add(direction === "next" ? "leaving-left" : "leaving-right");
+      next.classList.add("active");
+
+      activeSlide = nextIndex;
+      updateButtons();
 
       if (video) {
         if (activeSlide === 0) video.play();
         else video.pause();
       }
+
+      setTimeout(() => {
+        current.classList.remove("leaving-left", "leaving-right");
+        isAnimating = false;
+      }, 430);
     }
 
     prevButton.addEventListener("click", () => {
-      if (activeSlide > 0) {
-        activeSlide -= 1;
-        updateMedia();
-      }
+      goToSlide(activeSlide - 1);
     });
 
     nextButton.addEventListener("click", () => {
-      if (activeSlide < slides.length - 1) {
-        activeSlide += 1;
-        updateMedia();
-      }
+      goToSlide(activeSlide + 1);
     });
 
     video.addEventListener("click", () => {
@@ -547,7 +580,7 @@
       }, toastDurationMs);
     }
 
-    updateMedia();
+    updateButtons();
   </script>
 </body>
 </html>
