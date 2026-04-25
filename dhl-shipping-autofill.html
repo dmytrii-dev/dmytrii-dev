@@ -133,33 +133,55 @@
       background: white;
       box-shadow: 0 34px 80px rgba(15, 23, 42, 0.16);
       border: 1px solid rgba(226, 232, 240, 0.9);
+      position: relative;
     }
 
-    video {
+    .media-slide {
+      display: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .media-slide.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+      animation: slideFade 0.28s ease;
+    }
+
+    @keyframes slideFade {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    video,
+    .media-slide img {
       display: block;
       width: 100%;
       height: auto;
       background: white;
-      cursor: pointer;
     }
+
+    video { cursor: pointer; }
 
     .side-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.96);
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(226,232,240,0.8);
-      box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+      border: 1px solid rgba(226,232,240,0.95);
+      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: default;
+      cursor: pointer;
       z-index: 10;
-      opacity: 0.75;
+      transition: opacity 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .side-arrow span {
@@ -168,10 +190,25 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      font-size: 24px;
+      font-size: 27px;
       line-height: 1;
+      color: #111827;
       transform: translateY(-2px);
-      color: #64748b;
+    }
+
+    .side-arrow:hover:not(:disabled) {
+      transform: translateY(-50%) scale(1.06);
+      box-shadow: 0 18px 36px rgba(15,23,42,0.22);
+    }
+
+    .side-arrow:disabled {
+      cursor: default;
+      opacity: 0.28;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.08);
+    }
+
+    .side-arrow:disabled span {
+      color: #94a3b8;
     }
 
     .side-arrow.left { left: -8px; }
@@ -324,22 +361,36 @@
     </section>
 
     <section class="media-wrap">
-      <button class="side-arrow left" type="button" disabled aria-label="Previous media">
+      <button class="side-arrow left" id="prevMedia" type="button" aria-label="Previous media">
         <span>‹</span>
       </button>
 
       <div class="media-stage">
-        <video
-          id="demoVideo"
-          src="dhl-demo.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-        ></video>
+        <div class="media-slide active">
+          <video
+            id="demoVideo"
+            src="dhl-demo.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+
+        <div class="media-slide">
+          <img src="dhl-1-empty.png" alt="Empty DHL form before using the extension" />
+        </div>
+
+        <div class="media-slide">
+          <img src="dhl-2-paste.png" alt="Receiver address pasted into the extension" />
+        </div>
+
+        <div class="media-slide">
+          <img src="dhl-3-filled.png" alt="DHL form filled after using the extension" />
+        </div>
       </div>
 
-      <button class="side-arrow right" type="button" disabled aria-label="Next media">
+      <button class="side-arrow right" id="nextMedia" type="button" aria-label="Next media">
         <span>›</span>
       </button>
     </section>
@@ -399,14 +450,49 @@
 
   <script>
     const video = document.getElementById("demoVideo");
+    const slides = Array.from(document.querySelectorAll(".media-slide"));
+    const prevButton = document.getElementById("prevMedia");
+    const nextButton = document.getElementById("nextMedia");
+
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
-  
+    let activeSlide = 0;
+
+    function updateMedia() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === activeSlide);
+      });
+
+      prevButton.disabled = activeSlide === 0;
+      nextButton.disabled = activeSlide === slides.length - 1;
+
+      if (video) {
+        if (activeSlide === 0) video.play();
+        else video.pause();
+      }
+    }
+
+    prevButton.addEventListener("click", () => {
+      if (activeSlide > 0) {
+        activeSlide -= 1;
+        updateMedia();
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      if (activeSlide < slides.length - 1) {
+        activeSlide += 1;
+        updateMedia();
+      }
+    });
+
     video.addEventListener("click", () => {
+      if (activeSlide !== 0) return;
+
       if (video.paused) video.play();
       else video.pause();
     });
-  
+
     function copyEmail() {
       const textarea = document.createElement("textarea");
       textarea.value = email;
@@ -414,27 +500,27 @@
       textarea.style.position = "fixed";
       textarea.style.left = "-9999px";
       textarea.style.top = "-9999px";
-  
+
       document.body.appendChild(textarea);
       textarea.select();
-  
+
       try {
         document.execCommand("copy");
         showToast("Email copied: " + email);
       } catch (error) {
         showToast("Email: " + email);
       }
-  
+
       document.body.removeChild(textarea);
     }
-  
+
     function handleContactClick(event) {
       let leftPage = false;
-  
+
       const markLeft = () => {
         leftPage = true;
       };
-  
+
       window.addEventListener("blur", markLeft, { once: true });
       window.addEventListener("pagehide", markLeft, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -442,7 +528,7 @@
           leftPage = true;
         }
       }, { once: true });
-  
+
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
           copyEmail();
@@ -450,16 +536,18 @@
         }
       }, 1600);
     }
-  
+
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-  
+
       setTimeout(() => {
         toast.classList.remove("show");
       }, toastDurationMs);
     }
+
+    updateMedia();
   </script>
 </body>
 </html>
