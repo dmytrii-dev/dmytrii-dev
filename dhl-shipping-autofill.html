@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DHL Shipping Autofill — Dmytrii Sokyrko</title>
+
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #536174;
+      --line: #e5e7eb;
+      --soft-blue: #eff6ff;
+      --blue-text: #1f6fb2;
+      --indigo: #4f46e5;
+      --cyan: #06b6d4;
+      --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.11), transparent 30%),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.10), transparent 28%),
+        linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 42px 22px 64px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: #334155;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .back:hover { text-decoration: underline; }
+
+    .hero {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--blue-text);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.05;
+      margin: 0 0 14px;
+      letter-spacing: -1.2px;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.055);
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+      letter-spacing: -0.3px;
+    }
+
+    h3 {
+      font-size: 17px;
+      margin: 22px 0 8px;
+    }
+
+    p {
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #334155;
+    }
+
+    li { margin: 7px 0; }
+
+    .media-card {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+      position: sticky;
+      top: 22px;
+    }
+
+    .media-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .media-title {
+      font-weight: 900;
+      color: #111827;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      background: #f1f5f9;
+      border-radius: 999px;
+      padding: 5px 10px;
+    }
+
+    .stage {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #020617;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      animation: fadeSlide 0.22s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    video, img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(15,23,42,0.62);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .arrow:hover { background: rgba(15,23,42,0.82); }
+
+    .arrow.left { left: 12px; }
+    .arrow.right { right: 12px; }
+
+    .media-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .wide-section {
+      margin-top: 26px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .contact {
+      margin-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #111827 0%, #172033 100%);
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+    }
+
+    .contact p {
+      color: #d1d5db;
+      margin: 0;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--cta-bg);
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+      white-space: nowrap;
+    }
+
+    .cta:hover { transform: translateY(-1px); }
+
+    @media (max-width: 860px) {
+      .case-layout { grid-template-columns: 1fr; }
+      .media-card { position: static; }
+      h1 { font-size: 34px; }
+      .features { grid-template-columns: 1fr; }
+      .contact { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <a class="back" href="index.html">← Back to selected work</a>
+
+    <section class="hero">
+      <span class="badge">Shipping automation</span>
+      <h1>DHL Shipping Autofill</h1>
+      <p class="subtitle">
+        A browser automation tool that converts a raw receiver address block into structured DHL shipping form fields.
+      </p>
+    </section>
+
+    <section class="case-layout">
+      <div class="panel">
+        <h2>Project overview</h2>
+        <p>
+          This tool was built for DHL shipping workflows where receiver address data has to be copied manually into multiple form fields.
+        </p>
+        <p>
+          Instead of entering each field one by one, the user pastes a full address block and the extension fills the matching DHL fields automatically.
+        </p>
+
+        <h3>Problem</h3>
+        <ul>
+          <li>Repeated manual entry of receiver address data</li>
+          <li>Higher risk of typing mistakes in shipping forms</li>
+          <li>Slow preparation of shipments when the same workflow is repeated often</li>
+        </ul>
+
+        <h3>Solution</h3>
+        <ul>
+          <li>Parse receiver name, company, street, house number, postal code, city, and country</li>
+          <li>Preview the structured data before filling</li>
+          <li>Fill the DHL address form automatically from the browser extension</li>
+        </ul>
+
+        <h3>Demo note</h3>
+        <p>
+          The original workflow was built for DHL business shipping. The demo uses DHL Online Franking so the full address-to-form flow can be shown on a real DHL page without exposing client data.
+        </p>
+      </div>
+
+      <div class="media-card">
+        <div class="media-header">
+          <div class="media-title" id="mediaTitle">Demo video</div>
+          <div class="counter"><span id="currentSlide">1</span>/<span id="totalSlides">1</span></div>
+        </div>
+
+        <div class="stage">
+          <button class="arrow left" type="button" onclick="changeSlide(-1)">‹</button>
+
+          <div class="slide active" data-title="Demo video">
+            <video src="dhl-demo.mp4" controls muted playsinline></video>
+          </div>
+
+          <!-- Later you can add screenshots like this:
+          <div class="slide" data-title="Empty DHL form">
+            <img src="dhl-empty-form.png" alt="Empty DHL shipping form" />
+          </div>
+
+          <div class="slide" data-title="Filled DHL form">
+            <img src="dhl-filled-form.png" alt="Filled DHL shipping form" />
+          </div>
+          -->
+
+          <button class="arrow right" type="button" onclick="changeSlide(1)">›</button>
+        </div>
+
+        <p class="media-note">
+          The video shows the complete flow: empty DHL fields, pasted receiver address, one-click autofill, and filled form fields.
+        </p>
+      </div>
+    </section>
+
+    <section class="wide-section">
+      <h2>What this automation handles</h2>
+      <div class="features">
+        <div class="feature">
+          <strong>Address parsing</strong>
+          <p>Turns a raw address block into structured fields the form can use.</p>
+        </div>
+
+        <div class="feature">
+          <strong>Browser form filling</strong>
+          <p>Finds the correct DHL fields and fills them without manual typing.</p>
+        </div>
+
+        <div class="feature">
+          <strong>Workflow-focused UI</strong>
+          <p>Keeps the tool simple: paste, preview, fill.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div>
+        <strong>Have a similar repetitive workflow?</strong>
+        <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
+      </div>
+      <a class="cta" href="mailto:hello@dmytrii.dev">Send your workflow</a>
+    </section>
+  </main>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const totalSlides = document.getElementById("totalSlides");
+    const currentSlide = document.getElementById("currentSlide");
+    const mediaTitle = document.getElementById("mediaTitle");
+
+    let activeIndex = 0;
+    totalSlides.textContent = slides.length;
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle("active", index === activeIndex);
+      });
+
+      currentSlide.textContent = activeIndex + 1;
+      mediaTitle.textContent = slides[activeIndex].dataset.title || "Project media";
+    }
+
+    function changeSlide(direction) {
+      activeIndex = (activeIndex + direction + slides.length) % slides.length;
+      updateSlide();
+    }
+
+    updateSlide();
+  </script>
+</body>
+</html>
