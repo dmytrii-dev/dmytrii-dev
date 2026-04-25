@@ -326,6 +326,21 @@
       filter: saturate(1.05);
     }
 
+    .footer-email {
+      background: transparent;
+      border: none;
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 0;
+      white-space: nowrap;
+    }
+    
+    .footer-email:hover {
+      text-decoration: underline;
+    }
+
     .toast {
       position: fixed;
       left: 50%;
@@ -460,7 +475,10 @@
         <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
       </div>
 
-      <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send your workflow</a>
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+        <button class="footer-email" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send your workflow</a>
+      </div>
     </section>
   </main>
 
@@ -549,11 +567,11 @@
 
     function handleContactClick(event) {
       let leftPage = false;
-
+    
       const markLeft = () => {
         leftPage = true;
       };
-
+    
       window.addEventListener("blur", markLeft, { once: true });
       window.addEventListener("pagehide", markLeft, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -561,11 +579,10 @@
           leftPage = true;
         }
       }, { once: true });
-
+    
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
-          copyEmail();
-          showToast("Looks like the email app didn’t open — email copied instead.");
+          showToast("Mail app didn’t open. Click the email address to copy it.");
         }
       }, 1600);
     }
