@@ -401,28 +401,40 @@
     const video = document.getElementById("demoVideo");
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
-
+  
     video.addEventListener("click", () => {
       if (video.paused) video.play();
       else video.pause();
     });
-
-    async function copyEmail() {
+  
+    function copyEmail() {
+      const textarea = document.createElement("textarea");
+      textarea.value = email;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "-9999px";
+  
+      document.body.appendChild(textarea);
+      textarea.select();
+  
       try {
-        await navigator.clipboard.writeText(email);
-        showToast("Email copied to clipboard");
+        document.execCommand("copy");
+        showToast("Email copied: " + email);
       } catch (error) {
-        showToast("Copy failed — email: " + email);
+        showToast("Email: " + email);
       }
+  
+      document.body.removeChild(textarea);
     }
-
+  
     function handleContactClick(event) {
       let leftPage = false;
-
+  
       const markLeft = () => {
         leftPage = true;
       };
-
+  
       window.addEventListener("blur", markLeft, { once: true });
       window.addEventListener("pagehide", markLeft, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -430,20 +442,20 @@
           leftPage = true;
         }
       }, { once: true });
-
-      setTimeout(async () => {
+  
+      setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
-          await copyEmail();
+          copyEmail();
           showToast("Looks like the email app didn’t open — email copied instead.");
         }
       }, 1600);
     }
-
+  
     function showToast(message) {
       const toast = document.getElementById("toast");
       toast.textContent = message;
       toast.classList.add("show");
-
+  
       setTimeout(() => {
         toast.classList.remove("show");
       }, toastDurationMs);
