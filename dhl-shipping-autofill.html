@@ -127,6 +127,28 @@
       text-align: center;
     }
 
+    .project-context {
+      max-width: 900px;
+      margin: 28px auto 0;
+      padding: 28px 30px;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+      border: 1px solid rgba(226,232,240,0.8);
+    }
+    
+    .project-context h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+    
+    .project-context p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
     .overview h2 {
       font-size: 26px;
       margin: 0 0 10px;
@@ -167,17 +189,27 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255,255,255,0.92);
-      color: #111827;
-      font-size: 34px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(226,232,240,0.8);
+      box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    
+      cursor: pointer;
+      z-index: 10;
+    }
+    
+    .side-arrow span {
+      display: block;
+      font-size: 20px;
       line-height: 1;
-      cursor: default;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.14);
-      opacity: 0.38;
+      transform: translateY(-1px); /* small visual fix */
     }
 
     .side-arrow.left { left: -6px; }
@@ -330,11 +362,27 @@
       </div>
     </section>
 
-    <section class="note-card">
-      <h2>Project context</h2>
+    <section class="project-context">
+      <h3>Project context</h3>
+    
       <p>
-        Built for DHL business shipping workflows where receiver details were repeatedly copied into shipping forms.
-        The demo uses DHL Online Franking so the full address-to-form flow can be shown on a real DHL page without exposing client data.
+        This tool was developed for a real workflow where shipping labels were created repeatedly using DHL Online Franking.
+        In that process, receiver address data was often copied manually from order systems or messages into the DHL form.
+      </p>
+    
+      <p>
+        While simple, this step becomes time-consuming and error-prone when repeated dozens of times per day.
+        Even small typing mistakes can result in failed deliveries or additional correction work.
+      </p>
+    
+      <p>
+        The extension removes that friction by allowing the user to paste a full address block once,
+        preview the parsed structure, and apply it instantly to the correct DHL fields.
+      </p>
+    
+      <p>
+        The demo uses DHL’s public Online Franking interface to demonstrate the full flow on a real page,
+        without exposing any client-specific data.
       </p>
     </section>
 
@@ -353,43 +401,21 @@
   <script>
     const video = document.getElementById("demoVideo");
     const email = "hello@dmytrii.dev";
-    const toastDurationMs = 4500;
   
     video.addEventListener("click", () => {
       if (video.paused) video.play();
       else video.pause();
     });
   
-    async function copyEmail() {
-      try {
-        await navigator.clipboard.writeText(email);
-        showToast("Email copied to clipboard");
-      } catch (error) {
-        showToast("Copy failed — email: " + email);
-      }
-    }
-  
     function handleContactClick(event) {
-      let leftPage = false;
+      event.preventDefault();
   
-      const markLeft = () => {
-        leftPage = true;
-      };
+      const mailtoLink = "mailto:" + email;
+      window.location.href = mailtoLink;
   
-      window.addEventListener("blur", markLeft, { once: true });
-      window.addEventListener("pagehide", markLeft, { once: true });
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "hidden") {
-          leftPage = true;
-        }
-      }, { once: true });
-  
-      setTimeout(async () => {
-        if (!leftPage && document.visibilityState === "visible") {
-          await copyEmail();
-          showToast("Didn’t open? Email copied: " + email);
-        }
-      }, 1600);
+      setTimeout(() => {
+        showToast("If email didn’t open: " + email);
+      }, 1200);
     }
   
     function showToast(message) {
@@ -399,7 +425,7 @@
   
       setTimeout(() => {
         toast.classList.remove("show");
-      }, toastDurationMs);
+      }, 4000);
     }
   </script>
 </body>
