@@ -33,7 +33,7 @@
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 42px 22px 64px;
     }
@@ -103,8 +103,8 @@
 
     .case-layout {
       display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
-      gap: 28px;
+      grid-template-columns: 390px minmax(0, 1fr);
+      gap: 42px;
       align-items: start;
     }
 
@@ -152,53 +152,27 @@
     li { margin: 7px 0; }
 
     .media-shell {
-      position: relative;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
     }
     
     .media-stage {
       width: 100%;
-      max-width: 720px;
-      border-radius: 28px;
+      max-width: 780px;
+      border-radius: 30px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
-      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 34px 76px rgba(15, 23, 42, 0.16);
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
     
     video {
       display: block;
       width: 100%;
       height: auto;
-      object-fit: cover; 
       background: white;
       cursor: pointer;
-    }
-
-    .side-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255,255,255,0.9);
-      color: #111827;
-      font-size: 34px;
-      cursor: default;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-      opacity: 0.35;
-    }
-    
-    .side-arrow.left {
-      left: -70px;
-    }
-    
-    .side-arrow.right {
-      right: -70px;
     }
 
     .pause-hint {
@@ -338,8 +312,6 @@
       </div>
 
       <div class="media-shell">
-        <button class="side-arrow left" disabled>‹</button>
-      
         <div class="media-stage">
           <video
             id="demoVideo"
@@ -350,8 +322,6 @@
             playsinline
           ></video>
         </div>
-      
-        <button class="side-arrow right" disabled>›</button>
       </div>
     </section>
 
