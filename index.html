@@ -238,6 +238,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+      align-items: stretch;
     }
 
     .card,
@@ -250,16 +251,19 @@
     }
 
     .card {
+      min-height: 292px;
       padding: 20px;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
     .project-link {
-      display: block;
       color: inherit;
       text-decoration: none;
+      cursor: pointer;
     }
 
     .card::before,
@@ -294,9 +298,63 @@
       padding-left: 18px;
       color: #334155;
       font-size: 13px;
+      flex: 1;
     }
 
     .card li { margin: 4px 0; }
+
+    .learn-more {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 850;
+      color: #1f6fb2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .learn-arrow {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 18px;
+      height: 14px;
+    }
+
+    .learn-arrow::before {
+      content: "";
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transition: width 0.16s ease;
+    }
+
+    .learn-arrow::after {
+      content: "›";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-54%);
+      font-size: 22px;
+      line-height: 1;
+      transition: transform 0.16s ease;
+    }
+
+    .project-link:hover .learn-arrow::before {
+      width: 13px;
+    }
+
+    .project-link:hover .learn-arrow::after {
+      transform: translateY(-54%) translateX(2px);
+    }
+
+    .coming-soon {
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #94a3b8;
+    }
 
     .tag {
       display: inline-block;
@@ -307,6 +365,7 @@
       color: #4338ca;
       font-size: 12px;
       font-weight: 800;
+      width: fit-content;
     }
 
     .card:nth-child(2) .tag {
@@ -405,6 +464,7 @@
       .grid, .process-grid { grid-template-columns: 1fr; }
       .contact { flex-direction: column; align-items: flex-start; }
       .section-panel { padding: 18px; }
+      .card { min-height: auto; }
     }
   </style>
 </head>
@@ -464,6 +524,7 @@
             <li>Lowered risk of manual typing errors</li>
             <li>Designed around a real client workflow</li>
           </ul>
+          <div class="learn-more">View project <span class="learn-arrow"></span></div>
         </a>
 
         <div class="card">
@@ -475,6 +536,7 @@
             <li>Handled real UPS page structure</li>
             <li>Built as a custom browser extension</li>
           </ul>
+          <div class="coming-soon">Case study coming soon</div>
         </div>
 
         <div class="card">
@@ -486,6 +548,7 @@
             <li>Prepares shipping form fields</li>
             <li>Built for testing with the client team</li>
           </ul>
+          <div class="coming-soon">Case study coming soon</div>
         </div>
       </div>
     </section>
