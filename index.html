@@ -310,43 +310,55 @@
       color: #1f6fb2;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
+      width: fit-content;
+      transition: color 0.18s ease;
     }
-
-    .learn-arrow {
+    
+    .learn-more .arrow {
       position: relative;
-      display: inline-flex;
-      align-items: center;
       width: 18px;
-      height: 14px;
+      height: 12px;
+      display: inline-block;
+      transform: translateY(1px);
     }
-
-    .learn-arrow::before {
+    
+    .learn-more .arrow::before {
       content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
       width: 0;
       height: 2px;
-      background: currentColor;
       border-radius: 999px;
-      transition: width 0.16s ease;
+      background: currentColor;
+      transform: translateY(-50%);
+      transition: width 0.18s ease;
     }
-
-    .learn-arrow::after {
-      content: "›";
+    
+    .learn-more .arrow::after {
+      content: "";
       position: absolute;
-      right: 0;
+      right: 1px;
       top: 50%;
-      transform: translateY(-54%);
-      font-size: 22px;
-      line-height: 1;
-      transition: transform 0.16s ease;
+      width: 7px;
+      height: 7px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: translateY(-50%) rotate(45deg);
+      transition: right 0.18s ease;
     }
-
-    .project-link:hover .learn-arrow::before {
-      width: 13px;
+    
+    .project-link:hover .learn-more {
+      color: #06b6d4;
     }
-
-    .project-link:hover .learn-arrow::after {
-      transform: translateY(-54%) translateX(2px);
+    
+    .project-link:hover .learn-more .arrow::before {
+      width: 15px;
+    }
+    
+    .project-link:hover .learn-more .arrow::after {
+      right: 0;
     }
 
     .coming-soon {
@@ -524,7 +536,7 @@
             <li>Lowered risk of manual typing errors</li>
             <li>Designed around a real client workflow</li>
           </ul>
-          <div class="learn-more">View project <span class="learn-arrow"></span></div>
+          <div class="learn-more">View project <span class="arrow"></span></div>
         </a>
 
         <div class="card">
