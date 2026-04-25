@@ -256,6 +256,12 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
+    .project-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
     .card::before,
     .process-step::before {
       content: "";
@@ -449,7 +455,7 @@
       </p>
 
       <div class="grid">
-        <div class="card">
+        <a class="card project-link" href="dhl-shipping-autofill.html">
           <span class="tag">Shipping automation</span>
           <h3>DHL Shipping Autofill</h3>
           <p>Built a browser tool that fills DHL shipping forms from structured order and address data.</p>
@@ -458,7 +464,7 @@
             <li>Lowered risk of manual typing errors</li>
             <li>Designed around a real client workflow</li>
           </ul>
-        </div>
+        </a>
 
         <div class="card">
           <span class="tag">Workflow automation</span>
