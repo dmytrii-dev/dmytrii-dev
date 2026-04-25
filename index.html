@@ -310,14 +310,14 @@
       color: #1f6fb2;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
       width: fit-content;
       transition: color 0.18s ease;
     }
     
     .learn-more .arrow {
       position: relative;
-      width: 18px;
+      width: 24px;
       height: 12px;
       display: inline-block;
       transform: translateY(1px);
@@ -326,23 +326,24 @@
     .learn-more .arrow::before {
       content: "";
       position: absolute;
-      left: 0;
+      right: 7px;
       top: 50%;
       width: 0;
       height: 2px;
       border-radius: 999px;
       background: currentColor;
       transform: translateY(-50%);
+      transform-origin: right center;
       transition: width 0.18s ease;
     }
     
     .learn-more .arrow::after {
       content: "";
       position: absolute;
-      right: 1px;
+      right: 9px;
       top: 50%;
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-top: 2px solid currentColor;
       border-right: 2px solid currentColor;
       transform: translateY(-50%) rotate(45deg);
@@ -350,11 +351,11 @@
     }
     
     .project-link:hover .learn-more {
-      color: #06b6d4;
+      color: #4f46e5;
     }
     
     .project-link:hover .learn-more .arrow::before {
-      width: 15px;
+      width: 14px;
     }
     
     .project-link:hover .learn-more .arrow::after {
