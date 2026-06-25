@@ -3,646 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dmytrii Sokyrko — Automation Systems for E-commerce</title>
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #536174;
-      --line: #e5e7eb;
 
-      --soft-blue: #eff6ff;
-      --soft-cyan: #ecfeff;
-      --soft-indigo: #eef2ff;
-      --soft-gold: #fff7ed;
+  <title>Dmytrii Sokyrko — E-commerce Automation Systems</title>
+  <meta name="description" content="Custom browser automation and workflow tools for repetitive e-commerce operations." />
 
-      --blue-text: #1f6fb2;
-
-      --indigo: #5b5cf6;
-      --indigo-dark: #4f46e5;
-      --indigo-soft: #eef2ff;
-
-      --sun: #f59e0b;
-      --sun-bright: #fbbf24;
-      --sun-deep: #d97706;
-
-      --cta-bg: #5b5cf6;
-      --cta-bg-hover: #4f46e5;
-      --cta-shadow: rgba(79, 70, 229, 0.22);
-      --cta-shadow-hover: rgba(79, 70, 229, 0.30);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: linear-gradient(180deg, #fffaf0 0%, #f8fafc 34%, #eef3f8 100%);
-      color: var(--text);
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      background:
-        radial-gradient(circle at 82% 8%, rgba(245, 158, 11, 0.18), transparent 30%),
-        radial-gradient(circle at 18% 4%, rgba(91, 92, 246, 0.11), transparent 28%),
-        radial-gradient(circle at 74% 22%, rgba(251, 191, 36, 0.075), transparent 36%),
-        linear-gradient(115deg, transparent 0%, rgba(245, 158, 11, 0.035) 42%, transparent 66%);
-    }
-
-    .page {
-      max-width: 940px;
-      margin: 0 auto;
-      padding: 64px 22px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero {
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 42px;
-      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.08);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: -120px;
-      top: -120px;
-      width: 340px;
-      height: 340px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.18), transparent 66%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 70px;
-      top: -135px;
-      width: 260px;
-      height: 260px;
-      background: radial-gradient(circle, rgba(91, 92, 246, 0.09), transparent 68%);
-      pointer-events: none;
-    }
-
-    .identity {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      object-fit: cover;
-      border: 2px solid white;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
-    }
-
-    .identity-text {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .identity-text strong {
-      font-size: 15px;
-      line-height: 1.2;
-    }
-
-    .identity-text span {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: var(--soft-blue);
-      color: var(--blue-text);
-      font-size: 13px;
-      font-weight: 800;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 44px;
-      line-height: 1.05;
-      margin: 0 0 14px;
-      letter-spacing: -1.4px;
-      max-width: 720px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .subtitle {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 0 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .trust-line {
-      color: #64748b;
-      font-size: 14px;
-      font-weight: 650;
-      margin: 0 0 22px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .proof-line {
-      color: #334155;
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta {
-      display: inline-block;
-      background: var(--cta-bg);
-      color: white;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 14px;
-      font-weight: 800;
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      box-shadow:
-        0 12px 24px var(--cta-shadow),
-        0 0 34px rgba(245, 158, 11, 0.12);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .cta:hover {
-      background: var(--cta-bg-hover);
-      transform: translateY(-2px);
-      box-shadow:
-        0 16px 30px var(--cta-shadow-hover),
-        0 0 42px rgba(245, 158, 11, 0.16);
-    }
-
-    .email-copy {
-      background: transparent;
-      border: none;
-      color: #536174;
-      font: inherit;
-      font-size: 17px;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .email-copy:hover { text-decoration: underline; }
-
-    section { margin-top: 42px; }
-
-    .section-panel {
-      background: rgba(255, 255, 255, 0.48);
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      border-radius: 26px;
-      padding: 22px;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.035);
-    }
-
-    h2 {
-      font-size: 22px;
-      margin: 0 0 18px;
-      letter-spacing: -0.3px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 720px;
-      margin: -8px 0 20px;
-    }
-
-    .credibility {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px 18px;
-      margin-bottom: 22px;
-      color: #334155;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
-    }
-
-    .credibility span {
-      display: inline-block;
-      margin-right: 10px;
-      color: #b45309;
-      background: var(--soft-gold);
-      border-radius: 999px;
-      padding: 4px 9px;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .card,
-    .process-step,
-    .note {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
-    }
-
-    .card {
-      min-height: 292px;
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    }
-
-    .project-link {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .card::before,
-    .process-step::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 3px;
-      background: linear-gradient(90deg, rgba(91,92,246,0.82), rgba(245,158,11,0.62));
-      opacity: 0.75;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: #c7d7eb;
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
-    }
-
-    .card p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      min-height: 68px;
-    }
-
-    .card ul {
-      margin: 0;
-      padding-left: 18px;
-      color: #334155;
-      font-size: 13px;
-      min-height: 78px;
-      flex: 1;
-    }
-
-    .card li { margin: 4px 0; }
-
-    .learn-more {
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: 850;
-      color: #1f6fb2;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      width: fit-content;
-      transition: color 0.18s ease;
-    }
-    
-    .learn-more .arrow {
-      position: relative;
-      width: 24px;
-      height: 12px;
-      display: inline-block;
-      transform: translateY(1px);
-    }
-    
-    .learn-more .arrow::before {
-      content: "";
-      position: absolute;
-      right: 7px;
-      top: 50%;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: currentColor;
-      transform: translateY(-50%);
-      transform-origin: right center;
-      transition: width 0.18s ease;
-    }
-    
-    .learn-more .arrow::after {
-      content: "";
-      position: absolute;
-      right: 9px;
-      top: 50%;
-      width: 6px;
-      height: 6px;
-      border-top: 2px solid currentColor;
-      border-right: 2px solid currentColor;
-      transform: translateY(-50%) rotate(45deg);
-      transition: right 0.18s ease;
-    }
-    
-    .project-link:hover .learn-more {
-      color: var(--indigo-dark);
-    }
-    
-    .project-link:hover .learn-more .arrow::before {
-      width: 14px;
-    }
-    
-    .project-link:hover .learn-more .arrow::after {
-      right: 0;
-    }
-
-    .coming-soon {
-      margin-top: 16px;
-      font-size: 13px;
-      font-weight: 800;
-      color: #94a3b8;
-    }
-
-    .tag {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--soft-indigo);
-      color: #4338ca;
-      font-size: 12px;
-      font-weight: 800;
-      width: fit-content;
-    }
-
-    .card:nth-child(2) .tag {
-      background: var(--soft-cyan);
-      color: #0e7490;
-    }
-
-    .card:nth-child(3) .tag {
-      background: #f0fdf4;
-      color: #15803d;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .process-step {
-      padding: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .process-step strong {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .process-step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .note {
-      padding: 22px;
-      color: var(--muted);
-    }
-
-    .contact {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: linear-gradient(135deg, #111827 0%, #172033 100%);
-      color: white;
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
-    }
-
-    .contact p {
-      margin: 0;
-      color: #d1d5db;
-    }
-
-    .footer-email {
-      background: transparent;
-      border: none;
-      color: white;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .footer-email:hover { text-decoration: underline; }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      background: #111827;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-4px);
-    }
-
-    @media (max-width: 760px) {
-      .page { padding: 34px 16px; }
-      .hero { padding: 30px; }
-      h1 { font-size: 34px; }
-      .grid, .process-grid { grid-template-columns: 1fr; }
-      .contact { flex-direction: column; align-items: flex-start; }
-      .section-panel { padding: 18px; }
-      .card { min-height: auto; }
-    }
-  </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 
 <body>
   <main class="page">
-    <div class="hero">
-      <div class="identity">
+    <nav class="nav">
+      <a class="brand" href="/">
         <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
-        <div class="identity-text">
+        <span class="brand-text">
           <strong>Dmytrii Sokyrko</strong>
-          <span>Automation Systems Developer</span>
-        </div>
+          <span>Automation systems for e-commerce</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
       </div>
+    </nav>
 
-      <div class="badge">Automation Systems for E-commerce</div>
-      <h1>Automation systems for repetitive e-commerce work.</h1>
+    <section class="hero">
+      <div class="eyebrow">Independent automation builder</div>
 
-      <p class="subtitle">
-        I build practical browser automation and workflow tools for e-commerce sellers:
-        tools that move order data faster, reduce repetitive entry, and turn manual processes into reliable systems.
+      <h1>Automation for the work your store still does by hand.</h1>
+
+      <p class="hero-subtitle">
+        I build browser automation and workflow tools for repeated e-commerce work:
+        shipping forms, order data, internal admin steps, and manual processes that should become reliable systems.
       </p>
 
-      <p class="trust-line">Used in real shipping workflows · Built around real operational processes</p>
-
-      <div class="proof-line">
-        Browser automation · Shipping workflows · Internal tools · E-commerce operations
+      <div class="hero-proof">
+        <span class="proof-pill">Browser automation</span>
+        <span class="proof-pill">Shipping workflows</span>
+        <span class="proof-pill">Internal tools</span>
+        <span class="proof-pill">Data movement</span>
       </div>
 
-      <div class="hero-actions">
-        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-        <button class="email-copy" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
-      </div>
-    </div>
-
-    <section>
-      <div class="credibility">
-        <span>Real workflow</span>
-        Built and tested custom shipping automation for a real European e-commerce workflow. Public examples use rebuilt demo data only.
+      <div class="actions">
+        <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+        <a class="button button-secondary" href="#work">View public demo</a>
+        <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
       </div>
     </section>
 
-    <section class="section-panel">
-      <h2>Selected work</h2>
-      <p class="section-intro">
-        These projects focus on practical workflow problems: moving order data, filling shipping forms,
-        and reducing repeated manual steps in daily e-commerce operations.
-      </p>
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">Where automation helps</div>
+        <h2>Repeated admin work quietly drains time.</h2>
+        <p>
+          If the same data is copied, checked, rewritten, or moved between systems every day,
+          there is usually a workflow worth automating.
+        </p>
+      </div>
 
-      <div class="grid">
-        <a class="card project-link" href="/dhl-shipping-autofill">
-          <span class="tag">Shipping automation</span>
-          <h3>DHL Shipping Autofill</h3>
-          <p>Built a browser tool that fills DHL shipping forms from structured order and address data.</p>
-          <ul>
-            <li>Reduced repeated address entry</li>
-            <li>Lowered risk of manual typing errors</li>
-            <li>Rebuilt as a public demo with sample data</li>
-          </ul>
-          <div class="learn-more">View project <span class="arrow"></span></div>
-        </a>
+      <div class="grid-4">
+        <div class="card">
+          <h3>Shipping forms</h3>
+          <p>Address blocks, shipment fields, carrier pages, package data, and repeated fulfillment steps.</p>
+        </div>
 
         <div class="card">
-          <span class="tag">Workflow automation</span>
-          <h3>UPS Shipping Autofill</h3>
+          <h3>Order data</h3>
+          <p>Moving order details from one place to another without retyping the same fields again.</p>
+        </div>
+
+        <div class="card">
+          <h3>Customer admin</h3>
+          <p>Messages, status checks, notes, repeated lookups, and internal follow-up steps.</p>
+        </div>
+
+        <div class="card">
+          <h3>Internal tools</h3>
+          <p>Small systems built around real pages, real edge cases, and daily operational use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-header">
+        <div class="kicker">Work</div>
+        <h2>Public demos and workflow examples.</h2>
+        <p>
+          Some work cannot be shown directly because it belongs to private workflows.
+          Public demos are rebuilt with sample data to show the automation pattern without exposing client-specific details.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <a class="card work-card" href="/dhl-shipping-autofill">
+          <span class="tag">Public rebuilt demo</span>
+          <h3>DHL Shipping Autofill</h3>
           <p>
-            Built a tool to auto-fill UPS shipping forms and make shipment preparation faster.
+            A browser automation demo that turns a pasted receiver address block into filled DHL shipping fields.
           </p>
           <ul>
-            <li>Automated repetitive form filling</li>
-            <li>Handled real UPS page structure</li>
-            <li>Built as a custom browser extension</li>
+            <li>Parses address data</li>
+            <li>Fills repeated form fields</li>
+            <li>Uses sample data only</li>
           </ul>
-          <div class="coming-soon">Private workflow — details limited</div>
+          <div class="bottom">View project →</div>
+        </a>
+
+        <div class="card work-card">
+          <span class="tag">Private workflow</span>
+          <h3>UPS Shipping Autofill</h3>
+          <p>
+            Automation for repeated UPS shipment preparation and browser form filling.
+          </p>
+          <ul>
+            <li>Built around real page structure</li>
+            <li>Reduces repeated typing</li>
+            <li>Public demo planned</li>
+          </ul>
+          <div class="bottom">Details not public</div>
         </div>
 
-        <div class="card">
-          <span class="tag">Order-to-shipping</span>
+        <div class="card work-card">
+          <span class="tag">Private workflow</span>
           <h3>Plenty → UPS Workflow</h3>
-          <p>Prototype workflow for extracting Plenty order data and preparing UPS shipment fields automatically.</p>
+          <p>
+            Workflow for preparing shipping fields from order data and reducing repeated order-to-carrier steps.
+          </p>
           <ul>
             <li>Extracts order information</li>
-            <li>Prepares shipping form fields</li>
-            <li>Built for testing with the client team</li>
+            <li>Prepares shipment fields</li>
+            <li>Public demo planned</li>
           </ul>
-          <div class="coming-soon">Private workflow — details limited</div>
+          <div class="bottom">Details not public</div>
         </div>
       </div>
     </section>
 
-    <section class="section-panel">
-      <h2>How I approach automation</h2>
-      <div class="process-grid">
-        <div class="process-step">
-          <strong>1. Understand the workflow</strong>
-          <p>I look at the real process first: where data comes from, where it goes, and which steps are repeated.</p>
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">Method</div>
+        <h2>I work directly with the workflow.</h2>
+        <p>
+          The goal is not to force a generic automation idea onto your store.
+          The goal is to understand the repeated process and build around how the work actually happens.
+        </p>
+      </div>
+
+      <div class="grid-3 steps">
+        <div class="card step">
+          <h3>Understand</h3>
+          <p>I look at where the data comes from, where it goes, and which steps repeat often enough to matter.</p>
         </div>
 
-        <div class="process-step">
-          <strong>2. Build around the workflow</strong>
-          <p>The automation is shaped around the actual pages, fields, edge cases, and daily usage.</p>
+        <div class="card step">
+          <h3>Build</h3>
+          <p>The first version focuses on a clear workflow, real pages, test data, and a practical result.</p>
         </div>
 
-        <div class="process-step">
-          <strong>3. Improve after testing</strong>
-          <p>After the first working version, I refine behavior, UI, and reliability based on real feedback.</p>
+        <div class="card step">
+          <h3>Refine</h3>
+          <p>After testing, I adjust behavior, edge cases, and reliability based on real usage.</p>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top: 18px;">
+        For custom work, projects usually require a clear scope, test access or sample data,
+        and staged payment. See the process page for how I normally work.
+      </p>
+    </section>
+
+    <section class="section section-dark">
+      <div class="cta-panel">
+        <div>
+          <div class="kicker">Start with the workflow</div>
+          <h2>Send me the repeated process.</h2>
+          <p>
+            Describe what you copy, check, fill, move, or repeat.
+            I will tell you whether it looks automatable.
+          </p>
+        </div>
+
+        <div class="actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" style="color: white;" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>What I work on</h2>
-      <div class="note">
-        Browser automation, shipping workflows, internal tools, data processing, e-commerce operations,
-        and systems that connect messy manual steps into a smoother process.
+    <footer class="footer">
+      <div>© 2026 Dmytrii Sokyrko</div>
+      <div class="footer-links">
+        <a href="/process">Process</a>
+        <a href="/legal">Legal notice</a>
+        <a href="/privacy">Privacy notice</a>
+        <a href="mailto:hello@dmytrii.dev">hello@dmytrii.dev</a>
       </div>
-    </section>
-
-    <section class="contact">
-      <div>
-        <strong>Have a repetitive workflow?</strong>
-        <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
-      </div>
-      <button class="footer-email" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
-    </section>
+    </footer>
   </main>
 
   <div id="toast" class="toast">Email copied to clipboard</div>
@@ -677,7 +235,7 @@
 
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
-          showToast("Didn’t open? Use the email next to the button.");
+          showToast("Mail app did not open. You can copy the email address instead.");
         }
       }, 1600);
     }
