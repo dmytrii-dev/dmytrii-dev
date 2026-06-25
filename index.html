@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dmytrii Sokyrko — Automation Systems for E-commerce</title>
   <style>
-      :root {
+    :root {
       --bg: #f8fafc;
       --card: #ffffff;
       --text: #0f172a;
@@ -18,16 +18,19 @@
       --soft-gold: #fff7ed;
 
       --blue-text: #1f6fb2;
-      --indigo: #6d5dfc;
-      --purple-deep: #4f46e5;
-      --cyan: #06b6d4;
+
+      --indigo: #5b5cf6;
+      --indigo-dark: #4f46e5;
+      --indigo-soft: #eef2ff;
+
       --sun: #f59e0b;
       --sun-bright: #fbbf24;
-      --sun-deep: #f97316;
+      --sun-deep: #d97706;
 
-      --cta-bg: linear-gradient(135deg, #6d5dfc 0%, #06b6d4 52%, #f59e0b 100%);
-      --cta-shadow: rgba(109, 93, 252, 0.18);
-      --cta-shadow-hover: rgba(245, 158, 11, 0.24);
+      --cta-bg: #5b5cf6;
+      --cta-bg-hover: #4f46e5;
+      --cta-shadow: rgba(79, 70, 229, 0.22);
+      --cta-shadow-hover: rgba(79, 70, 229, 0.30);
     }
 
     * { box-sizing: border-box; }
@@ -35,19 +38,32 @@
     body {
       margin: 0;
       font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(109, 93, 252, 0.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(245, 158, 11, 0.16), transparent 28%),
-        radial-gradient(circle at 72% 16%, rgba(6, 182, 212, 0.10), transparent 24%),
-        linear-gradient(180deg, #fffaf0 0%, #f8fafc 38%, #eef3f8 100%);
+      background: linear-gradient(180deg, #fffaf0 0%, #f8fafc 34%, #eef3f8 100%);
       color: var(--text);
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(245, 158, 11, 0.18), transparent 30%),
+        radial-gradient(circle at 18% 4%, rgba(91, 92, 246, 0.11), transparent 28%),
+        radial-gradient(circle at 74% 22%, rgba(251, 191, 36, 0.075), transparent 36%),
+        linear-gradient(115deg, transparent 0%, rgba(245, 158, 11, 0.035) 42%, transparent 66%);
     }
 
     .page {
       max-width: 940px;
       margin: 0 auto;
       padding: 64px 22px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero {
@@ -66,20 +82,20 @@
       position: absolute;
       right: -120px;
       top: -120px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.22), transparent 64%);
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18), transparent 66%);
       pointer-events: none;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      right: 42px;
-      top: -120px;
+      right: 70px;
+      top: -135px;
       width: 260px;
       height: 260px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.13), transparent 66%);
+      background: radial-gradient(circle, rgba(91, 92, 246, 0.09), transparent 68%);
       pointer-events: none;
     }
 
@@ -185,16 +201,19 @@
       padding: 12px 18px;
       border-radius: 14px;
       font-weight: 800;
-      border: 0;
-      box-shadow: 0 10px 22px var(--cta-shadow);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-      background-clip: padding-box;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      box-shadow:
+        0 12px 24px var(--cta-shadow),
+        0 0 34px rgba(245, 158, 11, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
     .cta:hover {
+      background: var(--cta-bg-hover);
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px var(--cta-shadow-hover);
-      filter: saturate(1.05);
+      box-shadow:
+        0 16px 30px var(--cta-shadow-hover),
+        0 0 42px rgba(245, 158, 11, 0.16);
     }
 
     .email-copy {
@@ -291,7 +310,7 @@
       position: absolute;
       inset: 0 0 auto 0;
       height: 3px;
-      background: linear-gradient(90deg, rgba(109,93,252,0.72), rgba(6,182,212,0.72), rgba(245,158,11,0.78));
+      background: linear-gradient(90deg, rgba(91,92,246,0.82), rgba(245,158,11,0.62));
       opacity: 0.75;
     }
 
@@ -372,7 +391,7 @@
     }
     
     .project-link:hover .learn-more {
-      color: #4f46e5;
+      color: var(--indigo-dark);
     }
     
     .project-link:hover .learn-more .arrow::before {
