@@ -680,4 +680,9 @@ h2 {
     gap: 12px;
     font-size: 13px;
   }
+
+    .process-step {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
