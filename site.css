@@ -127,7 +127,7 @@ a {
   background: var(--gold-soft);
   color: var(--gold-dark);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
   margin-bottom: 22px;
   position: relative;
   z-index: 1;
@@ -426,49 +426,7 @@ h2 {
 }
 
 .work-card:hover .hover-arrow .arrow-head {
-  transform: translateX(3px);
-}
-
-.work-card .bottom .arrow {
-  position: relative;
-  width: 26px;
-  height: 12px;
-  display: inline-block;
-  transform: translateY(1px);
-}
-
-.work-card .bottom .arrow::before {
-  content: "";
-  position: absolute;
-  right: 7px;
-  top: 50%;
-  width: 12px;
-  height: 2.5px;
-  border-radius: 999px;
-  background: currentColor;
-  transform: translateY(-50%);
-  transition: width 0.22s ease;
-}
-
-.work-card .bottom .arrow::after {
-  content: "";
-  position: absolute;
-  right: 1px;
-  top: 50%;
-  width: 7px;
-  height: 7px;
-  border-top: 2.5px solid currentColor;
-  border-right: 2.5px solid currentColor;
-  transform: translateY(-50%) rotate(45deg);
-  transition: right 0.22s ease;
-}
-
-.work-card:hover .bottom .arrow::before {
-  width: 19px;
-}
-
-.work-card:hover .bottom .arrow::after {
-  right: -5px;
+  transform: translateX(2.5px);
 }
 
 .note {
@@ -483,7 +441,7 @@ h2 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 72px;
+  gap: 112px;
 }
 
 .cta-panel > div:first-child {
