@@ -47,7 +47,7 @@ a {
 .page {
   width: min(1080px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 18px 0 56px;
+  padding: 30px 0 56px;
 }
 
 .nav {
@@ -55,7 +55,7 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 22px;
-  padding: 14px 0 28px;
+  padding: 18px 0 32px;
 }
 
 .brand {
@@ -413,21 +413,24 @@ h2 {
   stroke-linejoin: round;
   overflow: visible;
   transform: translateY(1px);
-  transition: transform 0.22s ease;
 }
 
 .hover-arrow .arrow-line {
-  transform: scaleX(0);
-  transform-origin: 5.5px 5.5px;
+  stroke-dasharray: 7;
+  stroke-dashoffset: 7;
+  transition: stroke-dashoffset 0.22s ease;
+}
+
+.hover-arrow .arrow-head {
   transition: transform 0.22s ease;
 }
 
-.work-card:hover .hover-arrow {
-  transform: translate(2px, 1px);
+.work-card:hover .hover-arrow .arrow-line {
+  stroke-dashoffset: 0;
 }
 
-.work-card:hover .hover-arrow .arrow-line {
-  transform: scaleX(1);
+.work-card:hover .hover-arrow .arrow-head {
+  transform: translateX(2px);
 }
 
 .note {
