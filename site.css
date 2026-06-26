@@ -109,7 +109,7 @@ a {
 }
 
 .hero {
-  margin-top: 16px;
+  margin-top: 8px;
   background: rgba(255,255,255,0.62);
   border: 1px solid rgba(231, 224, 212, 0.86);
   border-radius: 30px;
@@ -413,7 +413,7 @@ h2 {
   stroke-linecap: round;
   stroke-linejoin: round;
   overflow: visible;
-  transform: translateY(1px);
+  transform: translateY(0px);
 }
 
 .hover-arrow .arrow-line {
