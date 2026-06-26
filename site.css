@@ -9,7 +9,7 @@
   --line-dark: rgba(255,255,255,0.14);
 
   --gold: #b8872d;
-  --gold-dark: #7a5418;
+  --gold-dark: #9b6b22;
   --gold-light: #d8b461;
   --gold-soft: #fff4dc;
   --dark: #0b1120;
@@ -125,7 +125,7 @@ a {
   padding: 7px 11px;
   border-radius: 999px;
   background: var(--gold-soft);
-  color: #8a5a08;
+  color: var(--gold-dark);
   font-size: 13px;
   font-weight: 850;
   margin-bottom: 22px;
@@ -400,14 +400,15 @@ h2 {
 }
 
 .hover-arrow {
-  width: 16px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.1;
+  stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
   overflow: visible;
+  transform: translateY(2px);
 }
 
 .hover-arrow .arrow-line {
