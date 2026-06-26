@@ -47,7 +47,7 @@ a {
 .page {
   width: min(1080px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 28px 0 56px;
+  padding: 18px 0 56px;
 }
 
 .nav {
@@ -55,7 +55,7 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 22px;
-  padding: 22px 0 30px;
+  padding: 14px 0 28px;
 }
 
 .brand {
