@@ -413,24 +413,21 @@ h2 {
   stroke-linejoin: round;
   overflow: visible;
   transform: translateY(1px);
-}
-
-.hover-arrow .arrow-line {
-  stroke-dasharray: 6.5;
-  stroke-dashoffset: 6.5;
-  transition: stroke-dashoffset 0.22s ease;
-}
-
-.hover-arrow .arrow-head {
   transition: transform 0.22s ease;
 }
 
-.work-card:hover .hover-arrow .arrow-line {
-  stroke-dashoffset: 0;
+.hover-arrow .arrow-line {
+  transform: scaleX(0);
+  transform-origin: 5.5px 5.5px;
+  transition: transform 0.22s ease;
 }
 
-.work-card:hover .hover-arrow .arrow-head {
-  transform: translateX(2px);
+.work-card:hover .hover-arrow {
+  transform: translate(2px, 1px);
+}
+
+.work-card:hover .hover-arrow .arrow-line {
+  transform: scaleX(1);
 }
 
 .note {
