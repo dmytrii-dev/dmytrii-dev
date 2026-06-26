@@ -416,8 +416,8 @@ h2 {
 }
 
 .hover-arrow .arrow-line {
-  stroke-dasharray: 7;
-  stroke-dashoffset: 7;
+  stroke-dasharray: 6.5;
+  stroke-dashoffset: 6.5;
   transition: stroke-dashoffset 0.22s ease;
 }
 
