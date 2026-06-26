@@ -11,90 +11,275 @@
 </head>
 
 <body>
-  <main class="page content-page">
+  <main class="page">
     <nav class="nav">
       <a class="brand" href="/">
         <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
         <span class="brand-text">
           <strong>Dmytrii Sokyrko</strong>
-          <span>Automation systems for e-commerce</span>
+          <span>E-commerce Automation Systems</span>
         </span>
       </a>
 
       <div class="nav-links">
-        <a href="/">Home</a>
+        <a href="/#work">Work</a>
+        <a href="/process">Process</a>
         <a href="/legal">Legal</a>
-        <a href="/privacy">Privacy</a>
         <a href="mailto:hello@dmytrii.dev">Contact</a>
       </div>
     </nav>
 
-    <article class="content-block">
+    <section class="hero process-hero">
       <div class="eyebrow">Process</div>
-      <h1>How custom automation projects usually work.</h1>
 
-      <p>
-        I build practical automation around real workflows. The best projects start with a clear repeated process:
-        what is copied, checked, filled, moved, or repeated often enough that it creates friction.
+      <h1>Clear scope before custom automation work.</h1>
+
+      <p class="hero-subtitle">
+        Good automation starts with the real workflow: the pages, data, repeated steps,
+        edge cases, and the parts that still need human control.
       </p>
 
-      <h2>1. You describe the workflow</h2>
-      <p>
-        Send a short description of the process you repeat. Useful details include the pages or systems involved,
-        where the data comes from, where it needs to go, and what currently takes time.
-      </p>
+      <div class="hero-proof">
+        <span class="proof-pill">Workflow first</span>
+        <span class="proof-pill">Practical automation fit</span>
+        <span class="proof-pill">Clear scope</span>
+        <span class="proof-pill">Staged delivery</span>
+      </div>
 
-      <h2>2. I check automation fit</h2>
-      <p>
-        I look at whether the workflow is practical to automate. I check repeated steps, browser/page structure,
-        data quality, possible edge cases, and whether the automation can be made reliable enough to be useful.
-      </p>
+      <div class="actions">
+        <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+        <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+      </div>
+    </section>
 
-      <h2>3. We agree scope and price</h2>
-      <p>
-        I prefer a clear first version instead of a vague endless project. The scope should define what the automation
-        will do, what it will not do, what inputs it expects, and what a successful delivery looks like.
-      </p>
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">How it works</div>
+        <h2>From repeated workflow to working tool.</h2>
+        <p>
+          The goal is not to automate everything at once. The goal is to define one useful workflow,
+          build a first working version, test it, and improve it around real use.
+        </p>
+      </div>
 
-      <h2>4. Payment structure</h2>
-      <p>
-        For custom work, the usual structure is 50% upfront and 50% after delivery/testing.
-        This can change depending on project size, risk, and scope, but staged payment is the default expectation.
-      </p>
+      <div class="process-timeline">
+        <div class="process-step">
+          <span class="step-number">01</span>
+          <div>
+            <h3>Send the workflow</h3>
+            <p>
+              Describe the process you repeat. Useful materials include screenshots, screen recordings,
+              sample orders, address blocks, exported data, or a short explanation of the systems involved.
+            </p>
+          </div>
+        </div>
 
-      <h2>5. Access and test data</h2>
-      <p>
-        Depending on the project, I may need access to the relevant environment, a test account, screenshots,
-        sample orders, sample messages, screen recordings, or a call/video showing how the workflow is currently done.
-      </p>
+        <div class="process-step">
+          <span class="step-number">02</span>
+          <div>
+            <h3>I check automation fit</h3>
+            <p>
+              I look at whether the workflow is practical to automate, where the data comes from,
+              what can be made reliable, and which parts should stay under user control.
+            </p>
+          </div>
+        </div>
 
-      <h2>6. Build, test, refine</h2>
-      <p>
-        I build the first working version, test it against real workflow examples, and then refine behavior,
-        UI, reliability, and edge cases based on feedback.
-      </p>
+        <div class="process-step">
+          <span class="step-number">03</span>
+          <div>
+            <h3>We agree the scope</h3>
+            <p>
+              Before building, we define what the first version should do, what it will not do,
+              what inputs it expects, what access or test data is needed, and what counts as delivery.
+            </p>
+          </div>
+        </div>
 
-      <h2>7. Delivery</h2>
-      <p>
-        Delivery usually includes the working automation/tool and basic usage instructions.
-        For larger workflows, support or future improvements can be agreed separately.
-      </p>
+        <div class="process-step">
+          <span class="step-number">04</span>
+          <div>
+            <h3>Price and payment are confirmed</h3>
+            <p>
+              Most custom work is handled as a fixed-scope project or split into milestones.
+              Work starts after the scope, price, and payment structure are agreed.
+            </p>
+          </div>
+        </div>
 
-      <p class="note">
-        If you are unsure whether something can be automated, send the workflow anyway.
-        A short description is usually enough to decide whether it is worth discussing.
+        <div class="process-step">
+          <span class="step-number">05</span>
+          <div>
+            <h3>First working version</h3>
+            <p>
+              I build the first version around the agreed workflow. For browser-based systems,
+              this may be an extension, internal tool, script, or small workflow interface.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <span class="step-number">06</span>
+          <div>
+            <h3>Test, refine, deliver</h3>
+            <p>
+              The tool is tested against real examples or a test environment. I refine behavior,
+              fix issues inside the agreed scope, and deliver usage instructions with the final version.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">Project materials</div>
+        <h2>What I may need from you.</h2>
+        <p>
+          Automation is easier and safer when the workflow is visible. The exact materials depend on the project.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <h3>Sample data</h3>
+          <p>Example orders, address blocks, messages, exports, or copied text that represent the real workflow.</p>
+        </div>
+
+        <div class="card">
+          <h3>Screenshots</h3>
+          <p>Images of the pages, forms, buttons, fields, and final result the automation should prepare.</p>
+        </div>
+
+        <div class="card">
+          <h3>Screen recording</h3>
+          <p>A short recording can show the current manual process better than a long written explanation.</p>
+        </div>
+
+        <div class="card">
+          <h3>Test access</h3>
+          <p>When possible, a test account or safe environment helps speed up development and reduce blind testing.</p>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top: 18px;">
+        If testing depends on your environment, delivery timing depends on feedback rounds.
+        Clear examples and timely testing make the project faster and more reliable.
       </p>
-    </article>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="kicker">Scope and delivery</div>
+        <h2>Small enough to finish, useful enough to matter.</h2>
+        <p>
+          I prefer a clear first version instead of a vague endless project.
+          Improvements can always be added later once the first workflow works.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Clear boundaries</h3>
+          <p>
+            The scope should define what the automation does, what it does not do,
+            and which workflow variations are included.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Human control</h3>
+          <p>
+            Not every step should be fully automatic. For important actions, the tool can prepare the work
+            while leaving final review or submission to the operator.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Future improvements</h3>
+          <p>
+            New fields, new websites, extra rules, and larger workflows can be handled as follow-up work
+            after the first version is delivered.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="cta-panel">
+        <div>
+          <div class="kicker">Start with the workflow</div>
+          <h2>Send me the process you repeat.</h2>
+          <p>
+            Show me what you copy, check, fill, move, or prepare manually.
+            I will tell you what can realistically be automated.
+          </p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" style="color: white;" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
-      <div>© 2026 Dmytrii Sokyrko</div>
+      <div class="footer-brand">Dmytrii Sokyrko · E-commerce Automation Systems</div>
       <div class="footer-links">
         <a href="/">Home</a>
-        <a href="/legal">Legal notice</a>
-        <a href="/privacy">Privacy notice</a>
-        <a href="mailto:hello@dmytrii.dev">hello@dmytrii.dev</a>
+        <a href="/legal">Legal</a>
+        <a href="/privacy">Privacy policy</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
       </div>
     </footer>
   </main>
+
+  <div id="toast" class="toast">Email copied to clipboard</div>
+
+  <script>
+    const email = "hello@dmytrii.dev";
+    const toastDurationMs = 4500;
+
+    async function copyEmail() {
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast("Email copied to clipboard");
+      } catch (error) {
+        showToast("Copy failed — email: " + email);
+      }
+    }
+
+    function handleContactClick(event) {
+      let leftPage = false;
+
+      const markLeft = () => {
+        leftPage = true;
+      };
+
+      window.addEventListener("blur", markLeft, { once: true });
+      window.addEventListener("pagehide", markLeft, { once: true });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "hidden") {
+          leftPage = true;
+        }
+      }, { once: true });
+
+      setTimeout(() => {
+        if (!leftPage && document.visibilityState === "visible") {
+          showToast("Mail app did not open. You can copy the email address instead.");
+        }
+      }, 1600);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, toastDurationMs);
+    }
+  </script>
 </body>
 </html>
