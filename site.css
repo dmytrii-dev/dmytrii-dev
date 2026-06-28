@@ -1101,6 +1101,24 @@ h2 {
   transform: translateX(-50%) translateY(-4px);
 }
 
+.hero-showcase {
+  grid-template-columns: 1fr;
+  min-height: 430px;
+  padding: 58px 56px;
+}
+
+.hero-showcase .hero-copy {
+  max-width: 780px;
+}
+
+.hero-showcase h1 {
+  max-width: 780px;
+}
+
+.hero-showcase .hero-subtitle {
+  max-width: 720px;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
