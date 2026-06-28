@@ -29,26 +29,64 @@
       </div>
     </nav>
 
-    <section class="hero">
-      <div class="eyebrow">Independent automation builder</div>
-
-      <h1>E-commerce automation systems for repeated work.</h1>
-
-      <p class="hero-subtitle">
-        I build practical automation systems for e-commerce operations — tools that move data,
-        prepare workflows, reduce manual admin, and connect repeated steps across the systems your store already uses.
-      </p>
-
-      <div class="hero-proof">
-        <span class="proof-pill">Fulfillment workflows</span>
-        <span class="proof-pill">Order operations</span>
-        <span class="proof-pill">Customer workflows</span>
-        <span class="proof-pill">Internal systems</span>
+    <section class="hero hero-showcase">
+      <div class="hero-copy">
+        <div class="hero-label">Independent automation builder</div>
+    
+        <h1>E-commerce automation systems for repeated work.</h1>
+    
+        <p class="hero-subtitle">
+          I build practical automation systems for e-commerce operations — tools that move data,
+          prepare workflows, reduce manual admin, and connect repeated steps across the systems your store already uses.
+        </p>
+    
+        <div class="hero-proof">
+          <span class="proof-pill">Fulfillment workflows</span>
+          <span class="proof-pill">Order operations</span>
+          <span class="proof-pill">Customer workflows</span>
+          <span class="proof-pill">Internal systems</span>
+        </div>
+    
+        <div class="actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        </div>
       </div>
-
-      <div class="actions">
-        <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-        <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+    
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-topline">
+          <span>Workflow preview</span>
+          <span>sample data</span>
+        </div>
+    
+        <div class="visual-flow">
+          <div class="visual-node">
+            <small>Input</small>
+            <strong>Order data</strong>
+            <p>receiver, package, reference</p>
+          </div>
+    
+          <div class="visual-connector"></div>
+    
+          <div class="visual-node visual-node-warm">
+            <small>Automation</small>
+            <strong>Prepare fields</strong>
+            <p>map, clean, fill, review</p>
+          </div>
+    
+          <div class="visual-connector"></div>
+    
+          <div class="visual-node">
+            <small>Output</small>
+            <strong>Ready workflow</strong>
+            <p>carrier form prepared</p>
+          </div>
+        </div>
+    
+        <div class="visual-footer">
+          <span></span>
+          <p>Human review stays in control.</p>
+        </div>
       </div>
     </section>
 
