@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Dmytrii Sokyrko — E-commerce Automation Systems</title>
-  <meta name="description" content="Custom browser automation and workflow tools for repetitive e-commerce operations." />
+  <meta name="description" content="Custom automation systems for repeated e-commerce operations." />
 
   <link rel="stylesheet" href="site.css" />
 </head>
@@ -29,56 +29,67 @@
       </div>
     </nav>
 
-    <section class="hero">
-      <div class="eyebrow">Independent automation builder</div>
+    <section class="hero hero-home">
+      <div class="hero-copy">
+        <p class="overline">Independent automation builder</p>
+        <h1>E-commerce automation systems for repeated work.</h1>
+        <p class="hero-subtitle">
+          I build practical tools for e-commerce operations: moving data, preparing workflows,
+          reducing manual admin, and connecting repeated steps across the systems your store already uses.
+        </p>
 
-      <h1>E-commerce automation systems for repeated work.</h1>
-
-      <p class="hero-subtitle">
-        I build practical automation systems for e-commerce operations — tools that move data,
-        prepare workflows, reduce manual admin, and connect repeated steps across the systems your store already uses.
-      </p>
-
-      <div class="hero-proof">
-        <span class="proof-pill">Fulfillment workflows</span>
-        <span class="proof-pill">Order operations</span>
-        <span class="proof-pill">Customer workflows</span>
-        <span class="proof-pill">Internal systems</span>
+        <div class="actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        </div>
       </div>
 
-      <div class="actions">
-        <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-        <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+      <div class="system-card" aria-label="Automation workflow preview">
+        <div class="system-card-head">
+          <span>Workflow system</span>
+          <small>Practical automation</small>
+        </div>
+        <div class="system-flow">
+          <div class="flow-row">
+            <span>Input</span>
+            <p>Order data, address blocks, exports, internal pages</p>
+          </div>
+          <div class="flow-row">
+            <span>Automation</span>
+            <p>Extract, prepare, validate, fill, connect</p>
+          </div>
+          <div class="flow-row">
+            <span>Output</span>
+            <p>Cleaner workflow with less repeated manual work</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
-        <div class="kicker">Where automation helps</div>
+    <section class="section section-split">
+      <div class="section-intro">
+        <p class="overline">Where automation helps</p>
         <h2>Repeated operations create hidden cost.</h2>
         <p>
-          Every store has work that repeats behind the scenes. When the same steps happen every day,
-          automation can turn them into a cleaner system.
+          Most stores have quiet operational loops that happen every day. The right tool does not replace the whole business.
+          It removes the repeated steps that slow people down.
         </p>
       </div>
 
-      <div class="grid-4">
-        <div class="card">
+      <div class="feature-list">
+        <div class="feature-line">
           <h3>Fulfillment work</h3>
           <p>Carrier pages, address data, shipment fields, package details, and repeated shipping preparation.</p>
         </div>
-        
-        <div class="card">
+        <div class="feature-line">
           <h3>Order operations</h3>
           <p>Moving order and customer details between tools without retyping the same information again.</p>
         </div>
-        
-        <div class="card">
+        <div class="feature-line">
           <h3>Customer workflows</h3>
           <p>Status checks, repeated messages, internal notes, follow-up tasks, and small admin loops.</p>
         </div>
-        
-        <div class="card">
+        <div class="feature-line">
           <h3>Internal systems</h3>
           <p>Small tools built around your real pages, rules, edge cases, and daily operational habits.</p>
         </div>
@@ -86,109 +97,102 @@
     </section>
 
     <section class="section" id="work">
-      <div class="section-header">
-        <div class="kicker">Selected systems</div>
+      <div class="section-header-wide">
+        <p class="overline">Selected systems</p>
         <h2>Workflow examples rebuilt for public view.</h2>
         <p>
-          Client-specific details stay private. Public pages use rebuilt interfaces, sample data, and clear explanations to show the type of systems I build.
+          Client-specific details stay private. Public pages use rebuilt interfaces, sample data,
+          and clear explanations to show the type of systems I build.
         </p>
       </div>
 
-      <div class="grid-3">
-        <a class="card work-card" href="/dhl-shipping-autofill">
-          <span class="tag">Shipping system</span>
+      <div class="work-list">
+        <a class="work-row work-row-active" href="/dhl-shipping-autofill">
+          <div>
+            <span class="tag">Shipping system</span>
             <h3>DHL Shipping Autofill</h3>
-            <p>
-              A rebuilt example showing how receiver details can become prepared shipping fields without repeated form work.
-            </p>
-            <ul>
-              <li>Reads receiver details</li>
-              <li>Prepares shipping fields</li>
-              <li>Shows a sample-data rebuild</li>
-            </ul>
-            <div class="bottom">
-              Explore project
+          </div>
+          <p>A rebuilt example showing how receiver details can become prepared shipping fields without repeated form work.</p>
+          <div class="work-meta">
+            <span>Sample-data rebuild</span>
+            <span>Browser workflow</span>
+            <span class="bottom">Explore project
               <svg class="hover-arrow" viewBox="0 0 10 10" aria-hidden="true">
                 <path class="arrow-line" d="M0.5 5.5h7"></path>
                 <path class="arrow-head" d="M1.5 1.5l4 4-4 4"></path>
               </svg>
-            </div>
-          </a>
-        
-        <div class="card work-card">
-          <span class="tag">Carrier system</span>
+            </span>
+          </div>
+        </a>
+
+        <div class="work-row">
+          <div>
+            <span class="tag">Carrier system</span>
             <h3>UPS Shipping Autofill</h3>
-            <p>
-              A carrier-form workflow for reducing repeated shipment preparation and manual field entry.
-            </p>
-            <ul>
-              <li>Works with real page structure</li>
-              <li>Reduces repeated typing</li>
-              <li>Public rebuild planned</li>
-            </ul>
-          <div class="bottom">Public rebuild planned</div>
-        </div>
-        
-        <div class="card work-card">
-          <span class="tag">Order workflow</span>
-            <h3>Plenty to UPS Workflow</h3>
-            <p>
-              A workflow pattern for turning order information into shipment preparation without copying details by hand.
-            </p>
-            <ul>
-              <li>Uses order data as input</li>
-              <li>Prepares shipment details</li>
-              <li>Public rebuild planned</li>
-            </ul>
-            <div class="bottom">Public rebuild planned</div>
+          </div>
+          <p>A carrier-form workflow for reducing repeated shipment preparation and manual field entry.</p>
+          <div class="work-meta">
+            <span>Real page structure</span>
+            <span>Manual entry reduction</span>
+            <span>Public rebuild planned</span>
           </div>
         </div>
+
+        <div class="work-row">
+          <div>
+            <span class="tag">Order workflow</span>
+            <h3>Plenty to UPS Workflow</h3>
+          </div>
+          <p>A workflow pattern for turning order information into shipment preparation without copying details by hand.</p>
+          <div class="work-meta">
+            <span>Order data input</span>
+            <span>Shipment preparation</span>
+            <span>Public rebuild planned</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
-        <div class="kicker">Process</div>
+    <section class="section section-split process-preview">
+      <div class="section-intro">
+        <p class="overline">Process</p>
         <h2>Built around the real workflow.</h2>
         <p>
-          Automation works best when it starts from the actual process: the pages, the data, the repeated steps, and the edge cases.
+          Automation works best when it starts from the actual process: the pages, the data,
+          the repeated steps, and the edge cases.
         </p>
       </div>
 
-      <div class="grid-3 steps">
-        <div class="card step">
-          <h3>Understand the workflow</h3>
-          <p>I look at what repeats, where the data comes from, and where the manual work slows the process down.</p>
+      <div class="mini-steps">
+        <div>
+          <span>01</span>
+          <h3>Understand</h3>
+          <p>What repeats, where the data comes from, and where manual work slows the process down.</p>
         </div>
-        
-        <div class="card step">
-          <h3>Build the first version</h3>
-          <p>The first version focuses on one clear workflow, real examples, test access, and a practical result.</p>
+        <div>
+          <span>02</span>
+          <h3>Build</h3>
+          <p>A first version focused on one clear workflow, real examples, and practical use.</p>
         </div>
-        
-        <div class="card step">
-          <h3>Refine after testing</h3>
-          <p>After testing, I adjust behavior, edge cases, and reliability so the tool fits real usage.</p>
+        <div>
+          <span>03</span>
+          <h3>Refine</h3>
+          <p>Testing and adjustments around real usage, edge cases, and reliability.</p>
         </div>
       </div>
-
-      <p class="note" style="margin-top: 18px;">
-        Most projects start with a clear workflow, sample data or test access, and a small first version. The process page explains how scope, payment, and delivery usually work.
-      </p>
     </section>
 
     <section class="section section-dark">
       <div class="cta-panel">
         <div>
-          <div class="kicker">Start with the workflow</div>
+          <p class="overline">Start with the workflow</p>
           <h2>Send me the workflow you repeat.</h2>
-          <p>
-            Show me the process. I will tell you what can realistically be automated.
-          </p>
+          <p>Show me the process. I will tell you what can realistically be automated.</p>
         </div>
 
         <div class="cta-actions">
           <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-          <button class="email-button" style="color: white;" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+          <button class="email-button email-button-dark" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
         </div>
       </div>
     </section>
