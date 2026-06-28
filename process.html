@@ -29,27 +29,41 @@
       </div>
     </nav>
 
-    <section class="hero process-hero">
-      <div class="eyebrow">Process</div>
-
-      <h1>Clear scope before custom automation work.</h1>
-
-      <p class="hero-subtitle">
-        Good automation starts with the real workflow: the pages, data, repeated steps,
-        edge cases, and the parts that still need human control.
-      </p>
-
-      <div class="hero-proof">
-        <span class="proof-pill">Workflow first</span>
-        <span class="proof-pill">Practical automation fit</span>
-        <span class="proof-pill">Clear scope</span>
-        <span class="proof-pill">Staged delivery</span>
+    <section class="hero process-hero process-hero-split">
+      <div class="process-hero-copy">
+        <div class="eyebrow">Process</div>
+    
+        <h1>Clear scope before custom automation work.</h1>
+    
+        <p class="hero-subtitle">
+          Good automation starts with the real workflow: the pages, data, repeated steps,
+          edge cases, and the parts that still need human control.
+        </p>
+    
+        <div class="actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        </div>
       </div>
-
-      <div class="actions">
-        <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-        <button class="email-button" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
-      </div>
+    
+      <aside class="process-brief" aria-label="Before work starts">
+        <div class="process-brief-label">Before work starts</div>
+    
+        <div class="brief-row">
+          <span>01</span>
+          <p>Workflow and repeated steps are understood.</p>
+        </div>
+    
+        <div class="brief-row">
+          <span>02</span>
+          <p>Access, sample data, or testing method is clear.</p>
+        </div>
+    
+        <div class="brief-row">
+          <span>03</span>
+          <p>Scope, price, and delivery structure are agreed.</p>
+        </div>
+      </aside>
     </section>
 
     <section class="section">
@@ -131,44 +145,45 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
+    <section class="section process-split-section">
+      <div class="process-side-copy">
         <div class="kicker">Project materials</div>
         <h2>What I may need from you.</h2>
         <p>
-          Automation is easier and safer when the workflow is visible. The exact materials depend on the project.
+          Automation is easier and safer when the workflow is visible.
+          The exact materials depend on the project, but these are the most useful.
         </p>
       </div>
-
-      <div class="grid-4">
-        <div class="card">
-          <h3>Sample data</h3>
+    
+      <div class="materials-board">
+        <div class="material-row">
+          <span>Sample data</span>
           <p>Example orders, address blocks, messages, exports, or copied text that represent the real workflow.</p>
         </div>
-
-        <div class="card">
-          <h3>Screenshots</h3>
-          <p>Images of the pages, forms, buttons, fields, and final result the automation should prepare.</p>
+    
+        <div class="material-row">
+          <span>Screenshots</span>
+          <p>Pages, forms, buttons, fields, and the final result the automation should prepare.</p>
         </div>
-
-        <div class="card">
-          <h3>Screen recording</h3>
-          <p>A short recording can show the current manual process better than a long written explanation.</p>
+    
+        <div class="material-row">
+          <span>Screen recording</span>
+          <p>A short recording of the manual process often explains the workflow faster than a long document.</p>
         </div>
-
-        <div class="card">
-          <h3>Test access</h3>
-          <p>When possible, a test account or safe environment helps speed up development and reduce blind testing.</p>
+    
+        <div class="material-row">
+          <span>Test access</span>
+          <p>When possible, a test account or safe environment helps reduce blind testing and speed up delivery.</p>
         </div>
       </div>
-
-      <p class="note" style="margin-top: 18px;">
+    
+      <p class="note process-wide-note">
         If testing depends on your environment, delivery timing depends on feedback rounds.
         Clear examples and timely testing make the project faster and more reliable.
       </p>
     </section>
 
-    <section class="section">
+    <section class="section scope-section">
       <div class="section-header">
         <div class="kicker">Scope and delivery</div>
         <h2>Small enough to finish, useful enough to matter.</h2>
@@ -177,30 +192,27 @@
           Improvements can always be added later once the first workflow works.
         </p>
       </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <h3>Clear boundaries</h3>
-          <p>
-            The scope should define what the automation does, what it does not do,
-            and which workflow variations are included.
-          </p>
+    
+      <div class="scope-panel">
+        <div class="scope-column">
+          <h3>Included in the first version</h3>
+          <ul>
+            <li>One clearly defined workflow.</li>
+            <li>Expected inputs, fields, and actions.</li>
+            <li>Testing against agreed examples.</li>
+            <li>Fixes for issues inside the agreed scope.</li>
+            <li>Basic usage instructions after delivery.</li>
+          </ul>
         </div>
-
-        <div class="card">
-          <h3>Human control</h3>
-          <p>
-            Not every step should be fully automatic. For important actions, the tool can prepare the work
-            while leaving final review or submission to the operator.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Future improvements</h3>
-          <p>
-            New fields, new websites, extra rules, and larger workflows can be handled as follow-up work
-            after the first version is delivered.
-          </p>
+    
+        <div class="scope-column scope-column-muted">
+          <h3>Handled as follow-up work</h3>
+          <ul>
+            <li>New websites, tools, or workflow branches.</li>
+            <li>Changed input formats or new product types.</li>
+            <li>Extra automation rules discovered later.</li>
+            <li>Long-term maintenance or larger system expansion.</li>
+          </ul>
         </div>
       </div>
     </section>
