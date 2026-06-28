@@ -44,24 +44,6 @@ body {
     linear-gradient(180deg, #fffdf8 0%, var(--bg) 42%, var(--bg-2) 100%);
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 260px;
-  pointer-events: none;
-  opacity: 0.18;
-  background-image:
-    linear-gradient(rgba(169, 81, 18, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(169, 81, 18, 0.22) 1px, transparent 1px);
-  background-size: 68px 68px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
-  z-index: 0;
-}
-
 a {
   color: inherit;
 }
@@ -280,15 +262,6 @@ h1 {
   border-color: rgba(169, 81, 18, 0.16);
 }
 
-.hero-showcase::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.72);
-  pointer-events: none;
-}
-
 .hero-copy {
   position: relative;
   z-index: 1;
@@ -310,41 +283,6 @@ h1 {
 
 .hero-showcase .hero-subtitle {
   max-width: 690px;
-}
-
-.hero-visual {
-  position: relative;
-  z-index: 1;
-  padding: 18px;
-  border-radius: 26px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.84), rgba(255,247,235,0.68));
-  border: 1px solid rgba(169, 81, 18, 0.16);
-  box-shadow: 0 24px 54px rgba(84, 54, 22, 0.12);
-}
-
-.visual-topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 4px 2px 14px;
-  color: var(--muted-2);
-  font-size: 11px;
-  font-weight: 850;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.visual-flow {
-  display: grid;
-  gap: 12px;
-}
-
-.visual-node {
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.76);
-  border: 1px solid rgba(169, 81, 18, 0.14);
 }
 
 .visual-node-warm {
@@ -376,22 +314,6 @@ h1 {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 13px;
-}
-
-.visual-connector {
-  width: 1px;
-  height: 22px;
-  margin-left: 22px;
-  background: linear-gradient(180deg, rgba(240, 138, 40, 0.58), rgba(240, 138, 40, 0.08));
-}
-
-.visual-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(169, 81, 18, 0.13);
 }
 
 .visual-footer span {
@@ -1232,10 +1154,5 @@ h2 {
     .hero-showcase {
     padding: 26px;
     min-height: auto;
-  }
-
-  .hero-showcase::before {
-    inset: 10px;
-    border-radius: 18px;
   }
 }
