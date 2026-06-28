@@ -806,6 +806,22 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .process-hero-split,
+  .process-split-section,
+  .scope-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .scope-column + .scope-column {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .material-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
   .cta-panel {
     align-items: flex-start;
     flex-direction: column;
