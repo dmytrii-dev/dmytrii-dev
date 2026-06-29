@@ -856,6 +856,32 @@ h2 {
   max-width: 720px;
 }
 
+.process-intro {
+  display: block;
+  padding: 42px 6px 28px;
+}
+
+.process-intro-copy {
+  max-width: 900px;
+}
+
+.process-layout {
+  grid-template-columns: 1fr;
+}
+
+.process-rows {
+  width: 100%;
+}
+
+.process-contact {
+  justify-content: flex-start;
+  gap: 112px;
+}
+
+.process-contact > div:first-child {
+  max-width: 620px;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
