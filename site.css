@@ -1264,6 +1264,55 @@ h2 {
   max-width: 620px;
 }
 
+.legal-cover {
+  padding-top: 32px;
+}
+
+.legal-cover h1 {
+  max-width: 780px;
+}
+
+.legal-scope {
+  padding: 26px 28px 30px;
+}
+
+.legal-scope-head {
+  display: block;
+  padding-bottom: 18px;
+}
+
+.legal-scope-head span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.legal-scope-head h2 {
+  max-width: none;
+  font-size: clamp(30px, 3.1vw, 42px);
+}
+
+.legal-scope-grid > div {
+  padding-top: 20px;
+}
+
+.legal-email-strip {
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: center;
+}
+
+.legal-email-strip span {
+  align-self: center;
+}
+
+.legal-updated-bottom {
+  margin: 18px 6px 0;
+  color: var(--muted-2);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
