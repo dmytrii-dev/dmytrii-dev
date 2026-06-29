@@ -1308,9 +1308,9 @@ h2 {
   margin: 18px 6px 0;
   color: var(--muted-2);
   font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .legal-email-strip {
