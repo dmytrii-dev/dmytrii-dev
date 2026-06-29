@@ -694,6 +694,7 @@ h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   background: var(--dark);
   color: var(--gold-light);
   font-size: 13px;
