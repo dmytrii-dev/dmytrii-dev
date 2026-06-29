@@ -1313,6 +1313,24 @@ h2 {
   text-transform: uppercase;
 }
 
+.legal-email-strip {
+  grid-template-columns: 150px 1fr 150px;
+}
+
+.legal-email-strip::after {
+  content: "";
+}
+
+.legal-email-strip p {
+  justify-self: center;
+  text-align: center;
+}
+
+.legal-cover {
+  margin-top: 8px;
+  padding: 24px 6px 20px;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
