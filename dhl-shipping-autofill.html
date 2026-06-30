@@ -3,575 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>DHL Shipping Autofill — Dmytrii Sokyrko</title>
+  <meta name="description" content="Browser extension workflow for preparing DHL shipping fields from pasted receiver address data." />
 
-  <style>
-    :root {
-      --text: #111827;
-      --muted: #536174;
-      --line: #e5e7eb;
-      --soft-blue: #eff6ff;
-      --blue-text: #1f6fb2;
-      --indigo: #4f46e5;
-      --cyan: #06b6d4;
-      --cta-bg: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
-      --cta-shadow: rgba(79, 70, 229, 0.18);
-      --cta-shadow-hover: rgba(6, 182, 212, 0.24);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(79, 70, 229, 0.11), transparent 30%),
-        radial-gradient(circle at top right, rgba(6, 182, 212, 0.10), transparent 28%),
-        linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 42px 22px 64px;
-    }
-
-    .back {
-      display: inline-block;
-      margin-bottom: 22px;
-      color: #334155;
-      text-decoration: none;
-      font-weight: 850;
-    }
-
-    .back:hover { text-decoration: underline; }
-
-    .hero {
-      background: rgba(255,255,255,0.88);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 36px;
-      box-shadow: 0 22px 48px rgba(15, 23, 42, 0.08);
-      backdrop-filter: blur(10px);
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -80px;
-      top: -80px;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.18), transparent 65%);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: var(--soft-blue);
-      color: var(--blue-text);
-      font-size: 13px;
-      font-weight: 850;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 {
-      font-size: 42px;
-      line-height: 1.05;
-      margin: 0 0 14px;
-      letter-spacing: -1.2px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .subtitle {
-      max-width: 820px;
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .overview {
-      max-width: 980px;
-      margin: 0 auto 30px;
-      text-align: center;
-    }
-
-    .overview h2 {
-      font-size: 26px;
-      margin: 0 0 10px;
-      letter-spacing: -0.4px;
-    }
-
-    .overview p {
-      color: var(--muted);
-      font-size: 17px;
-      margin: 0;
-    }
-
-    .media-wrap {
-      position: relative;
-      max-width: 1060px;
-      margin: 0 auto 34px;
-      padding: 0 60px;
-    }
-
-    .media-stage {
-      width: 100%;
-      border-radius: 32px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 34px 80px rgba(15, 23, 42, 0.16);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      position: relative;
-    }
-
-    .media-slide {
-      display: block;
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: translateX(36px) scale(0.985);
-      filter: blur(2px);
-      pointer-events: none;
-      transition:
-        opacity 0.42s ease,
-        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.42s ease;
-    }
-
-    .media-slide.active {
-      position: relative;
-      opacity: 1;
-      transform: translateX(0) scale(1);
-      filter: blur(0);
-      pointer-events: auto;
-      z-index: 2;
-    }
-
-    .media-slide.leaving-left {
-      opacity: 0;
-      transform: translateX(-42px) scale(0.985);
-      filter: blur(2px);
-      z-index: 1;
-    }
-
-    .media-slide.leaving-right {
-      opacity: 0;
-      transform: translateX(42px) scale(0.985);
-      filter: blur(2px);
-      z-index: 1;
-    }
-
-    video,
-    .media-slide img {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: white;
-    }
-
-    video { cursor: pointer; }
-
-    .side-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(226,232,240,0.95);
-      box-shadow: 0 14px 30px rgba(15,23,42,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: opacity 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .side-arrow span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      font-size: 27px;
-      line-height: 1;
-      color: #111827;
-      transform: translateY(-2px);
-    }
-
-    .side-arrow:hover:not(:disabled) {
-      transform: translateY(-50%) scale(1.06);
-      box-shadow: 0 18px 36px rgba(15,23,42,0.22);
-    }
-
-    .side-arrow:disabled {
-      cursor: default;
-      opacity: 0.28;
-      box-shadow: 0 8px 18px rgba(15,23,42,0.08);
-    }
-
-    .side-arrow:disabled span {
-      color: #94a3b8;
-    }
-
-    .side-arrow.left { left: -8px; }
-    .side-arrow.right { right: -8px; }
-
-    .details-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .detail-card,
-    .project-context {
-      background: rgba(255,255,255,0.84);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.055);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .detail-card::before,
-    .project-context::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(79,70,229,0.75), rgba(6,182,212,0.75));
-    }
-
-    .detail-card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .detail-card p {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .project-context {
-      margin: 0 0 28px;
-      padding: 28px 30px;
-    }
-
-    .project-context h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
-      letter-spacing: -0.3px;
-    }
-
-    .project-context p {
-      font-size: 15.5px;
-      line-height: 1.75;
-      color: #475569;
-      margin: 0 0 13px;
-    }
-
-    .project-context p:last-child { margin-bottom: 0; }
-
-    .contact {
-      margin-top: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      background: linear-gradient(135deg, #111827 0%, #172033 100%);
-      color: white;
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.16);
-    }
-
-    .contact p {
-      color: #d1d5db;
-      margin: 0;
-    }
-
-    .cta {
-      display: inline-block;
-      background: var(--cta-bg);
-      color: white;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 14px;
-      font-weight: 900;
-      box-shadow: 0 10px 22px var(--cta-shadow);
-      white-space: nowrap;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px var(--cta-shadow-hover);
-      filter: saturate(1.05);
-    }
-
-    .footer-email {
-      background: transparent;
-      border: none;
-      color: white;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 0;
-      white-space: nowrap;
-    }
-    
-    .footer-email:hover {
-      text-decoration: underline;
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      background: #111827;
-      color: white;
-      padding: 12px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-4px);
-    }
-
-    @media (max-width: 860px) {
-      .details-grid { grid-template-columns: 1fr; }
-      .media-wrap { padding: 0; }
-      .side-arrow { display: none; }
-      h1 { font-size: 34px; }
-      .contact { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  <link rel="stylesheet" href="site.css" />
 </head>
 
 <body>
   <main class="page">
-    <a class="back" href="/">← Back to selected work</a>
+    <nav class="nav">
+      <a class="brand" href="/">
+        <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
+        <span class="brand-text">
+          <strong>Dmytrii Sokyrko</strong>
+          <span>E-commerce Automation Systems</span>
+        </span>
+      </a>
 
-    <section class="hero">
-      <span class="badge">Shipping automation</span>
-      <h1>DHL Shipping Autofill</h1>
-      <p class="subtitle">
-        Paste a receiver address block and fill DHL shipping fields automatically.
-      </p>
-    </section>
+      <div class="nav-links">
+        <a href="/#work">Work</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </nav>
 
-    <section class="overview">
-      <h2>From raw address block to filled DHL form</h2>
-      <p>
-        This project solves a simple but repetitive shipping problem: receiver address data often has to be copied field by field into DHL forms.
-        The extension turns that process into one paste and one click, reducing manual entry, saving time, and lowering the risk of typing mistakes.
-      </p>
-    </section>
+    <section class="project-cover">
+      <div class="project-cover-copy">
+        <a class="project-back" href="/#work">← Back to selected work</a>
+        <div class="kicker">Shipping workflow</div>
+        <h1>DHL Shipping Autofill.</h1>
+        <p>
+          A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
+        </p>
 
-    <section class="media-wrap">
-      <button class="side-arrow left" id="prevMedia" type="button" aria-label="Previous media">
-        <span>‹</span>
-      </button>
-
-      <div class="media-stage">
-        <div class="media-slide active">
-          <video
-            id="demoVideo"
-            src="dhl-demo.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
-        </div>
-
-        <div class="media-slide">
-          <img src="dhl-1-empty.png" alt="Empty DHL form before using the extension" />
-        </div>
-
-        <div class="media-slide">
-          <img src="dhl-2-paste.png" alt="Receiver address pasted into the extension" />
-        </div>
-
-        <div class="media-slide">
-          <img src="dhl-3-filled.png" alt="DHL form filled after using the extension" />
+        <div class="project-tags">
+          <span>Browser extension</span>
+          <span>Shipping workflow</span>
+          <span>Receiver address autofill</span>
         </div>
       </div>
 
-      <button class="side-arrow right" id="nextMedia" type="button" aria-label="Next media">
-        <span>›</span>
-      </button>
-    </section>
-
-    <section class="details-grid">
-      <div class="detail-card">
-        <h3>1. Paste address</h3>
-        <p>A full receiver address block can be pasted into the extension instead of copying fields one by one.</p>
-      </div>
-
-      <div class="detail-card">
-        <h3>2. Parse fields</h3>
-        <p>The tool separates name, company, street, number, postal code, city, and country into structured data.</p>
-      </div>
-
-      <div class="detail-card">
-        <h3>3. Fill DHL form</h3>
-        <p>The browser extension applies the parsed data to the matching DHL fields automatically.</p>
+      <div class="project-cover-media" aria-label="DHL Shipping Autofill demo video">
+        <video src="dhl-demo.mp4" autoplay muted loop playsinline></video>
       </div>
     </section>
 
-    <section class="project-context">
-      <h2>Project context</h2>
-
-      <p>
-        This tool was developed for a real workflow where shipping labels were created repeatedly using DHL Online Franking.
-        In that process, receiver address data was often copied manually from order systems or messages into the DHL form.
-      </p>
-
-      <p>
-        While simple, this step becomes time-consuming and error-prone when repeated dozens of times per day.
-        Even small typing mistakes can result in failed deliveries, delayed shipments, or additional correction work.
-      </p>
-
-      <p>
-        The extension removes that friction by allowing the user to paste a full address block once, preview the parsed structure,
-        and apply it instantly to the correct DHL fields.
-      </p>
-
-      <p>
-        The demo uses DHL’s public Online Franking interface to demonstrate the full address-to-form flow on a real DHL page,
-        without exposing any client-specific data.
-      </p>
-    </section>
-
-    <section class="contact">
+    <section class="project-brief">
       <div>
-        <strong>Have a similar repetitive workflow?</strong>
-        <p>Send me a short description of the process. I’ll tell you what can be automated.</p>
+        <span>Problem</span>
+        <p>Receiver address details had to be copied from text into shipping form fields by hand.</p>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
-        <button class="footer-email" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
-        <a class="cta" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send your workflow</a>
+      <div>
+        <span>System</span>
+        <p>The extension parses the pasted address and prepares the matching form values.</p>
+      </div>
+
+      <div>
+        <span>Control</span>
+        <p>The user can preview the result before filling the DHL form.</p>
       </div>
     </section>
+
+    <section class="project-media-section">
+      <div class="project-section-head">
+        <div class="kicker">Workflow evidence</div>
+        <h2>From address text to prepared shipping form.</h2>
+        <p>
+          These screenshots use sample data. Private client data, account details, and internal business rules are not shown.
+        </p>
+      </div>
+
+      <div class="project-media-grid">
+        <figure class="project-shot project-shot-large">
+          <img src="dhl-2-paste.png" alt="Receiver address pasted into the DHL Shipping Autofill extension" />
+          <figcaption>
+            <strong>Address input</strong>
+            <span>The receiver details are pasted into the extension before filling the carrier page.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="project-shot">
+          <img src="dhl-1-empty.png" alt="DHL form before using the extension" />
+          <figcaption>
+            <strong>Before autofill</strong>
+            <span>The shipping form starts empty and would otherwise require repeated manual entry.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="project-shot">
+          <img src="dhl-3-filled.png" alt="DHL form after using the extension" />
+          <figcaption>
+            <strong>After autofill</strong>
+            <span>The receiver fields are prepared from the parsed address data.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section project-flow-section">
+      <div class="section-header">
+        <div class="kicker">How it works</div>
+        <h2>Built around one repeated shipping task.</h2>
+        <p>
+          The workflow stays focused: paste the receiver address, check the parsed structure, then apply it to the DHL form.
+        </p>
+      </div>
+
+      <div class="project-flow-list">
+        <div class="project-flow-row">
+          <span>01</span>
+          <div>
+            <h3>Paste receiver details</h3>
+            <p>The user pastes the address block copied from an order, message, or internal system.</p>
+          </div>
+        </div>
+
+        <div class="project-flow-row">
+          <span>02</span>
+          <div>
+            <h3>Preview parsed fields</h3>
+            <p>The extension separates the receiver name, company, street, postal code, city, and country.</p>
+          </div>
+        </div>
+
+        <div class="project-flow-row">
+          <span>03</span>
+          <div>
+            <h3>Fill the carrier page</h3>
+            <p>The prepared values are inserted into the matching DHL fields on the page.</p>
+          </div>
+        </div>
+
+        <div class="project-flow-row">
+          <span>04</span>
+          <div>
+            <h3>Review before shipment</h3>
+            <p>The final shipping page remains visible so the user can check the information before continuing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-notes">
+      <div>
+        <div class="kicker">Project scope</div>
+        <h2>What this page shows.</h2>
+      </div>
+
+      <div class="project-note-grid">
+        <div>
+          <h3>Public sample data</h3>
+          <p>The visible names, addresses, and form values are examples for demonstration.</p>
+        </div>
+
+        <div>
+          <h3>Client details stay private</h3>
+          <p>Account access, internal rules, and real shipment data are not included on this page.</p>
+        </div>
+
+        <div>
+          <h3>Independent workflow</h3>
+          <p>DHL is referenced only as the carrier website this workflow was built around. This project is independent and not affiliated with DHL.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="cta-panel">
+        <div>
+          <div class="kicker">Start with the workflow</div>
+          <h2>Send me the process you repeat.</h2>
+          <p>
+            Show me the steps you copy, check, fill, or move by hand in your workflow.
+          </p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
+          <button class="email-button" style="color: white;" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-brand">Dmytrii Sokyrko · E-commerce Automation Systems</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </footer>
   </main>
 
   <div id="toast" class="toast">Email copied to clipboard</div>
 
   <script>
-    const video = document.getElementById("demoVideo");
-    const slides = Array.from(document.querySelectorAll(".media-slide"));
-    const prevButton = document.getElementById("prevMedia");
-    const nextButton = document.getElementById("nextMedia");
-
     const email = "hello@dmytrii.dev";
     const toastDurationMs = 4500;
-    let activeSlide = 0;
-    let isAnimating = false;
 
-    function updateButtons() {
-      prevButton.disabled = activeSlide === 0;
-      nextButton.disabled = activeSlide === slides.length - 1;
-    }
-
-    function goToSlide(nextIndex) {
-      if (isAnimating || nextIndex === activeSlide || nextIndex < 0 || nextIndex >= slides.length) return;
-
-      isAnimating = true;
-
-      const direction = nextIndex > activeSlide ? "next" : "prev";
-      const current = slides[activeSlide];
-      const next = slides[nextIndex];
-
-      current.classList.remove("active", "leaving-left", "leaving-right");
-      next.classList.remove("active", "leaving-left", "leaving-right");
-
-      current.classList.add(direction === "next" ? "leaving-left" : "leaving-right");
-      next.classList.add("active");
-
-      activeSlide = nextIndex;
-      updateButtons();
-
-      if (video) {
-        if (activeSlide === 0) video.play();
-        else video.pause();
-      }
-
-      setTimeout(() => {
-        current.classList.remove("leaving-left", "leaving-right");
-        isAnimating = false;
-      }, 430);
-    }
-
-    prevButton.addEventListener("click", () => {
-      goToSlide(activeSlide - 1);
-    });
-
-    nextButton.addEventListener("click", () => {
-      goToSlide(activeSlide + 1);
-    });
-
-    video.addEventListener("click", () => {
-      if (activeSlide !== 0) return;
-
-      if (video.paused) video.play();
-      else video.pause();
-    });
-
-    function copyEmail() {
-      const textarea = document.createElement("textarea");
-      textarea.value = email;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.left = "-9999px";
-      textarea.style.top = "-9999px";
-
-      document.body.appendChild(textarea);
-      textarea.select();
-
+    async function copyEmail() {
       try {
-        document.execCommand("copy");
-        showToast("Email copied: " + email);
+        await navigator.clipboard.writeText(email);
+        showToast("Email copied to clipboard");
       } catch (error) {
-        showToast("Email: " + email);
+        showToast("Copy failed — email: " + email);
       }
-
-      document.body.removeChild(textarea);
     }
 
     function handleContactClick(event) {
       let leftPage = false;
-    
+
       const markLeft = () => {
         leftPage = true;
       };
-    
+
       window.addEventListener("blur", markLeft, { once: true });
       window.addEventListener("pagehide", markLeft, { once: true });
       document.addEventListener("visibilitychange", () => {
@@ -579,10 +229,10 @@
           leftPage = true;
         }
       }, { once: true });
-    
+
       setTimeout(() => {
         if (!leftPage && document.visibilityState === "visible") {
-          showToast("Mail app didn’t open. Click the email address to copy it.");
+          showToast("Mail app did not open. You can copy the email address instead.");
         }
       }, 1600);
     }
@@ -596,8 +246,6 @@
         toast.classList.remove("show");
       }, toastDurationMs);
     }
-
-    updateButtons();
   </script>
 </body>
 </html>
