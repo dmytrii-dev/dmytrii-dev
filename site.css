@@ -1527,17 +1527,20 @@ section {
 }
 
 .editorial-back {
-  margin: 16px 0 14px 6px;
+  margin: 0 0 22px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: var(--muted);
   font-size: 15px;
   font-weight: 850;
+  line-height: 1;
   text-decoration: none;
 }
 
 .editorial-back .back-arrow {
+  position: relative;
+  top: -1px;
   display: inline-block;
   transition: transform 0.18s ease;
 }
@@ -1551,9 +1554,9 @@ section {
 }
 
 .project-plain-hero {
-  margin-top: 24px;
+  margin-top: 42px;
   max-width: 1120px;
-  padding: 18px 0 30px;
+  padding: 0 0 30px;
 }
 
 .project-plain-hero h1 {
