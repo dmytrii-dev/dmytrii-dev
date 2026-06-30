@@ -1024,24 +1024,27 @@ section {
 
 .focus-gallery {
   display: flex;
-  gap: 18px;
-  align-items: stretch;
+  gap: 22px;
+  align-items: center;
   margin-top: 30px;
-  min-height: 590px;
+  min-height: 520px;
 }
 
 .focus-shot {
   position: relative;
   flex: 0.82;
   min-width: 0;
+  height: 460px;
   border: 1px solid var(--line);
   border-radius: 26px;
-  background: rgba(255, 255, 255, 0.66);
+  background:
+    radial-gradient(circle at 80% 0%, rgba(255, 186, 106, 0.10), transparent 34%),
+    rgba(255, 253, 248, 0.72);
   box-shadow: 0 16px 38px rgba(84, 54, 22, 0.055);
   overflow: hidden;
-  opacity: 0.58;
-  filter: saturate(0.72) contrast(0.96);
-  transform: translateY(12px) scale(0.985);
+  opacity: 0.42;
+  filter: saturate(0.55) contrast(0.94);
+  transform: translateY(14px) scale(0.975);
   transition:
     flex 0.42s ease,
     opacity 0.28s ease,
@@ -1052,84 +1055,41 @@ section {
 }
 
 .focus-shot.is-featured {
-  flex: 1.55;
+  flex: 1.65;
   opacity: 1;
   filter: none;
   transform: translateY(0) scale(1);
-  border-color: rgba(184, 135, 45, 0.32);
-  box-shadow: 0 26px 64px rgba(84, 54, 22, 0.13);
+  border-color: rgba(184, 135, 45, 0.34);
+  box-shadow: 0 28px 70px rgba(84, 54, 22, 0.14);
 }
 
 .focus-gallery:hover .focus-shot {
   flex: 0.82;
-  opacity: 0.46;
-  filter: saturate(0.62) contrast(0.94);
-  transform: translateY(14px) scale(0.98);
+  opacity: 0.36;
+  filter: saturate(0.48) contrast(0.92);
+  transform: translateY(14px) scale(0.975);
   border-color: var(--line);
   box-shadow: 0 16px 38px rgba(84, 54, 22, 0.055);
 }
 
 .focus-gallery .focus-shot:hover {
-  flex: 1.65;
+  flex: 1.75;
   opacity: 1;
   filter: none;
   transform: translateY(0) scale(1);
   z-index: 2;
-  border-color: rgba(184, 135, 45, 0.42);
-  box-shadow: 0 30px 78px rgba(84, 54, 22, 0.16);
+  border-color: rgba(184, 135, 45, 0.46);
+  box-shadow: 0 32px 78px rgba(84, 54, 22, 0.16);
 }
 
-.focus-shot-media {
-  height: 430px;
-  padding: 18px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 80% 0%, rgba(255, 186, 106, 0.12), transparent 34%),
-    rgba(255, 253, 248, 0.58);
-}
-
-.focus-shot-media img {
+.focus-shot img {
   display: block;
   width: 100%;
   height: 100%;
+  padding: 18px;
   object-fit: contain;
   object-position: center;
-  border-radius: 18px;
-  background: white;
-  border: 1px solid rgba(92, 64, 34, 0.10);
-  box-shadow: 0 14px 34px rgba(84, 54, 22, 0.08);
-}
-
-.focus-shot-caption {
-  min-height: 150px;
-  padding: 20px 22px 24px;
-  border-top: 1px solid var(--line);
-  background: rgba(255, 253, 248, 0.86);
-}
-
-.focus-shot-caption span {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--gold-dark);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-}
-
-.focus-shot-caption h3 {
-  margin: 0 0 8px;
-  color: var(--text);
-  font-size: 20px;
-  line-height: 1.12;
-  letter-spacing: -0.35px;
-}
-
-.focus-shot-caption p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.48;
+  background: transparent;
 }
 
 @media (max-width: 900px) {
@@ -1143,16 +1103,14 @@ section {
   .focus-gallery:hover .focus-shot,
   .focus-gallery .focus-shot:hover {
     flex: none;
+    width: 100%;
+    height: auto;
     opacity: 1;
     filter: none;
     transform: none;
   }
 
-  .focus-shot-media {
-    height: auto;
-  }
-
-  .focus-shot-media img {
+  .focus-shot img {
     height: auto;
   }
 }
@@ -1323,6 +1281,19 @@ section {
   grid-template-columns: 0.92fr 1.08fr;
   gap: 28px;
   align-items: stretch;
+}
+
+.project-cover-text-only {
+  grid-template-columns: 1fr;
+  max-width: 760px;
+}
+
+.project-cover-text-only .project-cover-copy h1 {
+  max-width: 680px;
+}
+
+.project-cover-text-only .project-cover-copy p {
+  max-width: 680px;
 }
 
 .project-cover-copy {
