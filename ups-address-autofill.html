@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>UPS Address Autofill — Dmytrii Sokyrko</title>
+  <meta name="description" content="Browser extension workflow for preparing UPS receiver address fields from pasted contact and address data." />
+
+  <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+  <main class="page project-page project-page-editorial">
+    <nav class="nav">
+      <a class="brand" href="/">
+        <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
+        <span class="brand-text">
+          <strong>Dmytrii Sokyrko</strong>
+          <span>E-commerce Automation Systems</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/#work">Work</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </nav>
+
+    <section class="project-plain-hero" aria-label="UPS Address Autofill project overview">
+      <a class="project-back editorial-back" href="/#work">
+        <span class="back-arrow">←</span>
+        <span>Back to work</span>
+      </a>
+
+      <h1>UPS Address Autofill.</h1>
+      <p>A carrier-system workflow that turns pasted receiver details into prepared UPS shipping fields, so repeated address entry stays reviewable before anything changes.</p>
+    </section>
+
+    <section class="editorial-strip" aria-label="Project summary">
+      <div>
+        <span>Problem</span>
+        <p>Receiver contact and address details had to be copied from text into UPS shipping fields by hand.</p>
+      </div>
+      <div>
+        <span>System</span>
+        <p>The extension parses the pasted receiver block and prepares matching contact, address, and email values.</p>
+      </div>
+      <div>
+        <span>Control</span>
+        <p>The user can check the prepared receiver data before using it in the UPS form.</p>
+      </div>
+    </section>
+
+    <section class="workflow-composition" aria-label="UPS Address Autofill workflow evidence">
+      <figure class="composition-shot composition-shot-one">
+        <img src="ups-1-empty.png" alt="UPS Address Autofill ready state with sample receiver address" />
+      </figure>
+
+      <article class="composition-copy composition-copy-one">
+        <div class="composition-stars composition-stars-one" aria-label="Step one"><span>✦</span></div>
+        <div class="kicker">Ready state</div>
+        <h2>Start with a carrier-specific receiver view.</h2>
+        <p>
+          The popup opens with a sample receiver block, an empty preview, and two direct actions: preview the details first or prepare the UPS form later.
+        </p>
+      </article>
+
+      <figure class="composition-shot composition-shot-two">
+        <img src="ups-2-paste.png" alt="Receiver address pasted into UPS Address Autofill" />
+      </figure>
+
+      <article class="composition-copy composition-copy-two">
+        <div class="composition-stars composition-stars-two" aria-label="Step two"><span>✦</span><span>✦</span></div>
+        <div class="kicker">Address pasted</div>
+        <h2>The receiver block stays reviewable.</h2>
+        <p>
+          The contact, company, address, country, and email stay visible before anything is inserted into the carrier page. The workflow stays controlled instead of immediately changing page fields.
+        </p>
+      </article>
+    </section>
+
+    <section class="result-composition" aria-label="Prepared UPS receiver fields preview">
+      <figure class="composition-shot composition-shot-three">
+        <img src="ups-3-filled.png" alt="UPS Address Autofill prepared receiver preview" />
+      </figure>
+
+      <article class="composition-copy composition-copy-three">
+        <div class="composition-stars composition-stars-three" aria-label="Step three"><span>✦</span><span>✦</span><span>✦</span></div>
+        <div class="kicker">Prepared preview</div>
+        <h2>Prepared receiver fields before the page changes.</h2>
+        <p>
+          The address is separated into contact, company, street, postal code, city, country, and email. Optional fields stay visible when they are empty, so missing data is not hidden.
+        </p>
+
+        <div class="result-note">
+          <p><strong>Contact data included.</strong> The UPS workflow keeps receiver email visible in the preview because the carrier page can require it during shipment preparation.</p>
+          <p><strong>Review first.</strong> The prepared result stays visible before the final fill action, so the user can catch missing or unusual receiver data.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="editorial-scope" aria-label="Project scope notes">
+      <div>
+        <div class="kicker">Project scope</div>
+        <h2>What this page shows.</h2>
+      </div>
+
+      <div class="scope-grid">
+        <p><strong>Public sample data.</strong> Visible names, addresses, email addresses, and form values are examples for demonstration.</p>
+        <p><strong>Client details stay private.</strong> Account access, internal rules, and real shipment data are not included.</p>
+        <p><strong>Independent workflow.</strong> UPS is referenced only as the carrier website this workflow was built around. This project is independent and not affiliated with UPS.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-brand">Dmytrii Sokyrko · E-commerce Automation Systems</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
