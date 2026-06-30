@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <main class="page">
+  <main class="page project-page project-page-editorial">
     <nav class="nav">
       <a class="brand" href="/">
         <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
@@ -29,158 +29,152 @@
       </div>
     </nav>
 
-    <section class="project-cover project-cover-text-only">
-      <div class="project-cover-copy">
-        <a class="project-back" href="/#work">← Back to selected work</a>
-        <div class="kicker">Shipping workflow</div>
-        <h1>DHL Shipping Autofill.</h1>
-        <p>
-          A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
-        </p>
-    
-        <div class="project-tags">
-          <span>Browser extension</span>
-          <span>Shipping workflow</span>
-          <span>Receiver address autofill</span>
-        </div>
-      </div>
-    </section>
+    <a class="project-back editorial-back" href="/#work">← Back to selected work</a>
 
-    <section class="project-brief">
-      <div>
-        <span>Problem</span>
-        <p>Receiver address details had to be copied from text into shipping form fields by hand.</p>
-      </div>
-
-      <div>
-        <span>System</span>
-        <p>The extension parses the pasted address and prepares the matching form values.</p>
-      </div>
-
-      <div>
-        <span>Control</span>
-        <p>The user can preview the result before filling the DHL form.</p>
-      </div>
-    </section>
-
-    <section class="project-evidence-board" aria-label="DHL Shipping Autofill evidence board">
-      <div class="evidence-board-meta">
+    <section class="editorial-hero" aria-label="DHL Shipping Autofill project overview">
+      <div class="editorial-meta editorial-meta-top">
         <div>
           <span>Type</span>
           <strong>Browser extension</strong>
         </div>
-    
         <div>
           <span>Workflow</span>
-          <strong>Receiver address preparation</strong>
+          <strong>Shipping address preparation</strong>
         </div>
-    
         <div>
           <span>Data</span>
           <strong>Sample data only</strong>
         </div>
-      </div>
-    
-      <div class="evidence-board-head">
         <div>
-          <div class="kicker">Workflow evidence</div>
-          <h2>The extension workflow.</h2>
+          <span>Role</span>
+          <strong>Build, parsing, UI</strong>
         </div>
-    
-        <p>
-          These screenshots use sample data. Private client data, account details,
-          and internal business rules are not shown.
-        </p>
       </div>
-    
-      <div class="evidence-board-grid">
-        <figure class="evidence-board-shot evidence-board-shot-main">
-          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
+
+      <div class="editorial-hero-grid">
+        <div class="editorial-hero-copy">
+          <div class="kicker">Shipping workflow</div>
+          <h1>DHL Shipping Autofill.</h1>
+          <p>
+            A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
+          </p>
+        </div>
+
+        <figure class="editorial-hero-shot">
+          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill parsed receiver address preview" />
         </figure>
-    
-        <div class="evidence-board-side">
-          <figure class="evidence-board-shot">
-            <img src="dhl-1-empty.png" alt="DHL Shipping Autofill start state with sample address format" />
-          </figure>
-    
-          <figure class="evidence-board-shot">
-            <img src="dhl-2-paste.png" alt="DHL Shipping Autofill with receiver address pasted" />
-          </figure>
-        </div>
       </div>
-    
-      <div class="evidence-board-steps">
-        <span>01 Input format</span>
-        <span>02 Address pasted</span>
-        <span>03 Parsed preview</span>
+
+      <div class="editorial-hero-bottom">
+        <div class="editorial-note">
+          <span>Public page</span>
+          <p>Private client data, account details, and internal business rules are not shown.</p>
+        </div>
+        <div class="editorial-tags">
+          <span>Receiver address autofill</span>
+          <span>Preview before fill</span>
+          <span>Carrier workflow</span>
+        </div>
       </div>
     </section>
 
-    <section class="section project-flow-section">
-      <div class="section-header">
+    <section class="editorial-strip" aria-label="Project summary">
+      <div>
+        <span>Problem</span>
+        <p>Receiver address details had to be copied from text into shipping form fields by hand.</p>
+      </div>
+      <div>
+        <span>System</span>
+        <p>The extension parses the pasted address and prepares matching receiver-field values.</p>
+      </div>
+      <div>
+        <span>Control</span>
+        <p>The user can check the parsed result before using it in the DHL form.</p>
+      </div>
+    </section>
+
+    <section class="editorial-sheet editorial-sheet-one" aria-label="Workflow start state">
+      <div class="sheet-copy">
+        <div class="kicker">01 · Input format</div>
+        <h2>Start with a visible receiver format.</h2>
+        <p>
+          The extension opens with a clear address area, action buttons, and an empty preview. The sample text shows the format the workflow expects.
+        </p>
+      </div>
+
+      <figure class="sheet-image sheet-image-left">
+        <img src="dhl-1-empty.png" alt="DHL Shipping Autofill start state with sample address format" />
+      </figure>
+    </section>
+
+    <section class="editorial-sheet editorial-sheet-two" aria-label="Address pasted state">
+      <figure class="sheet-image sheet-image-right">
+        <img src="dhl-2-paste.png" alt="Receiver address pasted into DHL Shipping Autofill" />
+      </figure>
+
+      <div class="sheet-copy sheet-copy-right">
+        <div class="kicker">02 · Address pasted</div>
+        <h2>The copied address stays reviewable.</h2>
+        <p>
+          A receiver address block can be placed into the extension before anything is inserted into the carrier page.
+        </p>
+      </div>
+    </section>
+
+    <section class="editorial-result" aria-label="Parsed address preview state">
+      <div class="result-copy">
+        <div class="kicker">03 · Parsed preview</div>
+        <h2>Prepared fields before the page changes.</h2>
+        <p>
+          The address is separated into receiver name, company, street, house number, postal code, city, and country. The result can be checked before filling the shipping form.
+        </p>
+      </div>
+
+      <figure class="result-shot">
+        <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
+      </figure>
+    </section>
+
+    <section class="editorial-steps" aria-label="How the workflow works">
+      <div class="steps-title">
         <div class="kicker">How it works</div>
         <h2>Built around one repeated shipping task.</h2>
-        <p>
-          The workflow stays focused: paste the receiver address, check the parsed structure, then apply it to the DHL form.
-        </p>
       </div>
 
-      <div class="project-flow-list">
-        <div class="project-flow-row">
+      <div class="steps-grid">
+        <div>
           <span>01</span>
-          <div>
-            <h3>Paste receiver details</h3>
-            <p>The user pastes the address block copied from an order, message, or internal system.</p>
-          </div>
+          <h3>Paste receiver details</h3>
+          <p>The address block comes from an order, message, or internal system.</p>
         </div>
-
-        <div class="project-flow-row">
+        <div>
           <span>02</span>
-          <div>
-            <h3>Preview parsed fields</h3>
-            <p>The extension separates the receiver name, company, street, postal code, city, and country.</p>
-          </div>
+          <h3>Preview parsed fields</h3>
+          <p>The extension separates the receiver details into usable field values.</p>
         </div>
-
-        <div class="project-flow-row">
+        <div>
           <span>03</span>
-          <div>
-            <h3>Fill the carrier page</h3>
-            <p>The prepared values are inserted into the matching DHL fields on the page.</p>
-          </div>
+          <h3>Fill the carrier page</h3>
+          <p>The prepared values are inserted into the matching DHL fields.</p>
         </div>
-
-        <div class="project-flow-row">
+        <div>
           <span>04</span>
-          <div>
-            <h3>Review before shipment</h3>
-            <p>The final shipping page remains visible so the user can check the information before continuing.</p>
-          </div>
+          <h3>Review before shipment</h3>
+          <p>The page remains visible so the user can check the information.</p>
         </div>
       </div>
     </section>
 
-    <section class="project-notes">
+    <section class="editorial-scope" aria-label="Project scope notes">
       <div>
         <div class="kicker">Project scope</div>
         <h2>What this page shows.</h2>
       </div>
 
-      <div class="project-note-grid">
-        <div>
-          <h3>Public sample data</h3>
-          <p>The visible names, addresses, and form values are examples for demonstration.</p>
-        </div>
-
-        <div>
-          <h3>Client details stay private</h3>
-          <p>Account access, internal rules, and real shipment data are not included on this page.</p>
-        </div>
-
-        <div>
-          <h3>Independent workflow</h3>
-          <p>DHL is referenced only as the carrier website this workflow was built around. This project is independent and not affiliated with DHL.</p>
-        </div>
+      <div class="scope-grid">
+        <p><strong>Public sample data.</strong> Visible names, addresses, and form values are examples for demonstration.</p>
+        <p><strong>Client details stay private.</strong> Account access, internal rules, and real shipment data are not included.</p>
+        <p><strong>Independent workflow.</strong> DHL is referenced only as the carrier website this workflow was built around. This project is independent and not affiliated with DHL.</p>
       </div>
     </section>
 
