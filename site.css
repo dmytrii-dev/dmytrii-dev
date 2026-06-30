@@ -1331,6 +1331,210 @@ h2 {
   padding: 8px 6px 9px;
 }
 
+.privacy-cover {
+  margin-top: 6px;
+  padding: 8px 6px 26px;
+}
+
+.privacy-cover h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+}
+
+.privacy-cover p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.privacy-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  margin-top: 24px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 186, 106, 0.16), transparent 34%),
+    rgba(255,255,255,0.58);
+  box-shadow: var(--shadow-soft);
+}
+
+.privacy-summary > div {
+  padding: 24px;
+  border-right: 1px solid var(--line);
+}
+
+.privacy-summary > div:last-child {
+  border-right: 0;
+}
+
+.privacy-summary span {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.privacy-summary h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  letter-spacing: -0.35px;
+}
+
+.privacy-summary p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.privacy-document {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+  margin-top: 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255,255,255,0.64);
+  box-shadow: var(--shadow-soft);
+}
+
+.privacy-document-side {
+  padding: 30px;
+  border-right: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 186, 106, 0.22), transparent 36%),
+    rgba(255,250,242,0.74);
+}
+
+.privacy-document-side > span {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.privacy-document-side h2 {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.privacy-document-side > p {
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.privacy-side-line {
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(169, 81, 18, 0.15);
+}
+
+.privacy-side-line strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted-2);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.privacy-side-line p,
+.privacy-side-line a {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.privacy-document-main {
+  display: grid;
+}
+
+.privacy-row {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 26px;
+  padding: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-row:last-child {
+  border-bottom: 0;
+}
+
+.privacy-row h3 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.25px;
+}
+
+.privacy-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15.5px;
+}
+
+.privacy-row a,
+.privacy-contact-strip a {
+  color: var(--gold-dark);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.privacy-contact-strip {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: 170px 1fr 170px;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.54);
+  box-shadow: var(--shadow-soft);
+}
+
+.privacy-contact-strip::after {
+  content: "";
+}
+
+.privacy-contact-strip span {
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.privacy-contact-strip p {
+  justify-self: center;
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  text-align: center;
+}
+
+.privacy-updated {
+  margin: 18px 6px 0;
+  color: var(--muted-2);
+  font-size: 13px;
+  font-weight: 650;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
@@ -1475,6 +1679,36 @@ h2 {
   .legal-scope-grid > div:last-child {
     border-bottom: 0;
     padding-bottom: 0;
+  }
+
+  .privacy-summary,
+  .privacy-document,
+  .privacy-row,
+  .privacy-contact-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-summary > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-summary > div:last-child {
+    border-bottom: 0;
+  }
+
+  .privacy-document-side {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-contact-strip {
+    gap: 8px;
+  }
+
+  .privacy-contact-strip p {
+    justify-self: start;
+    text-align: left;
   }
 }
 
