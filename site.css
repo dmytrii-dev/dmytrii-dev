@@ -1606,9 +1606,9 @@ section {
 .result-composition {
   margin-top: 68px;
   display: grid;
-  grid-template-columns: minmax(330px, 0.78fr) minmax(300px, 0.92fr);
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: minmax(330px, 0.72fr) minmax(300px, 0.96fr);
+  gap: 54px;
+  align-items: start;
   padding-top: 46px;
   border-top: 1px solid var(--line);
 }
@@ -1639,7 +1639,7 @@ section {
 }
 
 .composition-shot-three {
-  width: min(100%, 448px);
+  width: min(100%, 410px);
   justify-self: start;
 }
 
@@ -1661,44 +1661,33 @@ section {
 }
 
 .composition-copy-three {
-  max-width: 560px;
+  max-width: 610px;
+  padding-top: 6px;
 }
 
-.composition-step {
+.composition-stars {
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: min(100%, 340px);
-  margin-bottom: 16px;
-  color: var(--gold-dark);
-  font-size: 13px;
-  font-weight: 950;
-  letter-spacing: 0.12em;
-}
-
-.composition-step::before {
-  content: "✦";
+  gap: 7px;
+  width: min(100%, 360px);
+  margin-bottom: 18px;
   color: #e98622;
-  font-size: 16px;
+}
+
+.composition-stars span {
+  display: inline-block;
+  font-size: 17px;
   line-height: 1;
+  color: #e98622;
+  text-shadow: 0 8px 20px rgba(233, 134, 34, 0.18);
 }
 
-.composition-step span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(169, 81, 18, 0.26);
-  background: rgba(255, 255, 255, 0.48);
-}
-
-.composition-step::after {
+.composition-stars::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(169, 81, 18, 0.48), transparent);
+  margin-left: 10px;
+  background: linear-gradient(90deg, rgba(169, 81, 18, 0.42), transparent);
 }
 
 .composition-copy h2,
@@ -1726,6 +1715,32 @@ section {
   margin-top: 24px;
   background: linear-gradient(90deg, var(--gold-dark), transparent);
   opacity: 0.55;
+}
+
+
+.result-note {
+  margin-top: 24px;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.result-note p {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+.result-note p:last-child {
+  border-bottom: 0;
+}
+
+.result-note strong {
+  color: var(--text);
 }
 
 .editorial-scope {
@@ -1814,12 +1829,7 @@ section {
     gap: 28px;
   }
 
-  .composition-step {
+  .composition-stars {
     width: 100%;
-  }
-
-  .composition-step span {
-    min-width: 32px;
-    height: 32px;
   }
 }
