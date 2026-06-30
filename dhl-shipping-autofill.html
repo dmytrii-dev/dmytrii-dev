@@ -63,28 +63,56 @@
       </div>
     </section>
 
-    <section class="project-evidence-section">
-      <div class="section-header">
-        <div class="kicker">Workflow evidence</div>
-        <h2>The workflow in use.</h2>
+    <section class="project-evidence-board" aria-label="DHL Shipping Autofill evidence board">
+      <div class="evidence-board-meta">
+        <div>
+          <span>Type</span>
+          <strong>Browser extension</strong>
+        </div>
+    
+        <div>
+          <span>Workflow</span>
+          <strong>Receiver address preparation</strong>
+        </div>
+    
+        <div>
+          <span>Data</span>
+          <strong>Sample data only</strong>
+        </div>
+      </div>
+    
+      <div class="evidence-board-head">
+        <div>
+          <div class="kicker">Workflow evidence</div>
+          <h2>The extension workflow.</h2>
+        </div>
+    
         <p>
           These screenshots use sample data. Private client data, account details,
           and internal business rules are not shown.
         </p>
       </div>
     
-      <div class="focus-gallery" aria-label="DHL Shipping Autofill screenshots">
-        <article class="focus-shot">
-          <img src="dhl-1-empty.png" alt="Receiver address pasted into the extension" />
-        </article>
+      <div class="evidence-board-grid">
+        <figure class="evidence-board-shot evidence-board-shot-main">
+          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
+        </figure>
     
-        <article class="focus-shot is-featured">
-          <img src="dhl-2-paste.png" alt="Parsed receiver address fields shown in the extension" />
-        </article>
+        <div class="evidence-board-side">
+          <figure class="evidence-board-shot">
+            <img src="dhl-1-empty.png" alt="DHL Shipping Autofill start state with sample address format" />
+          </figure>
     
-        <article class="focus-shot">
-          <img src="dhl-3-filled.png" alt="DHL receiver form filled with prepared address fields" />
-        </article>
+          <figure class="evidence-board-shot">
+            <img src="dhl-2-paste.png" alt="DHL Shipping Autofill with receiver address pasted" />
+          </figure>
+        </div>
+      </div>
+    
+      <div class="evidence-board-steps">
+        <span>01 Input format</span>
+        <span>02 Address pasted</span>
+        <span>03 Parsed preview</span>
       </div>
     </section>
 
