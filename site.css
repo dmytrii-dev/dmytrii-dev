@@ -1785,6 +1785,10 @@ h2 {
   text-decoration: none;
 }
 
+.privacy-cover-simple {
+  padding: 20px 6px 24px;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
