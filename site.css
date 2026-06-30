@@ -1527,7 +1527,27 @@ section {
 }
 
 .editorial-back {
-  margin: 38px 0 18px 6px;
+  margin: 26px 0 18px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.editorial-back .back-arrow {
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+.editorial-back:hover {
+  color: var(--text);
+}
+
+.editorial-back:hover .back-arrow {
+  transform: translateX(-4px);
 }
 
 .project-plain-hero {
