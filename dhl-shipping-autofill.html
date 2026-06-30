@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <main class="page dhl-project-page">
+  <main class="page project-page project-page-editorial">
     <nav class="nav">
       <a class="brand" href="/">
         <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
@@ -29,83 +29,88 @@
       </div>
     </nav>
 
-    <a class="project-back dhl-back" href="/#work">← Back to selected work</a>
+    <a class="project-back editorial-back" href="/#work">← Back to selected work</a>
 
-    <section class="dhl-hero" aria-label="DHL Shipping Autofill project overview">
-      <div class="kicker">Shipping workflow</div>
-      <h1>DHL Shipping Autofill.</h1>
-      <p>
-        A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
-      </p>
+    <section class="editorial-hero" aria-label="DHL Shipping Autofill project overview">
+      <div class="editorial-hero-grid">
+        <div class="editorial-hero-copy">
+          <div class="kicker">Shipping workflow</div>
+          <h1>DHL Shipping Autofill.</h1>
+          <p>
+            A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
+          </p>
+        </div>
+
+        <figure class="editorial-hero-shot editorial-crop editorial-crop-filled">
+          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
+        </figure>
+      </div>
     </section>
 
-    <section class="dhl-brief" aria-label="Project summary">
+    <section class="editorial-strip" aria-label="Project summary">
       <div>
         <span>Problem</span>
         <p>Receiver address details had to be copied from text into shipping form fields by hand.</p>
       </div>
-
       <div>
         <span>System</span>
         <p>The extension parses the pasted address and prepares matching receiver-field values.</p>
       </div>
-
       <div>
         <span>Control</span>
         <p>The user can check the parsed result before using it in the DHL form.</p>
       </div>
     </section>
 
-    <section class="dhl-story-first" aria-label="Input format screenshot">
-      <div class="story-copy story-copy-wide">
-        <span>01</span>
-        <h2>Start from a visible receiver format.</h2>
+    <section class="editorial-story editorial-story-single" aria-label="Workflow start state">
+      <div class="story-copy">
+        <div class="kicker">01 · Ready state</div>
+        <h2>Start from a clear input view.</h2>
         <p>
-          The extension opens with a clear receiver-address area, action buttons, and an empty preview. 
-          The sample address shows the kind of input the workflow expects before any fields are prepared.
+          The workflow opens with a visible receiver-address area, an empty preview section, and two clear actions: preview first or fill later.
         </p>
       </div>
 
-      <figure class="story-visual story-visual-large">
-        <img src="dhl-1-empty.png" alt="DHL Shipping Autofill start state with sample address format" />
+      <figure class="story-shot editorial-crop editorial-crop-empty">
+        <img src="dhl-1-empty.png" alt="DHL Shipping Autofill empty start state" />
       </figure>
     </section>
 
-    <section class="dhl-story-grid" aria-label="Extension workflow screenshots">
-      <div class="story-copy">
-        <span>02</span>
-        <h2>Paste the receiver details.</h2>
+    <section class="editorial-story editorial-story-mosaic" aria-label="Pasted and parsed address states">
+      <div class="story-copy story-copy-two">
+        <div class="kicker">02 · Address pasted</div>
+        <h2>The address block stays visible before any fill action.</h2>
         <p>
-          A copied address block can be placed into the extension first, so the data stays visible and reviewable before it is used anywhere else.
+          The copied receiver block can be reviewed inside the extension first. Nothing is pushed into the carrier page yet, so the user keeps control over the next step.
         </p>
       </div>
 
-      <figure class="story-split-visual" aria-label="DHL Shipping Autofill parsed preview split into interface details">
-        <div class="split-panel split-panel-top">
-          <img src="dhl-3-filled.png" alt="Parsed preview top area" />
-        </div>
-        <div class="split-panel split-panel-small">
-          <img src="dhl-3-filled.png" alt="Parsed preview status and controls" />
-        </div>
-        <div class="split-panel split-panel-wide">
-          <img src="dhl-3-filled.png" alt="Parsed receiver fields table" />
-        </div>
-      </figure>
-
-      <figure class="story-visual">
+      <figure class="story-shot story-shot-paste editorial-crop editorial-crop-paste">
         <img src="dhl-2-paste.png" alt="Receiver address pasted into DHL Shipping Autofill" />
       </figure>
 
-      <div class="story-copy story-copy-bottom">
-        <span>03</span>
-        <h2>Preview the parsed fields.</h2>
+      <figure class="story-puzzle" aria-label="Parsed preview shown as one continuous image with separated parts">
+        <div class="puzzle-layer puzzle-top">
+          <img src="dhl-3-filled.png" alt="" />
+        </div>
+        <div class="puzzle-layer puzzle-left">
+          <img src="dhl-3-filled.png" alt="" />
+        </div>
+        <div class="puzzle-layer puzzle-right">
+          <img src="dhl-3-filled.png" alt="Parsed receiver fields previewed in the extension" />
+        </div>
+      </figure>
+
+      <div class="story-copy story-copy-three">
+        <div class="kicker">03 · Parsed result</div>
+        <h2>Preview the separated fields before using them.</h2>
         <p>
-          The address is separated into receiver name, company, street, number, postal code, city, and country. The user can check the result before using it in the DHL form.
+          The extension prepares the receiver name, company, street, number, postal code, city, and country. The user can check the parsed structure before continuing in the DHL workflow.
         </p>
       </div>
     </section>
 
-    <section class="dhl-scope" aria-label="Project scope notes">
+    <section class="editorial-scope" aria-label="Project scope notes">
       <div>
         <div class="kicker">Project scope</div>
         <h2>What this page shows.</h2>
