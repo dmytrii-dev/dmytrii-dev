@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <main class="page project-page project-page-editorial">
+  <main class="page dhl-project-page">
     <nav class="nav">
       <a class="brand" href="/">
         <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
@@ -29,143 +29,83 @@
       </div>
     </nav>
 
-    <a class="project-back editorial-back" href="/#work">← Back to selected work</a>
+    <a class="project-back dhl-back" href="/#work">← Back to selected work</a>
 
-    <section class="editorial-hero" aria-label="DHL Shipping Autofill project overview">
-      <div class="editorial-meta editorial-meta-top">
-        <div>
-          <span>Type</span>
-          <strong>Browser extension</strong>
-        </div>
-        <div>
-          <span>Workflow</span>
-          <strong>Shipping address preparation</strong>
-        </div>
-        <div>
-          <span>Data</span>
-          <strong>Sample data only</strong>
-        </div>
-        <div>
-          <span>Role</span>
-          <strong>Build, parsing, UI</strong>
-        </div>
-      </div>
-
-      <div class="editorial-hero-grid">
-        <div class="editorial-hero-copy">
-          <div class="kicker">Shipping workflow</div>
-          <h1>DHL Shipping Autofill.</h1>
-          <p>
-            A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
-          </p>
-        </div>
-
-        <figure class="editorial-hero-shot">
-          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill parsed receiver address preview" />
-        </figure>
-      </div>
-
-      <div class="editorial-hero-bottom">
-        <div class="editorial-note">
-          <span>Public page</span>
-          <p>Private client data, account details, and internal business rules are not shown.</p>
-        </div>
-        <div class="editorial-tags">
-          <span>Receiver address autofill</span>
-          <span>Preview before fill</span>
-          <span>Carrier workflow</span>
-        </div>
-      </div>
+    <section class="dhl-hero" aria-label="DHL Shipping Autofill project overview">
+      <div class="kicker">Shipping workflow</div>
+      <h1>DHL Shipping Autofill.</h1>
+      <p>
+        A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
+      </p>
     </section>
 
-    <section class="editorial-strip" aria-label="Project summary">
+    <section class="dhl-brief" aria-label="Project summary">
       <div>
         <span>Problem</span>
         <p>Receiver address details had to be copied from text into shipping form fields by hand.</p>
       </div>
+
       <div>
         <span>System</span>
         <p>The extension parses the pasted address and prepares matching receiver-field values.</p>
       </div>
+
       <div>
         <span>Control</span>
         <p>The user can check the parsed result before using it in the DHL form.</p>
       </div>
     </section>
 
-    <section class="editorial-sheet editorial-sheet-one" aria-label="Workflow start state">
-      <div class="sheet-copy">
-        <div class="kicker">01 · Input format</div>
-        <h2>Start with a visible receiver format.</h2>
+    <section class="dhl-story-first" aria-label="Input format screenshot">
+      <div class="story-copy story-copy-wide">
+        <span>01</span>
+        <h2>Start from a visible receiver format.</h2>
         <p>
-          The extension opens with a clear address area, action buttons, and an empty preview. The sample text shows the format the workflow expects.
+          The extension opens with a clear receiver-address area, action buttons, and an empty preview. 
+          The sample address shows the kind of input the workflow expects before any fields are prepared.
         </p>
       </div>
 
-      <figure class="sheet-image sheet-image-left">
+      <figure class="story-visual story-visual-large">
         <img src="dhl-1-empty.png" alt="DHL Shipping Autofill start state with sample address format" />
       </figure>
     </section>
 
-    <section class="editorial-sheet editorial-sheet-two" aria-label="Address pasted state">
-      <figure class="sheet-image sheet-image-right">
+    <section class="dhl-story-grid" aria-label="Extension workflow screenshots">
+      <div class="story-copy">
+        <span>02</span>
+        <h2>Paste the receiver details.</h2>
+        <p>
+          A copied address block can be placed into the extension first, so the data stays visible and reviewable before it is used anywhere else.
+        </p>
+      </div>
+
+      <figure class="story-split-visual" aria-label="DHL Shipping Autofill parsed preview split into interface details">
+        <div class="split-panel split-panel-top">
+          <img src="dhl-3-filled.png" alt="Parsed preview top area" />
+        </div>
+        <div class="split-panel split-panel-small">
+          <img src="dhl-3-filled.png" alt="Parsed preview status and controls" />
+        </div>
+        <div class="split-panel split-panel-wide">
+          <img src="dhl-3-filled.png" alt="Parsed receiver fields table" />
+        </div>
+      </figure>
+
+      <figure class="story-visual">
         <img src="dhl-2-paste.png" alt="Receiver address pasted into DHL Shipping Autofill" />
       </figure>
 
-      <div class="sheet-copy sheet-copy-right">
-        <div class="kicker">02 · Address pasted</div>
-        <h2>The copied address stays reviewable.</h2>
+      <div class="story-copy story-copy-bottom">
+        <span>03</span>
+        <h2>Preview the parsed fields.</h2>
         <p>
-          A receiver address block can be placed into the extension before anything is inserted into the carrier page.
+          The address is separated into receiver name, company, street, number, postal code, city, and country. The user can check the result before using it in the DHL form.
         </p>
       </div>
     </section>
 
-    <section class="editorial-result" aria-label="Parsed address preview state">
-      <div class="result-copy">
-        <div class="kicker">03 · Parsed preview</div>
-        <h2>Prepared fields before the page changes.</h2>
-        <p>
-          The address is separated into receiver name, company, street, house number, postal code, city, and country. The result can be checked before filling the shipping form.
-        </p>
-      </div>
-
-      <figure class="result-shot">
-        <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
-      </figure>
-    </section>
-
-    <section class="editorial-steps" aria-label="How the workflow works">
-      <div class="steps-title">
-        <div class="kicker">How it works</div>
-        <h2>Built around one repeated shipping task.</h2>
-      </div>
-
-      <div class="steps-grid">
-        <div>
-          <span>01</span>
-          <h3>Paste receiver details</h3>
-          <p>The address block comes from an order, message, or internal system.</p>
-        </div>
-        <div>
-          <span>02</span>
-          <h3>Preview parsed fields</h3>
-          <p>The extension separates the receiver details into usable field values.</p>
-        </div>
-        <div>
-          <span>03</span>
-          <h3>Fill the carrier page</h3>
-          <p>The prepared values are inserted into the matching DHL fields.</p>
-        </div>
-        <div>
-          <span>04</span>
-          <h3>Review before shipment</h3>
-          <p>The page remains visible so the user can check the information.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="editorial-scope" aria-label="Project scope notes">
+    <section class="dhl-scope" aria-label="Project scope notes">
       <div>
         <div class="kicker">Project scope</div>
         <h2>What this page shows.</h2>
@@ -175,23 +115,6 @@
         <p><strong>Public sample data.</strong> Visible names, addresses, and form values are examples for demonstration.</p>
         <p><strong>Client details stay private.</strong> Account access, internal rules, and real shipment data are not included.</p>
         <p><strong>Independent workflow.</strong> DHL is referenced only as the carrier website this workflow was built around. This project is independent and not affiliated with DHL.</p>
-      </div>
-    </section>
-
-    <section class="section section-dark">
-      <div class="cta-panel">
-        <div>
-          <div class="kicker">Start with the workflow</div>
-          <h2>Send me the process you repeat.</h2>
-          <p>
-            Show me the steps you copy, check, fill, or move by hand in your workflow.
-          </p>
-        </div>
-
-        <div class="cta-actions">
-          <a class="button button-primary" href="mailto:hello@dmytrii.dev" onclick="handleContactClick(event)">Send a workflow</a>
-          <button class="email-button" style="color: white;" type="button" onclick="copyEmail()">hello@dmytrii.dev</button>
-        </div>
       </div>
     </section>
 
@@ -206,53 +129,5 @@
       </div>
     </footer>
   </main>
-
-  <div id="toast" class="toast">Email copied to clipboard</div>
-
-  <script>
-    const email = "hello@dmytrii.dev";
-    const toastDurationMs = 4500;
-
-    async function copyEmail() {
-      try {
-        await navigator.clipboard.writeText(email);
-        showToast("Email copied to clipboard");
-      } catch (error) {
-        showToast("Copy failed — email: " + email);
-      }
-    }
-
-    function handleContactClick(event) {
-      let leftPage = false;
-
-      const markLeft = () => {
-        leftPage = true;
-      };
-
-      window.addEventListener("blur", markLeft, { once: true });
-      window.addEventListener("pagehide", markLeft, { once: true });
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "hidden") {
-          leftPage = true;
-        }
-      }, { once: true });
-
-      setTimeout(() => {
-        if (!leftPage && document.visibilityState === "visible") {
-          showToast("Mail app did not open. You can copy the email address instead.");
-        }
-      }, 1600);
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.add("show");
-
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, toastDurationMs);
-    }
-  </script>
 </body>
 </html>
