@@ -31,20 +31,9 @@
 
     <a class="project-back editorial-back" href="/#work">← Back to selected work</a>
 
-    <section class="editorial-hero" aria-label="DHL Shipping Autofill project overview">
-      <div class="editorial-hero-grid">
-        <div class="editorial-hero-copy">
-          <div class="kicker">Shipping workflow</div>
-          <h1>DHL Shipping Autofill.</h1>
-          <p>
-            A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.
-          </p>
-        </div>
-
-        <figure class="editorial-hero-shot editorial-crop editorial-crop-filled">
-          <img src="dhl-3-filled.png" alt="DHL Shipping Autofill showing parsed receiver address fields" />
-        </figure>
-      </div>
+    <section class="project-plain-hero" aria-label="DHL Shipping Autofill project overview">
+      <h1>DHL Shipping Autofill.</h1>
+      <p>A browser extension workflow that turns pasted receiver details into prepared DHL shipping fields.</p>
     </section>
 
     <section class="editorial-strip" aria-label="Project summary">
@@ -62,52 +51,47 @@
       </div>
     </section>
 
-    <section class="editorial-story editorial-story-single" aria-label="Workflow start state">
-      <div class="story-copy">
-        <div class="kicker">01 · Ready state</div>
-        <h2>Start from a clear input view.</h2>
-        <p>
-          The workflow opens with a visible receiver-address area, an empty preview section, and two clear actions: preview first or fill later.
-        </p>
-      </div>
-
-      <figure class="story-shot editorial-crop editorial-crop-empty">
-        <img src="dhl-1-empty.png" alt="DHL Shipping Autofill empty start state" />
+    <section class="workflow-composition" aria-label="DHL Shipping Autofill workflow evidence">
+      <figure class="composition-shot composition-shot-one">
+        <img src="dhl-1-empty.png" alt="DHL Shipping Autofill ready state with sample receiver address" />
       </figure>
-    </section>
 
-    <section class="editorial-story editorial-story-mosaic" aria-label="Pasted and parsed address states">
-      <div class="story-copy story-copy-two">
-        <div class="kicker">02 · Address pasted</div>
-        <h2>The address block stays visible before any fill action.</h2>
+      <article class="composition-copy composition-copy-one">
+        <span class="composition-number">01</span>
+        <div class="kicker">Ready state</div>
+        <h2>Start with a clear receiver-address area.</h2>
         <p>
-          The copied receiver block can be reviewed inside the extension first. Nothing is pushed into the carrier page yet, so the user keeps control over the next step.
+          The extension opens with a visible address field, an empty preview, and two simple actions: preview the address first or fill the DHL form later.
         </p>
-      </div>
+      </article>
 
-      <figure class="story-shot story-shot-paste editorial-crop editorial-crop-paste">
+      <figure class="composition-shot composition-shot-two">
         <img src="dhl-2-paste.png" alt="Receiver address pasted into DHL Shipping Autofill" />
       </figure>
 
-      <figure class="story-puzzle" aria-label="Parsed preview shown as one continuous image with separated parts">
-        <div class="puzzle-layer puzzle-top">
-          <img src="dhl-3-filled.png" alt="" />
-        </div>
-        <div class="puzzle-layer puzzle-left">
-          <img src="dhl-3-filled.png" alt="" />
-        </div>
-        <div class="puzzle-layer puzzle-right">
-          <img src="dhl-3-filled.png" alt="Parsed receiver fields previewed in the extension" />
-        </div>
+      <article class="composition-copy composition-copy-two">
+        <span class="composition-number">02</span>
+        <div class="kicker">Address pasted</div>
+        <h2>The copied address stays reviewable.</h2>
+        <p>
+          The receiver block can be placed into the extension before anything is inserted into the carrier page. This keeps the workflow controlled instead of immediately changing form fields.
+        </p>
+      </article>
+    </section>
+
+    <section class="result-composition" aria-label="Parsed receiver fields preview">
+      <figure class="composition-shot composition-shot-three">
+        <img src="dhl-3-filled.png" alt="DHL Shipping Autofill parsed receiver address preview" />
       </figure>
 
-      <div class="story-copy story-copy-three">
-        <div class="kicker">03 · Parsed result</div>
-        <h2>Preview the separated fields before using them.</h2>
+      <article class="composition-copy composition-copy-three">
+        <span class="composition-number">03</span>
+        <div class="kicker">Parsed preview</div>
+        <h2>Prepared fields before the page changes.</h2>
         <p>
-          The extension prepares the receiver name, company, street, number, postal code, city, and country. The user can check the parsed structure before continuing in the DHL workflow.
+          The address is separated into receiver name, company, street, number, postal code, city, and country. The user can check the parsed structure before using it in the DHL workflow.
         </p>
-      </div>
+      </article>
     </section>
 
     <section class="editorial-scope" aria-label="Project scope notes">

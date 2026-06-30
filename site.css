@@ -1519,83 +1519,61 @@ section {
 }
 
 
+
 /* DHL project editorial page */
 
 .project-page-editorial {
-  max-width: 1240px;
+  max-width: 1180px;
 }
 
 .editorial-back {
   margin: 38px 0 18px 6px;
 }
 
-.editorial-hero,
-.editorial-story,
-.editorial-scope {
-  border: 1px solid var(--line);
-  border-radius: 34px;
-  background:
-    radial-gradient(circle at 88% 12%, rgba(233, 134, 34, 0.10), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.70), rgba(255, 252, 246, 0.58));
-  box-shadow: var(--shadow-soft);
+.project-plain-hero {
+  margin-top: 24px;
+  max-width: 920px;
+  padding: 18px 0 30px;
 }
 
-.editorial-hero {
-  padding: 34px;
-  overflow: hidden;
-}
-
-.editorial-hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(330px, 0.8fr);
-  gap: 48px;
-  align-items: center;
-}
-
-.editorial-hero-copy h1 {
-  max-width: 640px;
-  margin: 10px 0 18px;
-  font-size: clamp(60px, 8vw, 120px);
-  line-height: 0.86;
+.project-plain-hero h1 {
+  margin: 0 0 18px;
+  max-width: 940px;
+  font-size: clamp(56px, 8vw, 104px);
+  line-height: 0.9;
   letter-spacing: -0.075em;
 }
 
-.editorial-hero-copy p {
-  max-width: 590px;
+.project-plain-hero p {
+  max-width: 760px;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(20px, 2vw, 27px);
-  line-height: 1.32;
-}
-
-.editorial-hero-shot {
-  margin: 0;
-  justify-self: center;
-  width: min(100%, 420px);
+  font-size: clamp(20px, 2.1vw, 28px);
+  line-height: 1.35;
 }
 
 .editorial-strip {
-  margin-top: 28px;
+  margin-top: 8px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: var(--shadow-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .editorial-strip > div {
-  padding: 24px 26px;
+  padding: 24px 24px 24px 0;
   border-right: 1px solid var(--line);
+}
+
+.editorial-strip > div + div {
+  padding-left: 24px;
 }
 
 .editorial-strip > div:last-child {
   border-right: 0;
 }
 
-.editorial-strip span,
-.scope-grid strong + span {
+.editorial-strip span {
   display: block;
   margin-bottom: 10px;
   color: var(--gold-dark);
@@ -1612,31 +1590,106 @@ section {
   line-height: 1.55;
 }
 
-.editorial-story,
-.editorial-scope {
-  margin-top: 34px;
-  padding: 34px;
-}
-
-.editorial-story-single {
+.workflow-composition {
+  margin-top: 62px;
   display: grid;
-  gap: 28px;
+  grid-template-columns: minmax(300px, 0.86fr) minmax(310px, 0.94fr);
+  grid-template-areas:
+    "shot1 copy1"
+    "shot1 shot2"
+    "copy2 shot2";
+  gap: 34px 46px;
+  align-items: start;
 }
 
-.story-copy {
-  max-width: 580px;
+.result-composition {
+  margin-top: 68px;
+  display: grid;
+  grid-template-columns: minmax(330px, 0.78fr) minmax(300px, 0.92fr);
+  gap: 48px;
+  align-items: center;
+  padding-top: 46px;
+  border-top: 1px solid var(--line);
 }
 
-.story-copy h2,
+.composition-shot {
+  margin: 0;
+  position: relative;
+}
+
+.composition-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 26px 44px rgba(84, 54, 22, 0.115));
+}
+
+.composition-shot-one {
+  grid-area: shot1;
+  width: min(100%, 445px);
+  justify-self: start;
+}
+
+.composition-shot-two {
+  grid-area: shot2;
+  width: min(100%, 445px);
+  justify-self: end;
+  align-self: start;
+}
+
+.composition-shot-three {
+  width: min(100%, 448px);
+  justify-self: start;
+}
+
+.composition-copy {
+  position: relative;
+  max-width: 480px;
+  padding-top: 4px;
+}
+
+.composition-copy-one {
+  grid-area: copy1;
+  align-self: end;
+}
+
+.composition-copy-two {
+  grid-area: copy2;
+  align-self: start;
+  max-width: 440px;
+}
+
+.composition-copy-three {
+  max-width: 520px;
+}
+
+.composition-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  color: var(--gold-dark);
+  border: 1px solid rgba(169, 81, 18, 0.28);
+  background: rgba(255, 255, 255, 0.52);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  box-shadow: 0 12px 26px rgba(84, 54, 22, 0.06);
+}
+
+.composition-copy h2,
 .editorial-scope h2 {
   margin: 8px 0 12px;
   color: var(--text);
-  font-size: clamp(34px, 4vw, 58px);
-  line-height: 0.96;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 0.98;
   letter-spacing: -0.065em;
 }
 
-.story-copy p,
+.composition-copy p,
 .scope-grid p {
   margin: 0;
   color: var(--muted);
@@ -1644,117 +1697,24 @@ section {
   line-height: 1.58;
 }
 
-.story-shot {
-  margin: 0;
-}
-
-/* crop away outer ivory background so the main white card stays */
-.editorial-crop {
-  overflow: hidden;
-  filter: drop-shadow(0 24px 40px rgba(84, 54, 22, 0.10));
-}
-
-.editorial-crop img {
+.composition-copy::after {
+  content: "";
   display: block;
-  width: 112%;
-  max-width: none;
-  height: auto;
-}
-
-.editorial-crop-empty img,
-.editorial-crop-paste img {
-  transform: translate(-6.2%, -4.2%);
-}
-
-.editorial-crop-filled img {
-  transform: translate(-6.4%, -3.2%);
-}
-
-.editorial-story-single .story-shot {
-  width: min(100%, 430px);
-}
-
-.editorial-story-mosaic {
-  display: grid;
-  grid-template-columns: minmax(290px, 0.84fr) minmax(300px, 0.92fr);
-  grid-template-areas:
-    "copy2 shot2"
-    "puzzle shot2"
-    "puzzle copy3";
-  gap: 26px 34px;
-  align-items: start;
-}
-
-.story-copy-two {
-  grid-area: copy2;
-  align-self: end;
-}
-
-.story-copy-three {
-  grid-area: copy3;
-  align-self: start;
-  justify-self: end;
-  max-width: 420px;
-}
-
-.story-shot-paste {
-  grid-area: shot2;
-  width: min(100%, 430px);
-  justify-self: end;
-  align-self: stretch;
-}
-
-.story-shot-paste img {
-  width: 112%;
-  max-width: none;
-  transform: translate(-6.1%, -3.8%);
-}
-
-.story-puzzle {
-  grid-area: puzzle;
-  position: relative;
-  margin: 0;
-  width: min(100%, 560px);
-  aspect-ratio: 466 / 750;
-  justify-self: start;
-}
-
-.story-puzzle .puzzle-layer {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-.story-puzzle .puzzle-layer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transform: scale(1.06);
-  transform-origin: center top;
-  display: block;
-  filter: drop-shadow(0 18px 30px rgba(84, 54, 22, 0.08));
-}
-
-.puzzle-top {
-  clip-path: inset(0 0 57% 0 round 24px);
-}
-
-.puzzle-left {
-  clip-path: inset(44% 63% 0 0 round 24px);
-  transform: translateY(12px);
-}
-
-.puzzle-right {
-  clip-path: inset(44% 0 0 31% round 24px);
-  transform: translate(12px, 12px);
+  width: 86px;
+  height: 1px;
+  margin-top: 24px;
+  background: linear-gradient(90deg, var(--gold-dark), transparent);
+  opacity: 0.55;
 }
 
 .editorial-scope {
+  margin-top: 70px;
   display: grid;
   grid-template-columns: minmax(250px, 0.5fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
+  padding-top: 34px;
+  border-top: 1px solid var(--line);
 }
 
 .scope-grid {
@@ -1777,28 +1737,31 @@ section {
 }
 
 @media (max-width: 980px) {
-  .editorial-hero-grid,
   .editorial-strip,
-  .editorial-story-mosaic,
+  .workflow-composition,
+  .result-composition,
   .editorial-scope {
     grid-template-columns: 1fr;
   }
 
-  .editorial-story-mosaic {
+  .workflow-composition {
     grid-template-areas:
+      "copy1"
+      "shot1"
       "copy2"
-      "shot2"
-      "puzzle"
-      "copy3";
+      "shot2";
   }
 
-  .story-shot-paste,
-  .story-copy-three,
-  .story-puzzle {
+  .composition-shot-one,
+  .composition-shot-two,
+  .composition-shot-three,
+  .composition-copy {
     justify-self: start;
   }
 
-  .editorial-strip > div {
+  .editorial-strip > div,
+  .editorial-strip > div + div {
+    padding: 22px 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
@@ -1809,26 +1772,18 @@ section {
 }
 
 @media (max-width: 560px) {
-  .editorial-hero,
-  .editorial-story,
-  .editorial-scope {
-    padding: 24px;
-    border-radius: 26px;
-  }
-
-  .editorial-hero-copy h1 {
+  .project-plain-hero h1 {
     font-size: clamp(50px, 15vw, 72px);
   }
 
-  .editorial-strip {
-    border-radius: 22px;
+  .workflow-composition,
+  .result-composition {
+    margin-top: 46px;
+    gap: 28px;
   }
 
-  .editorial-story-mosaic {
-    gap: 22px;
-  }
-
-  .story-puzzle {
-    aspect-ratio: 466 / 770;
+  .composition-number {
+    width: 38px;
+    height: 38px;
   }
 }
