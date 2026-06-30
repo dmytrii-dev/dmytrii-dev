@@ -67,39 +67,69 @@
       </div>
     </section>
 
-    <section class="project-media-section">
-      <div class="project-section-head">
+    <section class="section project-evidence-section">
+      <div class="section-header">
         <div class="kicker">Workflow evidence</div>
-        <h2>From address text to prepared shipping form.</h2>
+        <h2>From address text to prepared shipping fields.</h2>
         <p>
-          These screenshots use sample data. Private client data, account details, and internal business rules are not shown.
+          These screenshots use sample data. Private client data, account details,
+          and internal business rules are not shown.
         </p>
       </div>
-
-      <div class="project-media-grid">
-        <figure class="project-shot project-shot-large">
-          <img src="dhl-2-paste.png" alt="Receiver address pasted into the DHL Shipping Autofill extension" />
-          <figcaption>
-            <strong>Address input</strong>
-            <span>The receiver details are pasted into the extension before filling the carrier page.</span>
-          </figcaption>
-        </figure>
-
-        <figure class="project-shot">
-          <img src="dhl-1-empty.png" alt="DHL form before using the extension" />
-          <figcaption>
-            <strong>Before autofill</strong>
-            <span>The shipping form starts empty and would otherwise require repeated manual entry.</span>
-          </figcaption>
-        </figure>
-
-        <figure class="project-shot">
-          <img src="dhl-3-filled.png" alt="DHL form after using the extension" />
-          <figcaption>
-            <strong>After autofill</strong>
-            <span>The receiver fields are prepared from the parsed address data.</span>
-          </figcaption>
-        </figure>
+    
+      <div class="evidence-book" aria-label="DHL Shipping Autofill screenshots">
+        <input class="evidence-radio" type="radio" name="dhl-evidence" id="dhl-shot-1" checked />
+        <input class="evidence-radio" type="radio" name="dhl-evidence" id="dhl-shot-2" />
+        <input class="evidence-radio" type="radio" name="dhl-evidence" id="dhl-shot-3" />
+    
+        <div class="evidence-book-window">
+          <div class="evidence-pages">
+            <article class="evidence-page">
+              <img src="dhl-1-empty.png" alt="DHL form with extension ready for receiver address input" />
+              <div class="evidence-caption">
+                <h3>Address input</h3>
+                <p>The receiver details are pasted into the extension before filling the carrier page.</p>
+              </div>
+            </article>
+    
+            <article class="evidence-page">
+              <img src="dhl-2-paste.png" alt="DHL extension showing parsed receiver address fields" />
+              <div class="evidence-caption">
+                <h3>Parsed preview</h3>
+                <p>The extension separates the address into prepared fields before anything is inserted.</p>
+              </div>
+            </article>
+    
+            <article class="evidence-page">
+              <img src="dhl-3-filled.png" alt="DHL receiver form filled with prepared address fields" />
+              <div class="evidence-caption">
+                <h3>Filled form</h3>
+                <p>The prepared values are inserted into the matching DHL receiver fields.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+    
+        <div class="evidence-controls evidence-controls-1" aria-hidden="true">
+          <label class="evidence-arrow evidence-arrow-prev" for="dhl-shot-3">←</label>
+          <label class="evidence-arrow evidence-arrow-next" for="dhl-shot-2">→</label>
+        </div>
+    
+        <div class="evidence-controls evidence-controls-2" aria-hidden="true">
+          <label class="evidence-arrow evidence-arrow-prev" for="dhl-shot-1">←</label>
+          <label class="evidence-arrow evidence-arrow-next" for="dhl-shot-3">→</label>
+        </div>
+    
+        <div class="evidence-controls evidence-controls-3" aria-hidden="true">
+          <label class="evidence-arrow evidence-arrow-prev" for="dhl-shot-2">←</label>
+          <label class="evidence-arrow evidence-arrow-next" for="dhl-shot-1">→</label>
+        </div>
+    
+        <div class="evidence-dots" aria-hidden="true">
+          <label for="dhl-shot-1"></label>
+          <label for="dhl-shot-2"></label>
+          <label for="dhl-shot-3"></label>
+        </div>
       </div>
     </section>
 
