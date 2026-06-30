@@ -1808,6 +1808,20 @@ h2 {
   max-width: 170px;
 }
 
+.privacy-facts > div {
+  padding: 18px 20px;
+}
+
+.privacy-facts span {
+  margin-bottom: 8px;
+}
+
+.privacy-facts p {
+  font-size: 14.5px;
+  line-height: 1.35;
+  font-weight: 760;
+}
+
 @media (max-width: 860px) {
   .nav {
     align-items: flex-start;
