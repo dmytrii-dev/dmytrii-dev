@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Plenty-UPS Workflow Helper — Dmytrii Sokyrko</title>
+  <meta name="description" content="Browser extension workflow for extracting Plenty order data and preparing matching UPS shipment fields for review." />
+
+  <link rel="stylesheet" href="site.css" />
+</head>
+
+<body>
+  <main class="page project-page project-page-editorial">
+    <nav class="nav">
+      <a class="brand" href="/">
+        <img class="avatar" src="profile.jpg" alt="Dmytrii Sokyrko" />
+        <span class="brand-text">
+          <strong>Dmytrii Sokyrko</strong>
+          <span>E-commerce Automation Systems</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="/#work">Work</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </nav>
+
+    <section class="project-plain-hero" aria-label="Plenty-UPS Workflow Helper project overview">
+      <a class="project-back editorial-back" href="/#work">
+        <span class="back-arrow">←</span>
+        <span>Back to work</span>
+      </a>
+
+      <h1>Plenty-UPS Helper.</h1>
+      <p>A cross-system workflow that extracts Plenty order details and prepares matching UPS shipment fields for review before the final carrier step.</p>
+    </section>
+
+    <section class="editorial-strip" aria-label="Project summary">
+      <div>
+        <span>Problem</span>
+        <p>Plenty order details, package context, and shipment values had to be moved into UPS preparation by hand.</p>
+      </div>
+      <div>
+        <span>System</span>
+        <p>The extension reads the Plenty order, lets the user choose product category, and prepares matching UPS values.</p>
+      </div>
+      <div>
+        <span>Control</span>
+        <p>The user keeps status, extracted data, and fill results visible before continuing with the carrier workflow.</p>
+      </div>
+    </section>
+
+    <section class="workflow-composition" aria-label="Plenty-UPS workflow evidence">
+      <figure class="composition-shot composition-shot-one">
+        <img src="plenty-ups-1-initial.png" alt="Plenty-UPS Helper initial state before selecting a product category" />
+      </figure>
+
+      <article class="composition-copy composition-copy-one">
+        <div class="composition-stars composition-stars-one" aria-label="Step one"><span>✦</span></div>
+        <div class="kicker">Initial state</div>
+        <h2>Start from a controlled workflow panel.</h2>
+        <p>
+          The popup opens with the category choice, status message, workflow action, and an empty fill-status preview. The process starts deliberately instead of silently changing carrier fields.
+        </p>
+      </article>
+
+      <figure class="composition-shot composition-shot-two">
+        <img src="plenty-ups-2-category-selected.png" alt="Plenty-UPS Helper with Filament category selected" />
+      </figure>
+
+      <article class="composition-copy composition-copy-two">
+        <div class="composition-stars composition-stars-two" aria-label="Step two"><span>✦</span><span>✦</span></div>
+        <div class="kicker">Category selected</div>
+        <h2>Add shipment context before filling.</h2>
+        <p>
+          Product category is selected before the workflow runs, so the UPS shipment data can be prepared together with the Plenty order details instead of added as a separate manual step.
+        </p>
+      </article>
+    </section>
+
+    <section class="result-composition" aria-label="Completed Plenty-UPS fill status">
+      <figure class="composition-shot composition-shot-three">
+        <img src="plenty-ups-3-fill-complete.png" alt="Plenty-UPS Helper completed fill status with confirmed fields" />
+      </figure>
+
+      <article class="composition-copy composition-copy-three">
+        <div class="composition-stars composition-stars-three" aria-label="Step three"><span>✦</span><span>✦</span><span>✦</span></div>
+        <div class="kicker">Fill review</div>
+        <h2>Confirmed fields stay visible after the UPS step.</h2>
+        <p>
+          The result view shows recipient, address, postal city, email, weight, category, reference, and selected options with a clear confirmation status. The workflow output remains visible for review.
+        </p>
+
+        <div class="result-note">
+          <p><strong>Cross-system handoff.</strong> Plenty order data becomes UPS-ready shipment data without retyping each field into the carrier page.</p>
+          <p><strong>Manual control remains.</strong> UPS login, review, and final shipment confirmation are not hidden; the user still checks the carrier page before continuing.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="editorial-scope" aria-label="Project scope notes">
+      <div>
+        <div class="kicker">Project scope</div>
+        <h2>What this page shows.</h2>
+      </div>
+
+      <div class="scope-grid">
+        <p><strong>Public sample data.</strong> Visible names, addresses, order references, package values, and fill-status rows are examples for demonstration.</p>
+        <p><strong>Client details stay private.</strong> Account access, internal business rules, real order data, and real shipment details are not included.</p>
+        <p><strong>Independent workflow.</strong> Plenty and UPS are referenced only as the systems this workflow connects. This project is independent and not affiliated with Plenty or UPS.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-brand">Dmytrii Sokyrko · E-commerce Automation Systems</div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/process">Process</a>
+        <a href="/legal">Legal</a>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:hello@dmytrii.dev">Contact</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
