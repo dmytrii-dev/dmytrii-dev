@@ -19,6 +19,12 @@
   <!-- Vercel Web Analytics: cookieless, aggregate traffic measurement -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va('beforeSend', function (event) {
+      try {
+        if (localStorage.getItem('va-disable')) return null;
+      } catch (_) {}
+      return event;
+    });
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -102,9 +108,9 @@
         <div class="privacy-text-row">
           <h2>Technical data</h2>
           <p>
-            The website may generate standard technical server logs through the hosting provider.
-            These logs can include IP address, request time, visited page, browser or user-agent,
-            and basic security or error information.
+            The hosting provider may process standard connection and security data needed to deliver
+            and protect the website, such as request time, requested page, browser information, and
+            technical error details. I do not use server logs to identify or profile visitors.
           </p>
         </div>
       
@@ -159,9 +165,9 @@
             This website uses Vercel Web Analytics to understand how the site is used and improve its content.
             It measures page views and approximate daily visitors and may provide aggregated breakdowns such as
             the visited page, referrer, country, device type, operating system, and browser. Vercel states that
-            Web Analytics does not use cookies, stores anonymized aggregated data, and uses a visitor hash that
-            resets daily rather than a permanent identifier. The data is not used for advertising, cross-site
-            tracking, or building individual visitor profiles.
+            Web Analytics does not use cookies, stores anonymized aggregated data, and does not create a permanent
+            visitor identity. The data is not used for advertising, cross-site tracking, or building individual
+            visitor profiles.
           </p>
         </div>
 
